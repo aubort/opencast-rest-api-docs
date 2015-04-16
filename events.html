@@ -1,0 +1,4624 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Event Service REST Documentation</title>
+  <style type="text/css">
+  /* styles for the page */
+  HTML {
+    font: 13px/1.231 arial,helvetica,clean,sans-serif;
+  }
+  FIELDSET {
+    margin-bottom: 2em;
+    margin-top: 0.5em;
+    padding-bottom: 1em;
+    width: 90%;
+  }
+  PRE {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  }
+  TABLE.method {
+    width: 100%;
+  }
+  TABLE.testing {
+    width: 96%;
+    border: 2px solid #CCC;
+  }
+  UL {
+    margin: 0.2em;
+    padding-left: 1em;
+  }
+  DIV.table_spacer {
+    height: 2em;
+  }
+  DIV.footer {
+    padding-top: 1em;
+    font-weight: bold;
+  }
+  .method_set_header {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  .method_header TH {
+    background: #F6921E none repeat scroll 0 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.6em 0.3em;
+    text-align: left;
+    vertical-align: middle;;
+  }
+  TH.method_header_left {
+    text-align: right;
+    padding: 0.6em 1em;
+  }
+  TR.method TH {
+    font-family: sans-serif;
+    font-weight: normal;
+    padding: 0.5em 1.0em;
+    text-align: right;
+    vertical-align: middle;
+  }
+  TR.method TH.method_important {
+    font-weight: bold;
+  }
+  TR.method TD {
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 6px;
+    padding-left: 4px;
+    padding-top: 6px;
+    vertical-align: middle;
+  }
+  TR.testform TD {
+  }
+  TR.testform A {
+  }
+  DIV.hidden {
+    display: none;
+  }
+  DIV.spaced {
+    margin: 4px 0px;
+  }
+  A.hidden {
+    display: none;
+  }
+  TD.form_label {
+    width: 10%;
+    font-size: 1.1em !important;
+  }
+  .form_field_description {
+    font-size: 0.9em !important;
+  }
+  TD.form_submit {
+    border: none !important;
+  }
+  test_form_response TEXTAREA {
+    font-size: small;
+    font-family: monospace;
+    width: 100%;
+  }
+  </style>
+</head>
+<body>
+<div style="margin-top: .5em">
+  <a href="/welcome.html">
+    <h1 style="color: rgb(246, 146, 30); font-size:138.5%;"><img src="/img/mh_logos/MatterhornLogo_80x57.png" alt="Opencast Matterhorn" border=0>&nbsp;&nbsp;Opencast Matterhorn</h1>
+  </a>
+</div>
+
+<h2>Event Service REST Documentation</h2>
+<span class="meta_url">/admin-ng/event</span>
+<div class="meta_abstract">Provides resources and operations related to the events</div>
+
+<fieldset id="endpoint_holder_READ">
+<legend class="method_set_header">Read methods</legend>
+<table id="getcataloguiadapters" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /catalogAdapters REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/catalogAdapters">GET /catalogAdapters</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns the available catalog UI adapters as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns the available catalog UI adapters as JSON
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The catalog UI adapters as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/catalogAdapters</tt>
+        </div>
+        <a href="/admin-ng/event/catalogAdapters">/admin-ng/event/catalogAdapters</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="getevent" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}">GET /{eventId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns the event by the given id as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns the event as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The event as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_getevent" class="form_test_form" action="/admin-ng/event/{eventId}" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}" />
+            <input class="form_endpoint_name" type="hidden" value="getevent" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="getevent_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="getevent_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="getEventAccessInformation" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/access.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/access.json">GET /{eventId}/access.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Get the access information of an event</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>400: Bad Request</tt>, The required form params were missing in the request. <br/>
+        <tt>404: Not Found</tt>, If the event has not been found. <br/>
+        <tt>200: OK</tt>, The access information 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The access information</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/access.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_getEventAccessInformation" class="form_test_form" action="/admin-ng/event/{eventId}/access.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/access.json" />
+            <input class="form_endpoint_name" type="hidden" value="getEventAccessInformation" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/access.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="getEventAccessInformation_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="getEventAccessInformation_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event identifier</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventattachements" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/attachments.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/attachments.json">GET /{eventId}/attachments.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the attachements tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event attachements tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event attachements tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/attachments.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventattachements" class="form_test_form" action="/admin-ng/event/{eventId}/attachments.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/attachments.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventattachements" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/attachments.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventattachements_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventattachements_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventcomment" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/comment/{commentId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}">GET /{eventId}/comment/{commentId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns the comment with the given identifier</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, The comment as JSON. <br/>
+        <tt>404: Not Found</tt>, No event or comment with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Returns the comment as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventcomment" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}" />
+            <input class="form_endpoint_name" type="hidden" value="geteventcomment" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventcomment_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventcomment_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventcomment_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="geteventcomment_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment identifier</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventcomments" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/comments REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comments">GET /{eventId}/comments</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the comments tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event comments tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event comments tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comments</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventcomments" class="form_test_form" action="/admin-ng/event/{eventId}/comments" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comments" />
+            <input class="form_endpoint_name" type="hidden" value="geteventcomments" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comments</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventcomments_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventcomments_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventerror" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/workflows/{workflowId}/errors/{errorId}.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/workflows/{workflowId}/errors/{errorId}.json">GET /{eventId}/workflows/{workflowId}/errors/{errorId}.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the workflow/error tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>workflowId</tt>: The workflow id <br/>
+        <tt>errorId</tt>: The error id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event workflow/error tab as JSON <br/>
+        <tt>400: Bad Request</tt>, Unable to parse workflowId <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event workflow/error tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/workflows/{workflowId}/errors/{errorId}.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventerror" class="form_test_form" action="/admin-ng/event/{eventId}/workflows/{workflowId}/errors/{errorId}.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/workflows/{workflowId}/errors/{errorId}.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventerror" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/workflows/{workflowId}/errors/{errorId}.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventerror_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventerror_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventerror_workflowId">workflowId</label>:
+                </td>
+                <td>
+                  <input id="geteventerror_workflowId" class="form_field form_param_path form_param_required" name="workflowId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The workflow id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventerror_errorId">errorId</label>:
+                </td>
+                <td>
+                  <input id="geteventerror_errorId" class="form_field form_param_path form_param_required" name="errorId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The error id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventerrors" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/workflows/{workflowId}/errors.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/workflows/{workflowId}/errors.json">GET /{eventId}/workflows/{workflowId}/errors.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the workflow/errors tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>workflowId</tt>: The workflow id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event workflow/errors tab as JSON <br/>
+        <tt>400: Bad Request</tt>, Unable to parse workflowId <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event workflow/errors tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/workflows/{workflowId}/errors.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventerrors" class="form_test_form" action="/admin-ng/event/{eventId}/workflows/{workflowId}/errors.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/workflows/{workflowId}/errors.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventerrors" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/workflows/{workflowId}/errors.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventerrors_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventerrors_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventerrors_workflowId">workflowId</label>:
+                </td>
+                <td>
+                  <input id="geteventerrors_workflowId" class="form_field form_param_path form_param_required" name="workflowId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The workflow id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventgeneral" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/general.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/general.json">GET /{eventId}/general.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the general tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id (mediapackage id).
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event general tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event general tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/general.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventgeneral" class="form_test_form" action="/admin-ng/event/{eventId}/general.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/general.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventgeneral" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/general.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventgeneral_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventgeneral_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id (mediapackage id).</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventmedia" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/media.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/media.json">GET /{eventId}/media.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the media tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event media tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event media tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/media.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventmedia" class="form_test_form" action="/admin-ng/event/{eventId}/media.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/media.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventmedia" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/media.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventmedia_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventmedia_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventmessages" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/messages REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/messages">GET /{eventId}/messages</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns the event messages as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <tt>sort</tt>: The sort order.  May include any of the following: DATE OR SENDER.  Add '_DESC' to reverse the sort order (e.g. DATE_DESC).
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, The event messages as JSON. <br/>
+        <tt>404: Not Found</tt>, The event has not been found <br/>
+        <tt>400: Bad Request</tt>, Invalid SORT type, it was not DATE, DATE_DESC SENDER or SENDER_DESC <br/>
+        <tt>401: Unauthorized</tt>, If the current user is not authorized to perform this action
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Returns the event messages as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/messages?sort={sort}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventmessages" class="form_test_form" action="/admin-ng/event/{eventId}/messages" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/messages" />
+            <input class="form_endpoint_name" type="hidden" value="geteventmessages" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/messages</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventmessages_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventmessages_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event identifier</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="geteventmessages_sort">sort</label>:
+                </td>
+                <td>
+                  <input id="geteventmessages_sort" class="form_field form_param_submit" name="sort" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The sort order.  May include any of the following: DATE OR SENDER.  Add '_DESC' to reverse the sort order (e.g. DATE_DESC).</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventmetadata" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/metadata.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/metadata.json">GET /{eventId}/metadata.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the metadata tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event metadata tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event metadata tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/metadata.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventmetadata" class="form_test_form" action="/admin-ng/event/{eventId}/metadata.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/metadata.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventmetadata" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/metadata.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventmetadata_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventmetadata_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventoperation" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/workflows/{workflowId}/operations/{operationId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/workflows/{workflowId}/operations/{operationId}">GET /{eventId}/workflows/{workflowId}/operations/{operationId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the workflow/operation tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>workflowId</tt>: The workflow id <br/>
+        <tt>operationId</tt>: The operation id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event workflow/operation tab as JSON <br/>
+        <tt>400: Bad Request</tt>, Unable to parse workflowId or operationId <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event workflow/opertation tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/workflows/{workflowId}/operations/{operationId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventoperation" class="form_test_form" action="/admin-ng/event/{eventId}/workflows/{workflowId}/operations/{operationId}" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/workflows/{workflowId}/operations/{operationId}" />
+            <input class="form_endpoint_name" type="hidden" value="geteventoperation" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/workflows/{workflowId}/operations/{operationId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventoperation_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventoperation_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventoperation_workflowId">workflowId</label>:
+                </td>
+                <td>
+                  <input id="geteventoperation_workflowId" class="form_field form_param_path form_param_required" name="workflowId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The workflow id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventoperation_operationId">operationId</label>:
+                </td>
+                <td>
+                  <input id="geteventoperation_operationId" class="form_field form_param_path form_param_required" name="operationId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The operation id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventoperations" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/workflows/{workflowId}/operations.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/workflows/{workflowId}/operations.json">GET /{eventId}/workflows/{workflowId}/operations.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the workflow/operations tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>workflowId</tt>: The workflow id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event workflow/operations tab as JSON <br/>
+        <tt>400: Bad Request</tt>, Unable to parse workflowId <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event workflow/opertations tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/workflows/{workflowId}/operations.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventoperations" class="form_test_form" action="/admin-ng/event/{eventId}/workflows/{workflowId}/operations.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/workflows/{workflowId}/operations.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventoperations" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/workflows/{workflowId}/operations.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventoperations_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventoperations_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventoperations_workflowId">workflowId</label>:
+                </td>
+                <td>
+                  <input id="geteventoperations_workflowId" class="form_field form_param_path form_param_required" name="workflowId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The workflow id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="getevents" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /events.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/events.json">GET /events.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the events as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <tt>filter</tt>: The filter used for the query. They should be formated like that: 'filter1:value1,filter2:value2' <br/>
+        <tt>sort</tt>: The order instructions used to sort the query result. Must be in the form '<field name>:(ASC|DESC)' <br/>
+        <tt>limit&#40;Default value=0&#41;</tt>: The maximum number of items to return per page. <br/>
+        <tt>offset&#40;Default value=0&#41;</tt>: The page number.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all events as JSON
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the events as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/events.json?filter={filter}&amp;sort={sort}&amp;limit=0&amp;offset=0</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_getevents" class="form_test_form" action="/admin-ng/event/events.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/events.json" />
+            <input class="form_endpoint_name" type="hidden" value="getevents" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/events.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="getevents_filter">filter</label>:
+                </td>
+                <td>
+                  <input id="getevents_filter" class="form_field form_param_submit" name="filter" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The filter used for the query. They should be formated like that: 'filter1:value1,filter2:value2'</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="getevents_sort">sort</label>:
+                </td>
+                <td>
+                  <input id="getevents_sort" class="form_field form_param_submit" name="sort" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The order instructions used to sort the query result. Must be in the form '<field name>:(ASC|DESC)'</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="getevents_limit">limit</label>:
+                </td>
+                <td>
+                  <input id="getevents_limit" class="form_field form_param_submit" name="limit" 
+                    type="text" value="0" size="30" />
+                </td>
+                <td class="form_field_description">The maximum number of items to return per page.</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="getevents_offset">offset</label>:
+                </td>
+                <td>
+                  <input id="getevents_offset" class="form_field form_param_submit" name="offset" 
+                    type="text" value="0" size="30" />
+                </td>
+                <td class="form_field_description">The page number.</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventsrecipients" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /events/recipients REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/events/recipients">GET /events/recipients</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns the events recipients as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          eventIds: A list of comma separated event IDs
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, The events recipients as JSON. <br/>
+        <tt>400: Bad Request</tt>, At least one event id must be set.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Returns the events recipients as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/events/recipients</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventsrecipients" class="form_test_form" action="/admin-ng/event/events/recipients" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/events/recipients" />
+            <input class="form_endpoint_name" type="hidden" value="geteventsrecipients" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/events/recipients</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventsrecipients_eventIds">eventIds</label>:
+                </td>
+                <td>
+                  <input id="geteventsrecipients_eventIds" class="form_field form_param_submit form_param_required" name="eventIds" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">A list of comma separated event IDs</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventtrack" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/media/{trackId}.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/media/{trackId}.json">GET /{eventId}/media/{trackId}.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the media/track tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>trackId</tt>: The track id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the given track for the media tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the given track for the media tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/media/{trackId}.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventtrack" class="form_test_form" action="/admin-ng/event/{eventId}/media/{trackId}.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/media/{trackId}.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventtrack" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/media/{trackId}.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventtrack_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventtrack_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventtrack_trackId">trackId</label>:
+                </td>
+                <td>
+                  <input id="geteventtrack_trackId" class="form_field form_param_path form_param_required" name="trackId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The track id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventworkflow" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/workflows/{workflowId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/workflows/{workflowId}">GET /{eventId}/workflows/{workflowId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the single workflow tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>workflowId</tt>: The workflow id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event single workflow tab as JSON <br/>
+        <tt>400: Bad Request</tt>, Unable to parse workflowId <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event singe workflow tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/workflows/{workflowId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventworkflow" class="form_test_form" action="/admin-ng/event/{eventId}/workflows/{workflowId}" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/workflows/{workflowId}" />
+            <input class="form_endpoint_name" type="hidden" value="geteventworkflow" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/workflows/{workflowId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventworkflow_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventworkflow_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventworkflow_workflowId">workflowId</label>:
+                </td>
+                <td>
+                  <input id="geteventworkflow_workflowId" class="form_field form_param_path form_param_required" name="workflowId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The workflow id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="geteventworkflows" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /{eventId}/workflows.json REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/workflows.json">GET /{eventId}/workflows.json</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the workflows tab in the event details modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event workflows tab as JSON <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event workflows tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/workflows.json</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_geteventworkflows" class="form_test_form" action="/admin-ng/event/{eventId}/workflows.json" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/workflows.json" />
+            <input class="form_endpoint_name" type="hidden" value="geteventworkflows" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/workflows.json</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="geteventworkflows_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="geteventworkflows_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="getNewMetadata" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /new/metadata REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/new/metadata">GET /new/metadata</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the metadata tab in the new event modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event metadata tab as JSON
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event metadata tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/new/metadata</tt>
+        </div>
+        <a href="/admin-ng/event/new/metadata">/admin-ng/event/new/metadata</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="getNewProcessing" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Read function for the GET /new/processing REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/new/processing">GET /new/processing</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Returns all the data related to the processing tab in the new event modal as JSON</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (query) params:</th>
+      <td>
+        <tt>tags</tt>: A comma separated list of tags to filter the workflow definitions
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns all the data related to the event processing tab as JSON
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: All the data related to the event processing tab as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/new/processing?tags={tags}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_getNewProcessing" class="form_test_form" action="/admin-ng/event/new/processing" 
+                method="get">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/new/processing" />
+            <input class="form_endpoint_name" type="hidden" value="getNewProcessing" />
+            <input class="form_method" type="hidden" value="GET" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/new/processing</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="getNewProcessing_tags">tags</label>:
+                </td>
+                <td>
+                  <input id="getNewProcessing_tags" class="form_field form_param_submit" name="tags" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">A comma separated list of tags to filter the workflow definitions</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</fieldset>
+<fieldset id="endpoint_holder_WRITE">
+<legend class="method_set_header">Write methods</legend>
+<table id="addEventTransition" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /{eventId}/transitions REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/transitions">POST /{eventId}/transitions</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Adds an ACL transition to an event</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          transition: The transition (JSON object) to add
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>400: Bad Request</tt>, The required params were missing in the request. <br/>
+        <tt>204: No Content</tt>, The method doesn't return any content <br/>
+        <tt>404: Not Found</tt>, If the event has not been found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The method doesn't return any content</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/transitions</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_addEventTransition" class="form_test_form" action="/admin-ng/event/{eventId}/transitions" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/transitions" />
+            <input class="form_endpoint_name" type="hidden" value="addEventTransition" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/transitions</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="addEventTransition_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="addEventTransition_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="addEventTransition_transition">transition</label>:<br/>
+                  <textarea id="addEventTransition_transition" name="transition" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The transition (JSON object) to add</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="applyAclToEvent" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /{eventId}/access REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/access">POST /{eventId}/access</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Immediate application of an ACL to an event</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event ID
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          acl: The ACL to apply
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, The ACL has been successfully applied <br/>
+        <tt>400: Bad Request</tt>, Unable to parse the given ACL <br/>
+        <tt>404: Not Found</tt>, The the event has not been found <br/>
+        <tt>500: Internal Server Error</tt>, Internal error
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Status code</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/access</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_applyAclToEvent" class="form_test_form" action="/admin-ng/event/{eventId}/access" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/access" />
+            <input class="form_endpoint_name" type="hidden" value="applyAclToEvent" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/access</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="applyAclToEvent_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="applyAclToEvent_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event ID</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="applyAclToEvent_acl">acl</label>:
+                </td>
+                <td>
+                  <input id="applyAclToEvent_acl" class="form_field form_param_submit form_param_required" name="acl" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The ACL to apply</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="changeOptOuts" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /optouts REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/optouts">POST /optouts</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Change the opt out status of many events</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          eventIds: A JSON array of ids of the events to opt out or in
+        </tt> <br/>
+        <tt>
+          optout: Whether to opt out or not either true or false.
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Returns a JSON object with the results for the different opted out or in elements such as ok, notFound or error. <br/>
+        <tt>400: Bad Request</tt>, Unable to parse boolean value to opt out, or parse JSON array of opt out events
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: A JSON array listing which events were or were not opted out.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/optouts</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_changeOptOuts" class="form_test_form" action="/admin-ng/event/optouts" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/optouts" />
+            <input class="form_endpoint_name" type="hidden" value="changeOptOuts" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/optouts</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="changeOptOuts_eventIds">eventIds</label>:
+                </td>
+                <td>
+                  <input id="changeOptOuts_eventIds" class="form_field form_param_submit form_param_required" name="eventIds" 
+                    type="text" value="[]" size="30" />
+                </td>
+                <td class="form_field_description">A JSON array of ids of the events to opt out or in</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="changeOptOuts_optout">optout</label>:
+                </td>
+                <td>
+                  <input id="changeOptOuts_optout" name="optout" class="form_field form_param_submit form_param_required" 
+                    type="checkbox" value="true" checked="false" defaultChecked="false" />
+                </td>
+                <td class="form_field_description">Whether to opt out or not either true or false.</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="checkNewConflicts" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /new/conflicts REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/new/conflicts">POST /new/conflicts</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Checks if the current scheduler parameters are in a conflict with another event</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          metadata: The metadata as JSON
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>204: No Content</tt>, No conflicting events found <br/>
+        <tt>409: Conflict</tt>, There is a conflict <br/>
+        <tt>400: Bad Request</tt>, Missing or invalid parameters <br/>
+        <tt>412: Precondition Failed</tt>, Capture agent configuration is missing capture.device.timezone
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Returns NO CONTENT if no event are in conflict within specified period or list of conflicting recordings in JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/new/conflicts</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_checkNewConflicts" class="form_test_form" action="/admin-ng/event/new/conflicts" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/new/conflicts" />
+            <input class="form_endpoint_name" type="hidden" value="checkNewConflicts" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/new/conflicts</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="checkNewConflicts_metadata">metadata</label>:<br/>
+                  <textarea id="checkNewConflicts_metadata" name="metadata" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The metadata as JSON</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="createeventcomment" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /{eventId}/comment REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment">POST /{eventId}/comment</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Creates a comment related to the event given by the identifier</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          text: The comment text
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <tt>resolved</tt>: The comment resolved status <br/>
+        <tt>reason</tt>: The comment reason
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>201: Created</tt>, The comment has been created. <br/>
+        <tt>400: Bad Request</tt>, If no text ist set. <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The comment related to the event as JSON</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_createeventcomment" class="form_test_form" action="/admin-ng/event/{eventId}/comment" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment" />
+            <input class="form_endpoint_name" type="hidden" value="createeventcomment" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="createeventcomment_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="createeventcomment_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="createeventcomment_text">text</label>:<br/>
+                  <textarea id="createeventcomment_text" name="text" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The comment text</div>
+                </td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="createeventcomment_resolved">resolved</label>:
+                </td>
+                <td>
+                  <input id="createeventcomment_resolved" name="resolved" class="form_field form_param_submit" 
+                    type="checkbox" value="true"  />
+                </td>
+                <td class="form_field_description">The comment resolved status</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="createeventcomment_reason">reason</label>:
+                </td>
+                <td>
+                  <input id="createeventcomment_reason" class="form_field form_param_submit" name="reason" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment reason</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="createeventcommentreply" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /{eventId}/comment/{commentId}/reply REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}/reply">POST /{eventId}/comment/{commentId}/reply</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Creates an event comment reply</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          text: The comment reply text
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <tt>resolved</tt>: Flag defining if this reply solve or not the comment.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, The event or comment to extend with a reply has not been found. <br/>
+        <tt>400: Bad Request</tt>, If no text is set. <br/>
+        <tt>200: OK</tt>, The updated comment as JSON.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The updated comment as JSON.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}/reply</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_createeventcommentreply" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}/reply" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}/reply" />
+            <input class="form_endpoint_name" type="hidden" value="createeventcommentreply" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}/reply</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="createeventcommentreply_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="createeventcommentreply_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="createeventcommentreply_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="createeventcommentreply_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="createeventcommentreply_text">text</label>:<br/>
+                  <textarea id="createeventcommentreply_text" name="text" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The comment reply text</div>
+                </td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="createeventcommentreply_resolved">resolved</label>:
+                </td>
+                <td>
+                  <input id="createeventcommentreply_resolved" name="resolved" class="form_field form_param_submit" 
+                    type="checkbox" value="true"  />
+                </td>
+                <td class="form_field_description">Flag defining if this reply solve or not the comment.</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="createNewEvent" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /new REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/new">POST /new</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Creates a new event by the given metadata as JSON and the files in the body</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          metadata: The metadata as JSON
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>201: Created</tt>, Event sucessfully added <br/>
+        <tt>400: Bad Request</tt>, If the metadata is not set or couldn't be parsed
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The workflow identifier</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/new</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_createNewEvent" class="form_test_form" action="/admin-ng/event/new" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/new" />
+            <input class="form_endpoint_name" type="hidden" value="createNewEvent" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/new</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="createNewEvent_metadata">metadata</label>:<br/>
+                  <textarea id="createNewEvent_metadata" name="metadata" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The metadata as JSON</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="deleteevent" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the DELETE /{eventId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}">DELETE /{eventId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Delete a single event.</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The id of the event to delete.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, The event has been deleted. <br/>
+        <tt>404: Not Found</tt>, The event could not be found. <br/>
+        <tt>401: Unauthorized</tt>, If the current user is not authorized to perform this action
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Ok if the event has been deleted.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_deleteevent" class="form_test_form" action="/admin-ng/event/{eventId}" 
+                method="delete">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}" />
+            <input class="form_endpoint_name" type="hidden" value="deleteevent" />
+            <input class="form_method" type="hidden" value="DELETE" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteevent_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="deleteevent_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The id of the event to delete.</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="deleteeventcomment" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the DELETE /{eventId}/comment/{commentId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}">DELETE /{eventId}/comment/{commentId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Deletes a event related comment by its identifier</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment id
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>204: No Content</tt>, The event related comment has been deleted. <br/>
+        <tt>404: Not Found</tt>, No event or comment with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: No content</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_deleteeventcomment" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}" 
+                method="delete">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}" />
+            <input class="form_endpoint_name" type="hidden" value="deleteeventcomment" />
+            <input class="form_method" type="hidden" value="DELETE" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteeventcomment_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="deleteeventcomment_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteeventcomment_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="deleteeventcomment_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment id</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="deleteeventreply" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the DELETE /{eventId}/comment/{commentId}/{replyId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}/{replyId}">DELETE /{eventId}/comment/{commentId}/{replyId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Delete an event comment reply</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment identifier <br/>
+        <tt>replyId</tt>: The comment reply identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, No event comment or reply with this identifier was found. <br/>
+        <tt>200: OK</tt>, The updated comment as JSON.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The updated comment as JSON.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}/{replyId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_deleteeventreply" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}/{replyId}" 
+                method="delete">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}/{replyId}" />
+            <input class="form_endpoint_name" type="hidden" value="deleteeventreply" />
+            <input class="form_method" type="hidden" value="DELETE" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}/{replyId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteeventreply_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="deleteeventreply_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteeventreply_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="deleteeventreply_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteeventreply_replyId">replyId</label>:
+                </td>
+                <td>
+                  <input id="deleteeventreply_replyId" class="form_field form_param_path form_param_required" name="replyId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment reply identifier</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="deleteevents" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /deleteEvents REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/deleteEvents">POST /deleteEvents</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Deletes a json list of events by their given ids e.g. ["1dbe7255-e17d-4279-811d-a5c7ced689bf", "04fae22b-0717-4f59-8b72-5f824f76d529"]</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Response formats:</th>
+      <td>
+        <a href="http://www.json.org/">application/json</a> 
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, Events have been deleted <br/>
+        <tt>400: Bad Request</tt>, The list of ids could not be parsed into a json list. <br/>
+        <tt>401: Unauthorized</tt>, If the current user is not authorized to perform this action
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: Returns a JSON object containing a list of event ids that were deleted, not found or if there was a server error.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/deleteEvents</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_deleteevents" class="form_test_form" action="/admin-ng/event/deleteEvents" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/deleteEvents" />
+            <input class="form_endpoint_name" type="hidden" value="deleteevents" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/deleteEvents</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="deleteEventTransition" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the DELETE /{eventId}/transitions/{transitionId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/transitions/{transitionId}">DELETE /{eventId}/transitions/{transitionId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Deletes an ACL transition from an event</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The series identifier <br/>
+        <tt>transitionId&#40;Default value=0&#41;</tt>: The transition identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, If the event or the transition has not been found. <br/>
+        <tt>204: No Content</tt>, The method does not return any content
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The method doesn't return any content</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/transitions/{transitionId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_deleteEventTransition" class="form_test_form" action="/admin-ng/event/{eventId}/transitions/{transitionId}" 
+                method="delete">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/transitions/{transitionId}" />
+            <input class="form_endpoint_name" type="hidden" value="deleteEventTransition" />
+            <input class="form_method" type="hidden" value="DELETE" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/transitions/{transitionId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteEventTransition_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="deleteEventTransition_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The series identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="deleteEventTransition_transitionId">transitionId</label>:
+                </td>
+                <td>
+                  <input id="deleteEventTransition_transitionId" class="form_field form_param_path form_param_required" name="transitionId" 
+                    type="text" value="0" size="30" />
+                </td>
+                <td class="form_field_description">The transition identifier</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="resolveeventcomment" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the POST /{eventId}/comment/{commentId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}">POST /{eventId}/comment/{commentId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Resolves an event comment</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, The event or comment to resolve has not been found. <br/>
+        <tt>200: OK</tt>, The resolved comment as JSON.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The resolved comment.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_resolveeventcomment" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}" 
+                method="post">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}" />
+            <input class="form_endpoint_name" type="hidden" value="resolveeventcomment" />
+            <input class="form_method" type="hidden" value="POST" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="resolveeventcomment_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="resolveeventcomment_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="resolveeventcomment_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="resolveeventcomment_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment identifier</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="updateeventcomment" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the PUT /{eventId}/comment/{commentId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}">PUT /{eventId}/comment/{commentId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Updates an event comment</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <tt>text</tt>: The comment text <br/>
+        <tt>reason</tt>: The comment reason <br/>
+        <tt>resolved</tt>: The comment resolved status
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, The event or comment to update has not been found. <br/>
+        <tt>200: OK</tt>, The updated comment as JSON.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The updated comment as JSON.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_updateeventcomment" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}" 
+                method="put">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}" />
+            <input class="form_endpoint_name" type="hidden" value="updateeventcomment" />
+            <input class="form_method" type="hidden" value="PUT" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateeventcomment_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="updateeventcomment_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateeventcomment_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="updateeventcomment_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment identifier</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_textarea" colspan="3">
+                  <label for="updateeventcomment_text">text</label>:<br/>
+                  <textarea id="updateeventcomment_text" name="text" class="form_field_text form_param_submit" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The comment text</div>
+                </td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="updateeventcomment_reason">reason</label>:
+                </td>
+                <td>
+                  <input id="updateeventcomment_reason" class="form_field form_param_submit" name="reason" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment reason</td>
+              </tr>
+              <tr class="form_field form_optional">
+                <td class="form_label">
+                  <label for="updateeventcomment_resolved">resolved</label>:
+                </td>
+                <td>
+                  <input id="updateeventcomment_resolved" name="resolved" class="form_field form_param_submit" 
+                    type="checkbox" value="true"  />
+                </td>
+                <td class="form_field_description">The comment resolved status</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="updateeventcommentreply" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the PUT /{eventId}/comment/{commentId}/{replyId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/comment/{commentId}/{replyId}">PUT /{eventId}/comment/{commentId}/{replyId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Updates an event comment reply</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id <br/>
+        <tt>commentId</tt>: The comment identifier <br/>
+        <tt>replyId</tt>: The comment reply identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          text: The comment reply text
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, The event or comment to extend with a reply or the reply has not been found. <br/>
+        <tt>400: Bad Request</tt>, If no text is set. <br/>
+        <tt>200: OK</tt>, The updated comment as JSON.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The updated comment as JSON.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/comment/{commentId}/{replyId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_updateeventcommentreply" class="form_test_form" action="/admin-ng/event/{eventId}/comment/{commentId}/{replyId}" 
+                method="put">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment/{commentId}/{replyId}" />
+            <input class="form_endpoint_name" type="hidden" value="updateeventcommentreply" />
+            <input class="form_method" type="hidden" value="PUT" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment/{commentId}/{replyId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateeventcommentreply_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="updateeventcommentreply_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateeventcommentreply_commentId">commentId</label>:
+                </td>
+                <td>
+                  <input id="updateeventcommentreply_commentId" class="form_field form_param_path form_param_required" name="commentId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateeventcommentreply_replyId">replyId</label>:
+                </td>
+                <td>
+                  <input id="updateeventcommentreply_replyId" class="form_field form_param_path form_param_required" name="replyId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The comment reply identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="updateeventcommentreply_text">text</label>:<br/>
+                  <textarea id="updateeventcommentreply_text" name="text" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The comment reply text</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="updateeventmetadata" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the PUT /{eventId}/metadata REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/metadata">PUT /{eventId}/metadata</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Update the passed metadata for the event with the given Id</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event id
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          metadata: The list of metadata to update
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>200: OK</tt>, The metadata have been updated. <br/>
+        <tt>400: Bad Request</tt>, Could not parse metadata. <br/>
+        <tt>404: Not Found</tt>, No event with this identifier was found.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: No content is returned.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/metadata</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_updateeventmetadata" class="form_test_form" action="/admin-ng/event/{eventId}/metadata" 
+                method="put">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/metadata" />
+            <input class="form_endpoint_name" type="hidden" value="updateeventmetadata" />
+            <input class="form_method" type="hidden" value="PUT" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/metadata</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateeventmetadata_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="updateeventmetadata_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event id</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="updateeventmetadata_metadata">metadata</label>:<br/>
+                  <textarea id="updateeventmetadata_metadata" name="metadata" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The list of metadata to update</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="updateEventOptoutStatus" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the PUT /{eventId}/optout/{optout} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/optout/{optout}">PUT /{eventId}/optout/{optout}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Updates an event's opt out status.</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event identifier <br/>
+        <tt>optout</tt>: True or false, true to opt out of this recording.
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>404: Not Found</tt>, The event has not been found <br/>
+        <tt>204: No Content</tt>, The method doesn't return any content
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The method doesn't return any content</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/optout/{optout}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_updateEventOptoutStatus" class="form_test_form" action="/admin-ng/event/{eventId}/optout/{optout}" 
+                method="put">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/optout/{optout}" />
+            <input class="form_endpoint_name" type="hidden" value="updateEventOptoutStatus" />
+            <input class="form_method" type="hidden" value="PUT" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/optout/{optout}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateEventOptoutStatus_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="updateEventOptoutStatus_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateEventOptoutStatus_optout">optout</label>:
+                </td>
+                <td>
+                  <input id="updateEventOptoutStatus_optout" name="optout" class="form_field form_param_path form_param_required" 
+                    type="checkbox" value="true"  />
+                </td>
+                <td class="form_field_description">True or false, true to opt out of this recording.</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="table_spacer"></div>
+
+<table id="updateEventTransition" class="method" cellpadding="0px" cellspacing="0px"
+  summary="Write function for the PUT /{eventId}/transitions/{transitionId} REST endpoint, Name of the attribute followed by the value">
+  <thead>
+    <tr class="method_header">
+      <th width="20%" scope="col" class="method_header_left">NAME</th>
+      <th scope="col">VALUE and NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="method">
+      <th class="method_important" scope="row">Method / Path:</th>
+      <td><tt title="/admin-ng/event/{eventId}/transitions/{transitionId}">PUT /{eventId}/transitions/{transitionId}</tt></td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Description:</th>
+      <td>Updates an ACL transition of an event</td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Path params:</th>
+      <td>
+        <tt>eventId</tt>: The event identifier <br/>
+        <tt>transitionId&#40;Default value=0&#41;</tt>: The transition identifier
+      </td>
+    </tr>
+    <tr class="method">
+      <th class="method_important" scope="row">Required (form) params:</th>
+      <td>
+        <tt>
+          transition: The updated transition (JSON object)
+        </tt>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Optional (form) params:</th>
+      <td>
+        <em>NONE</em>
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Status codes:</th>
+      <td>
+        <tt>400: Bad Request</tt>, The required params were missing in the request. <br/>
+        <tt>404: Not Found</tt>, If the event or transtion has not been found. <br/>
+        <tt>204: No Content</tt>, The method doesn't return any content
+      </td>
+    </tr>
+    <tr class="method">
+      <th scope="row">Notes:</th>
+      <td>
+        <ul>
+          <li>Return value description: The method doesn't return any content</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="method testform">
+      <th scope="row">Testing:</th>
+      <td>
+        <div class="spaced"><strong>Sample:</strong>
+        <tt class="sample_url">/{eventId}/transitions/{transitionId}</tt>
+        </div>
+        <a href="#" class="show_form_link">Testing form (click to reveal)</a>
+        <div class="hidden_form hidden">
+          <form id="form_updateEventTransition" class="form_test_form" action="/admin-ng/event/{eventId}/transitions/{transitionId}" 
+                method="put">
+            <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/transitions/{transitionId}" />
+            <input class="form_endpoint_name" type="hidden" value="updateEventTransition" />
+            <input class="form_method" type="hidden" value="PUT" />
+            <input class="form_ajax_submit" type="hidden" value="1" />
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/transitions/{transitionId}</tt>
+            </div>
+            <table class="testing" cellpadding="0" cellspacing="0">
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateEventTransition_eventId">eventId</label>:
+                </td>
+                <td>
+                  <input id="updateEventTransition_eventId" class="form_field form_param_path form_param_required" name="eventId" 
+                    type="text" value="" size="30" />
+                </td>
+                <td class="form_field_description">The event identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_label">
+                  * <label for="updateEventTransition_transitionId">transitionId</label>:
+                </td>
+                <td>
+                  <input id="updateEventTransition_transitionId" class="form_field form_param_path form_param_required" name="transitionId" 
+                    type="text" value="0" size="30" />
+                </td>
+                <td class="form_field_description">The transition identifier</td>
+              </tr>
+              <tr class="form_field form_required">
+                <td class="form_textarea" colspan="3">
+                  <label for="updateEventTransition_transition">transition</label>:<br/>
+                  <textarea id="updateEventTransition_transition" name="transition" class="form_field_text form_param_submit form_param_required" 
+                    rows="3" cols="80"></textarea>
+                  <div class="form_field_description">The updated transition (JSON object)</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="form_submit">
+                    <input type="submit" value="SUBMIT" />
+                    <input type="button" value="CANCEL" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div class="test_form_working hidden">... WORKING ...</div>
+          <div class="test_form_response hidden">
+            <div>Response:</div>
+            <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+          </div>
+        </div>
+        <a href="#" class="hide_form_link hidden">Hide</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</fieldset>
+
+
+<fieldset>
+<legend class="method_set_header">General Notes</legend>
+<ul>
+  <li></li>
+</ul>
+</fieldset>
+
+<div class="footer">Service of 
+    <a href="http://www.opencastproject.org/" title="Opencast Project">Opencast</a>
+    <a href="http://www.opencastproject.org/project/matterhorn" title="Opencast Matterhorn">Matterhorn</a>
+</div>
+
+<!-- JAVASCRIPT below here -->
+<script type="text/javascript" src="js/jquery/jquery.js"></script>
+<script type="text/javascript">
+/*global alert, jQuery  */
+(function($) {
+
+    $("a.show_form_link").click(
+        function() {
+           var $this = $(this);
+           var $form = $this.parent().find("div.hidden_form");
+           var $hidectrl = $this.parent().find("a.hide_form_link");
+           $form.toggle(400);
+           $hidectrl.show();
+           $this.parent().find("div.form_submit input[type='button']").click(
+              function() {
+                 $form.hide(200);
+                 $this.show();
+              }
+           );
+           $this.hide();
+           return false;
+        }
+    );
+
+    $("a.hide_form_link").click(
+        function() {
+           var $this = $(this);
+           var $form = $this.parent().find("div.hidden_form");
+           var $show_form_ctrl = $this.parent().find("a.show_form_link");
+           $form.hide(200);
+           $show_form_ctrl.show();
+           $this.hide();
+           return false;
+        }
+     );
+
+    /**
+     * Takes a path and integrates the pathParams values into it
+     * @param {String} path the path with keys (e.g. /my/{thing}/{stuff})
+     * @param {Array} params the params to put into the path (e.g. {'thing':'apple'})
+     */
+    function updatePath(path, params) {
+        var newPath = path;
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
+                var value = params[key];
+                if (value !== undefined && value !== null && value !== '') {
+					// The Regex here handles syntax like /episode.{format:xml|json}.
+					// In this case, the {format:xml|json} part is extracted, then
+					// the xml|json part is used as the second regex to verify user's input.
+					// If the input is valid, the path /episode.{format:xml|json} would be 
+					// replaced by /episode.xml for example.
+                    var regex = new RegExp( "{" + key + "(:[^}]*|)}", "");
+                    if (regex.test(newPath))
+                    {
+                         var pat = regex.exec(newPath)[1].substring(1);
+                         var regex2 = new RegExp(pat, "");
+                         if (regex2.test(value))
+                         {
+                           newPath = newPath.replace(regex, value);
+                         } else
+                         {
+                           alert('The value for ' + key + ' is invalid.');
+                         }
+                    } else
+                    {
+                         alert("wrong syntax");
+                    }
+                }
+            }
+        }
+        return newPath;
+    }
+ 
+    function checkPath($form) {
+        var params = [];
+        $form.find(".form_param_path").each( function() {
+            var $param = $(this);
+            params[$param.attr('name')] = $param.val();
+        });
+        var form_path = $form.find("input.form_action_holder").val();
+        var path = updatePath(form_path, params);
+        // update form and display
+        $form.attr('action', path);
+        $form.find(".form_path").html(path);
+        if (path.indexOf("{") >= 0 && path.indexOf("}") >= 0) {
+            return false;
+        }
+        return true;
+    }
+    function checkRequired($form) {
+        // check all required items
+        var $required = $form.find(".form_param_required");
+        var total = $required.length;
+        var counter = 0;
+        $required.each( function() {
+            var $this = $(this);
+            if ($this.val() !== null && $this.val() !== '') {
+                counter++;
+            }
+        });
+        var $formInputs = $form.find("div.form_submit input");
+        if (counter >= total) {
+            // submit is ok
+            $formInputs.removeAttr('disabled');
+            return true;
+        } else {
+            // disable form submit until required options at set
+            $formInputs.attr('disabled', 'disabled');
+            return false;
+        }
+    }
+    // do operation on all testing forms
+    $("form.form_test_form").each( function() {
+        var $form = $(this);
+        if ($form.find("input.form_action_holder").length >= 1) {
+            // now find and put the event handler on all path params
+            $form.find(".form_param_path").change( function() {
+                checkPath($form);
+            });
+            // run the checkPath method
+            checkPath($form);
+            var $reqParams = $form.find(".form_param_required");
+            if ($reqParams.length > 0) {
+                // add required options checks
+                $reqParams.change( function(){
+                    checkRequired($form);
+                });
+            }
+            // run the check required
+            checkRequired($form);
+            // handle the ajax submissions
+            if ($form.find("input.form_ajax_submit").length >= 1) {
+              // the form will use ajax submit
+              //var form_key = $form.find("input.form_endpoint_name").val();
+              // add an event handler to the form submit
+              $form.bind('submit', function() {
+                  if ( checkRequired($form) ) {
+                      var submitParams = {};
+                      $form.find(".form_param_submit").each( function() {
+                          var $param = $(this);
+                          var $value = $param.val();
+                          if (this.type == 'checkbox' && !this.checked) {
+                            $value = "false";
+                          }
+                          submitParams[$param.attr('name')] = $value;
+                      });
+                      //alert("params: " + $.param(submitParams));
+                      var method = $form.find(".form_method").val();
+                      var url = $form.attr('action');
+                      $form.parent().find(".test_form_working").show();
+                      $form.parent().find(".test_form_response input").click(function(){
+                          $(this).parent.hide();
+                          $this.parent().find("a.hide_form_link").hide();
+                      });
+                      
+                      // clear previous responses
+                      var responseBody = $form.parent().find(".test_form_response");
+                      responseBody.hide();
+                      responseBody.find("pre").text("");
+
+                      // make the request
+                      $.ajax({
+                          type: method,
+                          url: url,
+                          processData: true,
+                          dataType: 'text',
+                          data: submitParams,
+                          success: function(data, textStatus, request) {
+                              $form.parent().find(".test_form_working").hide();
+                              var responseBody = $form.parent().find(".test_form_response");
+                              responseBody.show();
+                              var msg = "Status: " + request.status + " (" + request.statusText + ")\n\n" + data;
+                              responseBody.find("pre").text(msg);
+                          },
+                          error: function(request, textStatus, errorThrown) {
+                              $form.parent().find(".test_form_working").hide();
+                              var responseBody = $form.parent().find(".test_form_response");
+                              var msg = "Status: " + request.status + " (" + request.statusText + ")";
+                              responseBody.show();
+                              responseBody.find("pre").text(msg);
+                          }
+                      });
+                  } else {
+                      alert("Fill out all required fields first");
+                  }
+                  return false;
+              });
+            }
+        }
+    });
+}(jQuery));
+</script>
+
+</body>
+</html>

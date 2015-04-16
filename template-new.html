@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>${meta.title} REST Documentation</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style type="text/css">
+  /* styles for the page */
+    html, body {
+      font-family: "Open Sans",Helvetica,sans-serif;
+    }
+    h1 {
+      font-size: 23px;
+      font-weight: 100;
+      color: #46647e;
+    }
+  </style>
+</head>
+<body>
+ <!-- template-new.html -->
+  <#if (endpointHolder.endpoints?size <= 0)>
+    <em>NONE</em>
+  <#else>
+    <#list endpointHolder.endpoints as endpoint>
+      <h1>${meta.url}/${endpoint.path}</h1>
+    </#list>
+  </#if>
+</body>
+</html>
