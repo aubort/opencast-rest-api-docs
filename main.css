@@ -7,24 +7,28 @@ html, body {
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 150%;
   font-weight: 100;
   color: #444;
-  line-height:35px;
-  margin-top: 30px;
+  line-height: 24px;
+  margin-top: 40px;
+}
+h2 {
+  font-size: 125%;
+  font-weight: 400;
+  margin-top: 40px;
+  margin-bottom: 7px;
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   border: 0;
   border-top: 1px solid #eeeeee;
 }
 
 p {
-    line-height: 24px;
-    margin: 0;
-    margin-bottom: 24px;
+    line-height: 20px;
+    margin-bottom: 15px;
 }
 
 
@@ -44,6 +48,11 @@ table tr, td, th, tbody{
   border: 1px solid #DDDDDD;
 }
 
+.required:after{
+  content:'\002A';
+  color: red;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 1px;
@@ -56,32 +65,49 @@ table th{
   border-color: #6199DF;
 }
 
-.e-type {
-  display: inline-block;
-  padding: 2px 3px 1px 3px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: #999;
-  border-radius: 2px;
+
+code {
+  white-space: pre;
+  padding: 0px 3px 0px 3px;
+  color: #007000;
+  font-size: 90%;
+  border: 1px solid;
+  border-color: #E8E8E8;
+  border-radius: 3px;
+  background-color: #F7F4F4;
+  font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace
 }
 
-.e-type.t-GET{
+code .status{
+  text-transform: uppercase;
+}
+
+.e-type {
+  color: #fff;
+  font-size: 70%;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  border-color: transparent;
+}
+
+.t-GET{
   background-color: #10a54a;
 }
 
-.e-type.t-POST{
+.t-POST{
   background-color: #0f6ab4;
 }
 
-.e-type.t-PUT{
+.t-PUT{
   background-color: #c5862b;
 }
 
-.e-type.t-DELETE{
+.t-DELETE{
   background-color: #a41e22;
+}
+
+table code {
+  border: 0px;
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
 }

@@ -185,6 +185,8 @@
       </td>
     </tr>
     </#if>
+    
+    <!-- DONE -->
     <tr class="method">
       <th scope="row">Optional (<#if (endpoint.method == "GET")>query<#else>form</#if>) params:</th>
       <td>
@@ -197,6 +199,8 @@
         </#if>
       </td>
     </tr>
+    <!-- / DONE -->
+
     <#if (endpoint.formats?size > 0)>
     <tr class="method">
       <th scope="row">Response formats:</th>
