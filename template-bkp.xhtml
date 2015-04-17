@@ -185,7 +185,9 @@
       </td>
     </tr>
     </#if>
-    
+
+
+
     <!-- DONE -->
     <tr class="method">
       <th scope="row">Optional (<#if (endpoint.method == "GET")>query<#else>form</#if>) params:</th>
@@ -201,6 +203,9 @@
     </tr>
     <!-- / DONE -->
 
+
+
+    <!-- DONE -->
     <#if (endpoint.formats?size > 0)>
     <tr class="method">
       <th scope="row">Response formats:</th>
@@ -211,6 +216,10 @@
       </td>
     </tr>
     </#if>
+
+
+
+    <!-- DONE -->
     <tr class="method">
       <th scope="row">Status codes:</th>
       <td>
@@ -223,6 +232,9 @@
         </#if>
       </td>
     </tr>
+
+
+
     <#if (endpoint.returnTypeSchema??)>
       <tr class="method">
         <th scope="row">Returned Entity Schema:</th>

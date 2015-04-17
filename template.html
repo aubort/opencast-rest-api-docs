@@ -16,9 +16,14 @@
   html, body {
     font-family: "Open Sans",Helvetica,sans-serif;
     font-size: 16px;
-    max-width:950px;
-    margin: 20px 20px;
+    width:100%;
     color: #474a54;
+  }
+  .main-content {
+    max-width:950px;
+    margin-top:30px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h1 {
@@ -191,42 +196,7 @@
     <li><a href="#delete-apieventsevent_id">DELETE /api/events/{event_id}</a></li>
 </ul> -->
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">Return Type Schema
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          [show / hide]
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-
-</div>
+<section class="main-content">
 
 
 <!-- Sample Return Type Schema -->
@@ -234,25 +204,7 @@
     <a href="#" class="show_form_link">Click to view</a>
   </p>
   <div class="hidden_form hidden">
-    <code class="code-block">&lt;?xml version="1.0" standalone="yes"?&gt;
-&lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://org.opencastproject.security" xmlns:tns="http://org.opencastproject.security" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-
-  &lt;xs:element name="creator" type="tns:user"/&gt;
-
-  &lt;xs:element name="organization" type="tns:organization"/&gt;
-
-  &lt;xs:element name="role" type="tns:role"/&gt;
-
-  &lt;xs:element name="user" type="tns:user"/&gt;
-
-  &lt;xs:complexType name="user" final="extension restriction"&gt;
-    &lt;xs:sequence&gt;
-      &lt;xs:element name="username" type="xs:string" minOccurs="0"/&gt;
-      &lt;xs:element name="name" type="xs:string" minOccurs="0"/&gt;
-      &lt;xs:element name="email" type="xs:string" minOccurs="0"/&gt;
-      &lt;xs:element name="provider" type="xs:string" minOccurs="0"/&gt;
-      &lt;xs:element name="manageable" type="xs:boolean"/&gt;
-      &lt;xs:element name="roles" minOccurs="0"&gt;
+    <code class="code-block">
     </code>
   </div>
   <a href="#" class="hide_form_link hidden">Hide</a>
@@ -277,6 +229,58 @@
   <code class="e-type t-POST">POST</code>
   /admin-ng/event/{eventId}/transitions
 </h1>
+
+
+<!-- Sample Return Type Schema -->
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingOne">
+    <h4 class="panel-title">Return Type Schema
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        [show / hide]
+      </a>
+    </h4>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body"><code class="code-block">&lt;?xml version="1.0" standalone="yes"?&gt;
+  &lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://org.opencastproject.security" xmlns:tns="http://org.opencastproject.security" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+
+    &lt;xs:element name="creator" type="tns:user"/&gt;
+
+    &lt;xs:element name="organization" type="tns:organization"/&gt;
+
+    &lt;xs:element name="role" type="tns:role"/&gt;
+
+    &lt;xs:element name="user" type="tns:user"/&gt;
+
+    &lt;xs:complexType name="user" final="extension restriction"&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name="username" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="name" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="email" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="provider" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="manageable" type="xs:boolean"/&gt;
+        &lt;xs:element name="roles" minOccurs="0"&gt;
+      </code>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingTwo">
+    <h4 class="panel-title">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Collapsible Group Item #2
+      </a>
+    </h4>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="panel-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+</div>
+
+
+
     <#assign c=0>
     <#list endpointHolders as endpointHolder>
       <#if (endpointHolder.endpoints?size > 0)>
@@ -419,21 +423,24 @@
 
               <!-- Return Type Schema -->
               <#if (endpoint.returnTypeSchema??)>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading${c}">
-                  <h4 class="panel-title">Return Type Schema
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse${c}" aria-expanded="false" aria-controls="collapse${c}">
-                      [show / hide]
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${c}">
-                  <div class="panel-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="heading${c}">
+                    <h4 class="panel-title">Return Type Schema
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse${c}" aria-expanded="false" aria-controls="collapse${c}">
+                        [show / hide]
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${c}">
+                    <div class="panel-body">
+                      <code class="code-block">
+                        ${endpoint.escapedReturnTypeSchema}
+                      </code>
+                    </div>
                   </div>
                 </div>
-              </div>
-              </#if>
+              </#if> <!-- (endpoint.returnTypeSchema??) -->
+              
           <#assign c = c + 1>
         </#list>
       </#if>
@@ -443,6 +450,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+  </section>
   </body>
 </html>
