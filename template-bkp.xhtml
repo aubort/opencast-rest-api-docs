@@ -145,6 +145,11 @@
     <tr class="method">
       <th class="method_important" scope="row">Path params:</th>
       <td>
+
+
+
+        <!-- DONE -->
+
         <#if (endpoint.pathParams?size > 0)>
         <#list endpoint.pathParams as param>
         <tt>${param.name}<#if param.defaultValue??>&#40;Default value=${param.escapedDefaultValue}&#41;</#if></tt>: ${param.description!"<em>NONE</em>"}<#if param_has_next> <br/></#if>
@@ -154,6 +159,8 @@
         </#if>
       </td>
     </tr>
+
+
     <!-- DONE -->
     <#if (endpoint.requiredParams?size > 0)>
     <tr class="method">
@@ -163,7 +170,9 @@
         <tt>
           ${param.name}: ${param.description!""}
           <#if param.xmlSchema??>
-          <!-- TODO -->
+
+    <!-- TODO -->
+
             <div>
               <a href="#" class="show_form_link">XML Schema</a>
               <div class="hidden_form hidden">
@@ -176,6 +185,8 @@
         </#list>
       </td>
     </tr>
+
+    <!-- DONE -->
     </#if>
     <#if endpoint.bodyParam??>
     <tr class="method">
@@ -234,7 +245,7 @@
     </tr>
 
 
-
+    <!-- DONE -->
     <#if (endpoint.returnTypeSchema??)>
       <tr class="method">
         <th scope="row">Returned Entity Schema:</th>
@@ -249,6 +260,8 @@
         </td>
       </tr>
     </#if>
+
+
     <#if (endpoint.notes?size > 0)>
     <tr class="method">
       <th scope="row">Notes:</th>
@@ -261,6 +274,8 @@
       </td>
     </tr>
     </#if>
+
+
     <tr class="method testform">
       <th scope="row">Testing:</th>
       <td>

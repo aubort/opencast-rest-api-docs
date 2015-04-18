@@ -65,6 +65,7 @@
     border-collapse: collapse;
     border-spacing: 1px;
     width:100%;
+    margin-bottom:20px;
   }
 
   table tr, td, th, tbody{
@@ -80,7 +81,7 @@
   }
 
   table th:nth-child(1){
-       width:150px;
+       width:200px;
   }
 
   table code {
@@ -106,13 +107,12 @@
     text-transform: uppercase;
   }
 
-  code.code-block{
+  code.code-block, pre{
     display: block;
     padding: 8px 5px 5px 10px;
     width: 100%;
     overflow: auto;
     max-height: 300px;
-
   }
 
   .e-type {
@@ -306,7 +306,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Parameter</th>
+                            <th>Path Parameter(s)</th>
                             <!-- <th>Type</th> -->
                             <th>Description</th>
                         </tr>
@@ -329,12 +329,11 @@
             <!-- Form Params table header -->
 
             <#if (endpoint.requiredParams?size > 0) || (endpoint.optionalParams?size > 0)>
-              <p> Form Params</p>
               <table>
                 <thead>
                     <tr>
-                        <th>Parameter</th>
-                        <!-- <th>Type</th> -->
+                        <th>Form Parameter(s)</th>
+                        <th>Type</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -345,6 +344,7 @@
               <#list endpoint.requiredParams as param>
                 <tr>
                     <td align="left"><code class="required">${param.name}</code></td>
+                    <td align="left"><code>${param.type!"&nbsp;"}</code></td>
                     <!-- <td align="left"></td> -->
                     <td align="left">
                       ${param.description!"&nbsp;"}
@@ -357,7 +357,7 @@
               <#list endpoint.optionalParams as param>
                 <tr>
                     <td align="left"><code>${param.name}</code></td>
-                    <!-- <td align="left"></td> -->
+                    <td align="left"><code>${param.type!"&nbsp;"}</code></td>
                     <td align="left">
                       ${param.description!"&nbsp;"}
                       <#if param.defaultValue??><br />Default value=${param.escapedDefaultValue}</#if>
@@ -369,13 +369,12 @@
               </table>
 
             <#if endpoint.bodyParam??>
-              <p>Body Params</p>
               <table>
                 <thead>
                     <tr>
                         <!-- <th>Parameter</th> -->
                         <!-- <th>Type</th> -->
-                        <th>Description</th>
+                        <th>Body Parameter(s) - Upload</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -424,23 +423,137 @@
               <!-- Return Type Schema -->
               <#if (endpoint.returnTypeSchema??)>
                 <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="heading${c}">
+                  <div class="panel-heading" role="tab" id="schema-heading${c}">
                     <h4 class="panel-title">Return Type Schema
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse${c}" aria-expanded="false" aria-controls="collapse${c}">
+                      <a class="collapsed" data-toggle="collapse" href="#schema-collapse${c}" aria-expanded="false" aria-controls="schema-collapse${c}">
                         [show / hide]
                       </a>
                     </h4>
                   </div>
-                  <div id="collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${c}">
+                  <div id="schema-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema-heading${c}">
                     <div class="panel-body">
-                      <code class="code-block">
-                        ${endpoint.escapedReturnTypeSchema}
-                      </code>
+                      <code class="code-block">${endpoint.escapedReturnTypeSchema}</code>
                     </div>
                   </div>
                 </div>
               </#if> <!-- (endpoint.returnTypeSchema??) -->
-              
+
+              <!-- Endpoint notes -->
+              <#if (endpoint.notes?size > 0)>
+              <h2>Notes</h2>
+              <ul>
+                <#list endpoint.notes as note>
+                <li>${note}</li>
+                </#list>
+              </ul>
+              </#if> <!-- endpoint.notes?size > 0 -->
+
+
+              <!-- Testing form -->
+              <#if endpoint.form??>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="form-heading${c}">
+                    <h4 class="panel-title">Return Type Schema
+                      <a class="collapsed" data-toggle="collapse" href="#form-collapse${c}" aria-expanded="false" aria-controls="form-collapse${c}">
+                        [show / hide]
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="form-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="form-heading${c}">
+                    <div class="panel-body">
+
+                      <div class="hidden_form hidden">
+                        <form id="form_${endpoint.name}" class="form_test_form" action="${meta.url}${endpoint.path}"
+                              method="${endpoint.method?lower_case}"<#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if>>
+                          <input class="form_action_holder" type="hidden" value="${meta.url}${endpoint.path}" />
+                          <input class="form_endpoint_name" type="hidden" value="${endpoint.name}" />
+                          <input class="form_method" type="hidden" value="${endpoint.method}" />
+                          <#if (endpoint.form.ajaxSubmit)>
+                          <input class="form_ajax_submit" type="hidden" value="1" />
+                          </#if>
+                          <div class="spaced">
+                              <strong>Form action:</strong> <tt class="form_path">${meta.url}${endpoint.path}</tt>
+                          </div>
+                          <table class="testing" cellpadding="0" cellspacing="0">
+                            <#list endpoint.form.items as item>
+                            <tr class="form_field <#if item.required>form_required<#else>form_optional</#if>">
+                              <#if item.type == "text">
+                              <td class="form_textarea" colspan="3">
+                                <label for="${endpoint.name}_${item.name}">${item.name}</label>:<br/>
+                                <textarea id="${endpoint.name}_${item.name}" name="${item.name}" class="form_field_text form_param_submit<#if item.required> form_param_required</#if>"
+                                  rows="<#if item.attributes.rows??>${item.attributes.rows}<#else><#if item.name == "BODY">8<#else>3</#if></#if>" cols="${(item.attributes.cols)!'80'}">${item.defaultValue!}</textarea>
+                                <div class="form_field_description">${item.description!}</div>
+                              </td>
+                              <#elseif item.type == "boolean">
+                              <td class="form_label">
+                                <#if item.required>* </#if><label for="${endpoint.name}_${item.name}">${item.name}</label>:
+                              </td>
+                              <td>
+                                <input id="${endpoint.name}_${item.name}" name="${item.name}" class="form_field <#if item.path>form_param_path<#else>form_param_submit</#if><#if item.required> form_param_required</#if>"
+                                  type="checkbox" value="true" <#if item.defaultValue??>checked="${item.defaultValue}" defaultChecked="${item.defaultValue}"</#if> />
+                              </td>
+                              <td class="form_field_description">${item.description!}</td>
+                              <#elseif item.type == "file">
+                              <td class="form_label">
+                                <#if item.required>* </#if><label for="${endpoint.name}_${item.name}">${item.name}</label>:
+                              </td>
+                              <td>
+                                <input id="${endpoint.name}_${item.name}" name="${item.name}" class="form_field_file" class="form_field form_param_upload<#if item.required> form_param_required</#if>" type="file" />
+                              </td>
+                              <td class="form_field_description">${item.description!}</td>
+                              <#else>
+                              <td class="form_label">
+                                <#if item.required>* </#if><label for="${endpoint.name}_${item.name}">${item.name}</label>:
+                              </td>
+                              <td>
+                                <input id="${endpoint.name}_${item.name}" class="form_field <#if item.path>form_param_path<#else>form_param_submit</#if><#if item.required> form_param_required</#if>" name="${item.name}"
+                                  type="text" value="${item.defaultValue!}" size="${(item.attributes.size)!'30'}" />
+                              </td>
+                              <td class="form_field_description">${item.description!}</td>
+                              </#if>
+                            </tr>
+                            </#list>
+                            <tr>
+                              <td colspan="3">
+                                <div class="form_submit">
+                                  <input type="submit" value="SUBMIT" />
+                                  <input type="button" value="CANCEL" />
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </form>
+                        <#if (endpoint.form.ajaxSubmit)>
+                        <div class="test_form_working hidden">... WORKING ...</div>
+                        <div class="test_form_response hidden">
+                          <div>Response:</div>
+                          <pre style="width: 100%; border-left: 4px solid #999; padding-left: 10px;"></pre>
+                        </div>
+                        </#if>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </#if> <!-- endpoint.form??  -->
+
+              <!--  -->
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="debug-heading${c}">
+                  <h4 class="panel-title">DEBUG
+                    <a class="collapsed" data-toggle="collapse" href="#debug-collapse${c}" aria-expanded="false" aria-controls="debug-collapse${c}">
+                      [show / hide]
+                    </a>
+                  </h4>
+                </div>
+                <div id="debug-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="debug-heading${c}">
+                  <div class="panel-body">
+                    <code class="code-block">${endpoint}</code>
+                  </div>
+                </div>
+              </div>
+
           <#assign c = c + 1>
         </#list>
       </#if>
