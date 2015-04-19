@@ -196,7 +196,76 @@
     <li><a href="#delete-apieventsevent_id">DELETE /api/events/{event_id}</a></li>
 </ul> -->
 
+
+
+
+
 <section class="main-content">
+
+  <!--FORM SAMPLE -->
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="form-heading25">
+      <h4 class="panel-title">Try it out
+        <a class="" data-toggle="collapse" href="#form-collapse25" aria-expanded="true" aria-controls="form-collapse25">
+          [show / hide]
+        </a>
+      </h4>
+    </div>
+    <div id="form-collapse25" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="form-heading25" aria-expanded="true">
+      <div class="panel-body">
+          <form id="form_25" class="form-horizontal" action="/admin-ng/event/{eventId}/comment/{commentId}" method="post" abineguid="B7B879FA5D644C85A34EACB881ED0A4E">
+            <!-- <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment" />
+            <input class="form_endpoint_name" type="hidden" value="createeventcomment" />
+            <input class="form_method" type="hidden" value="POST" /> -->
+            <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
+            <!--
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}/comment</tt>
+            </div>
+          -->
+
+                <div class="form-group form-group-sm">
+                  <label for="createeventcomment_eventId" class="col-sm-2 control-label">eventId</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="eventId" class="form-control" id="createeventcomment_eventId">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="createeventcomment_text" class="col-sm-2 control-label">text</label>
+                  <div class="col-sm-10">
+                    <textarea name="text" class="form-control" id="createeventcomment_text"></textarea>
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="createeventcomment_resolved" class="col-sm-2 control-label">resolved</label>
+                  <div class="col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="resolved" id="createeventcomment_resolved">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="createeventcomment_reason" class="col-sm-2 control-label">reason</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="reason" class="form-control" id="createeventcomment_reason">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="createeventcomment_commentId" class="col-sm-2 control-label">commentId</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="commentId" class="form-control" id="createeventcomment_eventId">
+                  </div>
+                </div>
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
 
 
 <!-- Sample Return Type Schema -->
@@ -512,6 +581,8 @@
                               </div>
                             </#if>
                           </#list>
+                          <button type="button" class="btn btn-default">Cancel</button>
+                          <button type="button" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                   </div>
@@ -544,6 +615,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script>
+
+    $(function () {
+      $('form').on('submit', function (e) {
+
+          var params = $(this).serializeArray();
+          var path = $(this).attr('action');
+          var method = $(this).attr('method');
+
+          var url = replacePathParams(path, params);
+
+          $.ajax({
+              type: method,
+              url: url,
+              data: $(this).serialize(),
+              success: function () {
+                  // location.reload();
+              },
+              error: function(){
+                console.log("failed");
+              }
+          });
+          e.preventDefault();
+      });
+    });
+
+    /*
+    * Replace the vars in the curly braces by the values sent using the form
+    * Returns the form action url
+    * 
+    */
+    function replacePathParams(path, params){
+
+      for(var i = 0; i < params.length; i++){
+        path = path.replace(new RegExp('{' + params[i]['name'] + '}', 'gi'), params[i]['value'])
+      }
+
+      return path;
+    }
+
+    </script>
+
+
   </section>
   </body>
 </html>
