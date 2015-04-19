@@ -205,17 +205,20 @@
   <!--FORM SAMPLE -->
 
 
+
+
+
   <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="form-heading25">
+    <div class="panel-heading" role="tab" id="form-heading00">
       <h4 class="panel-title">Try it out
-        <a class="" data-toggle="collapse" href="#form-collapse25" aria-expanded="true" aria-controls="form-collapse25">
+        <a class="" data-toggle="collapse" href="#form-collapse00" aria-expanded="true" aria-controls="form-collapse00">
           [show / hide]
         </a>
       </h4>
     </div>
-    <div id="form-collapse25" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="form-heading25" aria-expanded="true">
+    <div id="form-collapse00" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="form-heading00" aria-expanded="true">
       <div class="panel-body">
-          <form id="form_25" class="form-horizontal" action="/admin-ng/event/{eventId}/comment/{commentId}" method="post" abineguid="B7B879FA5D644C85A34EACB881ED0A4E">
+          <form id="form_00" class="form-horizontal" action="/admin-ng/event/{eventId}/comment/{commentId}" method="post" abineguid="B7B879FA5D644C85A34EACB881ED0A4E">
             <!-- <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment" />
             <input class="form_endpoint_name" type="hidden" value="createeventcomment" />
             <input class="form_method" type="hidden" value="POST" /> -->
@@ -343,7 +346,29 @@
   </div>
   <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
     <div class="panel-body">
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <form id="form_01" class="form-horizontal" action="/admin-ng/event/{eventId}" method="get" abineguid="8307F18EB6AB428A8A4CEF39837690A6">
+        <!-- <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}" />
+        <input class="form_endpoint_name" type="hidden" value="getevent" />
+        <input class="form_method" type="hidden" value="GET" /> -->
+        <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
+        <!--
+        <div class="spaced">
+            <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}</tt>
+        </div>
+      -->
+
+            <div class="form-group form-group-sm">
+              <label for="getevent_eventId" class="col-sm-2 control-label">eventId</label>
+              <div class="col-sm-10">
+                <input type="text" name="eventId" class="form-control" id="getevent_eventId" value="">
+              </div>
+            </div>
+        <button type="button" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+
     </div>
   </div>
 </div>
@@ -576,13 +601,13 @@
                               <div class="form-group form-group-sm">
                                 <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
                                 <div class="col-sm-10">
-                                  <input type="text" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}">
+                                  <input type="text" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}" value="${item.defaultValue!}">
                                 </div>
                               </div>
                             </#if>
                           </#list>
                           <button type="button" class="btn btn-default">Cancel</button>
-                          <button type="button" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                   </div>
@@ -626,26 +651,44 @@
           var method = $(this).attr('method');
 
           var url = replacePathParams(path, params);
+          var formParams = getParams(params);
 
           $.ajax({
-              type: method,
-              url: url,
-              data: $(this).serialize(),
-              success: function () {
-                  // location.reload();
-              },
-              error: function(){
-                console.log("failed");
-              }
+            type: method,
+            url: url,
+            processData: true,
+            dataType: 'text',
+            data: formParams,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function(){
+              console.log("failed");
+            }
           });
           e.preventDefault();
       });
     });
 
+
+    /*
+    * This removes the path params from the serialized from data
+    */
+    function getParams(params){
+
+      for(var i = 0; i < params.length; i++){
+        if (params.hasOwnProperty(i)){
+          params.splice(i, 1);
+        }
+      }
+      console.log(params);
+      return params;
+    }
+
     /*
     * Replace the vars in the curly braces by the values sent using the form
     * Returns the form action url
-    * 
+    *
     */
     function replacePathParams(path, params){
 
