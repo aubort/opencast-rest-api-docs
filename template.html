@@ -154,6 +154,13 @@
 
   }
 
+
+  pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+  .string { color: green; }
+  .number { color: darkorange; }
+  .boolean { color: blue; }
+  .null { color: magenta; }
+  .key { color: red; }
   </style>
 
 </head>
@@ -218,7 +225,7 @@
     </div>
     <div id="form-collapse00" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="form-heading00" aria-expanded="true">
       <div class="panel-body">
-          <form id="form_00" class="form-horizontal" action="/admin-ng/event/{eventId}/comment/{commentId}" method="post" abineguid="B7B879FA5D644C85A34EACB881ED0A4E">
+          <form id="form_00" class="form-horizontal" action="/admin-ng/event/{eventId}/comment/{commentId}" method="post" data-id="00">
             <!-- <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}/comment" />
             <input class="form_endpoint_name" type="hidden" value="createeventcomment" />
             <input class="form_method" type="hidden" value="POST" /> -->
@@ -230,149 +237,48 @@
           -->
 
                 <div class="form-group form-group-sm">
-                  <label for="createeventcomment_eventId" class="col-sm-2 control-label">eventId</label>
+                  <label for="createeventcomment_eventId_00" class="col-sm-2 control-label">eventId_00_00_00</label>
                   <div class="col-sm-10">
-                    <input type="text" name="eventId" class="form-control" id="createeventcomment_eventId">
+                    <input type="text" name="eventId_00" class="form-control" id="createeventcomment_eventId_00" value="123">
                   </div>
                 </div>
                 <div class="form-group form-group-sm">
-                  <label for="createeventcomment_text" class="col-sm-2 control-label">text</label>
+                  <label for="createeventcomment_text_00" class="col-sm-2 control-label">text</label>
                   <div class="col-sm-10">
-                    <textarea name="text" class="form-control" id="createeventcomment_text"></textarea>
+                    <textarea name="createeventcomment_text_00" class="form-control" id="createeventcomment_text_00"></textarea>
                   </div>
                 </div>
                 <div class="form-group form-group-sm">
-                  <label for="createeventcomment_resolved" class="col-sm-2 control-label">resolved</label>
+                  <label for="createeventcomment_resolved_00" class="col-sm-2 control-label">resolved</label>
                   <div class="col-sm-10">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" name="resolved" id="createeventcomment_resolved">
+                        <input type="checkbox" name="resolved" id="createeventcomment_resolved_00" value="true">
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group form-group-sm">
-                  <label for="createeventcomment_reason" class="col-sm-2 control-label">reason</label>
+                  <label for="createeventcomment_reason_00" class="col-sm-2 control-label">reason</label>
                   <div class="col-sm-10">
-                    <input type="text" name="reason" class="form-control" id="createeventcomment_reason">
+                    <input type="text" name="reason" class="form-control" id="createeventcomment_reason_00" value="reason">
                   </div>
                 </div>
                 <div class="form-group form-group-sm">
-                  <label for="createeventcomment_commentId" class="col-sm-2 control-label">commentId</label>
+                  <label for="createeventcomment_commentId_00" class="col-sm-2 control-label">commentId</label>
                   <div class="col-sm-10">
-                    <input type="text" name="commentId" class="form-control" id="createeventcomment_eventId">
+                    <input type="text" name="commentId_00" class="form-control" id="createeventcomment_eventId" value="bla">
                   </div>
                 </div>
             <button type="button" class="btn btn-default">Cancel</button>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
+          <p>
+            <pre id="form_response_block_00" class="collapse">bla</pre>
+          </p>
       </div>
     </div>
   </div>
-
-
-<!-- Sample Return Type Schema -->
-  <!-- <p>
-    <a href="#" class="show_form_link">Click to view</a>
-  </p>
-  <div class="hidden_form hidden">
-    <code class="code-block">
-    </code>
-  </div>
-  <a href="#" class="hide_form_link hidden">Hide</a>
-
-  <p>
-    <a href="#" class="show_form_link">Click to view</a>
-  </p>
-  <div class="hidden_form hidden">
-    <code class="code-block">blablabla asldkj aslkdj aslkdj
-    </code>
-  </div>
-  <a href="#" class="hide_form_link hidden">Hide</a> -->
-
-<!-- Sample headings -->
-
-<h1 id="GET-/admin-ng/event/{eventId}/attachments.json">
-  <code class="e-type t-GET">GET</code>
-  /admin-ng/event/{eventId}/attachments.json
-</h1>
-<hr>
-<h1 id="POST-/admin-ng/event/{eventId}/transitions">
-  <code class="e-type t-POST">POST</code>
-  /admin-ng/event/{eventId}/transitions
-</h1>
-
-
-<!-- Sample Return Type Schema -->
-<div class="panel panel-default">
-  <div class="panel-heading" role="tab" id="headingOne">
-    <h4 class="panel-title">Return Type Schema
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        [show / hide]
-      </a>
-    </h4>
-  </div>
-  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-    <div class="panel-body"><code class="code-block">&lt;?xml version="1.0" standalone="yes"?&gt;
-  &lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://org.opencastproject.security" xmlns:tns="http://org.opencastproject.security" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-
-    &lt;xs:element name="creator" type="tns:user"/&gt;
-
-    &lt;xs:element name="organization" type="tns:organization"/&gt;
-
-    &lt;xs:element name="role" type="tns:role"/&gt;
-
-    &lt;xs:element name="user" type="tns:user"/&gt;
-
-    &lt;xs:complexType name="user" final="extension restriction"&gt;
-      &lt;xs:sequence&gt;
-        &lt;xs:element name="username" type="xs:string" minOccurs="0"/&gt;
-        &lt;xs:element name="name" type="xs:string" minOccurs="0"/&gt;
-        &lt;xs:element name="email" type="xs:string" minOccurs="0"/&gt;
-        &lt;xs:element name="provider" type="xs:string" minOccurs="0"/&gt;
-        &lt;xs:element name="manageable" type="xs:boolean"/&gt;
-        &lt;xs:element name="roles" minOccurs="0"&gt;
-      </code>
-    </div>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading" role="tab" id="headingTwo">
-    <h4 class="panel-title">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Collapsible Group Item #2
-      </a>
-    </h4>
-  </div>
-  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-    <div class="panel-body">
-      <form id="form_01" class="form-horizontal" action="/admin-ng/event/{eventId}" method="get" abineguid="8307F18EB6AB428A8A4CEF39837690A6">
-        <!-- <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}" />
-        <input class="form_endpoint_name" type="hidden" value="getevent" />
-        <input class="form_method" type="hidden" value="GET" /> -->
-        <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
-        <!--
-        <div class="spaced">
-            <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}</tt>
-        </div>
-      -->
-
-            <div class="form-group form-group-sm">
-              <label for="getevent_eventId" class="col-sm-2 control-label">eventId</label>
-              <div class="col-sm-10">
-                <input type="text" name="eventId" class="form-control" id="getevent_eventId" value="">
-              </div>
-            </div>
-        <button type="button" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-
-
-
-    </div>
-  </div>
-</div>
-
 
 
     <#assign c=0>
@@ -556,7 +462,7 @@
                   <div id="form-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="form-heading${c}">
                     <div class="panel-body">
                         <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
-                              method="${endpoint.method?lower_case}" >
+                              method="${endpoint.method?lower_case}" data-id="${c}">
                           <!-- <input class="form_action_holder" type="hidden" value="${meta.url}${endpoint.path}" />
                           <input class="form_endpoint_name" type="hidden" value="${endpoint.name}" />
                           <input class="form_method" type="hidden" value="${endpoint.method}" /> -->
@@ -574,9 +480,7 @@
                               <div class="form-group form-group-sm">
                                 <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
                                 <div class="col-sm-10">
-                                  <textarea name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}" placeholder="">
-                                    ${item.defaultValue!}
-                                  </textarea>
+                                  <textarea name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}">${item.defaultValue!}</textarea>
                                 </div>
                               </div>
                             <#elseif item.type == "boolean">
@@ -585,7 +489,7 @@
                                 <div class="col-sm-10">
                                   <div class="checkbox">
                                     <label>
-                                      <input type="checkbox" name="${item.name}" id="${endpoint.name}_${item.name}">
+                                      <input type="checkbox" name="${item.name}" id="${endpoint.name}_${item.name}" value="true">
                                     </label>
                                   </div>
                                 </div>
@@ -609,6 +513,9 @@
                           <button type="button" class="btn btn-default">Cancel</button>
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+                        <p>
+                        <pre id="form_response_block_${c}" class="collapse"></pre>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -647,11 +554,21 @@
       $('form').on('submit', function (e) {
 
           var params = $(this).serializeArray();
+          var id = $(this).attr('data-id');
+          console.log("id:" + id);
+
+
+          for(param in params){
+            console.log(params[param]);
+          }
+
           var path = $(this).attr('action');
           var method = $(this).attr('method');
 
           var url = replacePathParams(path, params);
           var formParams = getParams(params);
+
+          $( "#form_response_block_"+id ).attr("class", "expand");
 
           $.ajax({
             type: method,
@@ -659,17 +576,30 @@
             processData: true,
             dataType: 'text',
             data: formParams,
-            success: function (data) {
-                console.log(data);
+            success: function (response, textStatus, request) {
+                console.log("Status:" + textStatus);
+                console.log("Request:" + request);
+
+                var responseString;
+                try {
+                    responseString = JSON.stringify(JSON.parse(response), null, 2);
+                } catch(e) {
+                    responseString = response
+                }
+
+
+
+                $( "#form_response_block_"+id ).html(syntaxHighlight(responseString));
+
             },
-            error: function(){
-              console.log("failed");
+            error: function(data, textStatus, request){
+              $( "#form_response_block_"+id ).text(textStatus);
+              //console.log("failed: " + request);
             }
           });
           e.preventDefault();
       });
     });
-
 
     /*
     * This removes the path params from the serialized from data
@@ -677,11 +607,11 @@
     function getParams(params){
 
       for(var i = 0; i < params.length; i++){
+        // console.log(params[i]);
         if (params.hasOwnProperty(i)){
           params.splice(i, 1);
         }
       }
-      console.log(params);
       return params;
     }
 
@@ -698,6 +628,30 @@
 
       return path;
     }
+
+
+    /*
+    * Highlights Json syntax
+    */
+    function syntaxHighlight(json) {
+      json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+          var cls = 'number';
+          if (/^"/.test(match)) {
+              if (/:$/.test(match)) {
+                  cls = 'key';
+              } else {
+                  cls = 'string';
+              }
+          } else if (/true|false/.test(match)) {
+              cls = 'boolean';
+          } else if (/null/.test(match)) {
+              cls = 'null';
+          }
+          return '<span class="' + cls + '">' + match + '</span>';
+      });
+    }
+
 
     </script>
 
