@@ -155,7 +155,7 @@
   }
 
 
-  pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+  /*pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }*/
   .string { color: green; }
   .number { color: darkorange; }
   .boolean { color: blue; }
@@ -208,6 +208,85 @@
 
 
 <section class="main-content">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="form-heading1">
+      <h4 class="panel-title">Try it out
+        <a class="" data-toggle="collapse" href="#form-collapse100" aria-expanded="true" aria-controls="form-collapse100">
+          [show / hide]
+        </a>
+      </h4>
+    </div>
+    <div id="form-collapse100" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="form-heading1" aria-expanded="true">
+      <div class="panel-body">
+          <form id="form_100" class="form-horizontal" action="/archive/episode.{format:xml|json}" method="get" data-id="100" abineguid="3B20DE4E66964EC08256D5751FACB66A">
+            <!-- <input class="form_action_holder" type="hidden" value="/archive/episode.{format:xml|json}" />
+            <input class="form_endpoint_name" type="hidden" value="episodes" />
+            <input class="form_method" type="hidden" value="GET" /> -->
+            <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
+            <!--
+            <div class="spaced">
+                <strong>Form action:</strong> <tt class="form_path">/archive/episode.{format:xml|json}</tt>
+            </div>
+          -->
+
+                <div class="form-group form-group-sm">
+                  <label for="episodes_format" class="col-sm-2 control-label">format</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="format" class="form-control" id="episodes_format" value="">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="episodes_id" class="col-sm-2 control-label">id</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="id" class="form-control" id="episodes_id" value="">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="episodes_series" class="col-sm-2 control-label">series</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="series" class="form-control" id="episodes_series" value="">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="episodes_limit" class="col-sm-2 control-label">limit</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="limit" class="form-control" id="episodes_limit" value="0">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="episodes_offset" class="col-sm-2 control-label">offset</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="offset" class="form-control" id="episodes_offset" value="0">
+                  </div>
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="episodes_onlyLatest" class="col-sm-2 control-label">onlyLatest</label>
+                  <div class="col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="onlyLatest" id="episodes_onlyLatest" value="true">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            <button type="reset" class="btn btn-default">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <p>
+          </p><pre id="form_response_block_100" class="collapse"></pre>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
 
   <!--FORM SAMPLE -->
 
@@ -270,7 +349,7 @@
                     <input type="text" name="commentId_00" class="form-control" id="createeventcomment_eventId" value="bla">
                   </div>
                 </div>
-            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="reset" class="btn btn-default" id="clear">Reset</button>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
           <p>
@@ -510,7 +589,7 @@
                               </div>
                             </#if>
                           </#list>
-                          <button type="button" class="btn btn-default">Cancel</button>
+                          <button type="reset" class="btn btn-default">Reset</button>
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                         <p>
@@ -523,7 +602,7 @@
 
 
               <!--  -->
-              <div class="panel panel-default">
+              <!-- <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="debug-heading${c}">
                   <h4 class="panel-title">DEBUG
                     <a class="collapsed" data-toggle="collapse" href="#debug-collapse${c}" aria-expanded="false" aria-controls="debug-collapse${c}">
@@ -536,7 +615,7 @@
                     <code class="code-block">${endpoint}</code>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
           <#assign c = c + 1>
         </#list>
@@ -550,17 +629,36 @@
 
     <script>
 
+
+    /*
+    * When resetting the form, empty and hide the response <pre>
+    */
+    $("form").bind("reset", function(e) {
+
+      var id = $(this).attr('data-id');
+
+      // Clear the output <pre>
+      $( "#form_response_block_"+id ).html('');
+
+      // Hide the output <pre>
+      $( "#form_response_block_"+id ).attr("class", "collapse");
+
+    });
+
+
+    /*
+    * Handles the form submit
+    */
     $(function () {
       $('form').on('submit', function (e) {
 
           var params = $(this).serializeArray();
-          var id = $(this).attr('data-id');
-          console.log("id:" + id);
-
-
-          for(param in params){
+          console.log("Serialized form:");
+          for (param in params){
             console.log(params[param]);
           }
+
+          var id = $(this).attr('data-id');
 
           var path = $(this).attr('action');
           var method = $(this).attr('method');
@@ -569,6 +667,7 @@
           var formParams = getParams(params);
 
           $( "#form_response_block_"+id ).attr("class", "expand");
+          $( "#form_response_block_"+id ).text("Loading...");
 
           $.ajax({
             type: method,
@@ -577,23 +676,33 @@
             dataType: 'text',
             data: formParams,
             success: function (response, textStatus, request) {
-                console.log("Status:" + textStatus);
-                console.log("Request:" + request);
+
+
+                var code = request.status + ": " + request.statusText;
+                console.log(code);
 
                 var responseString;
+
+                // We try to parse the response and check if it's JSON.
+                // If it is Json, then parse and beautify. If not, then use the
+                // response as it is.
                 try {
-                    responseString = JSON.stringify(JSON.parse(response), null, 2);
+                    responseString = syntaxHighlight(JSON.stringify(JSON.parse(response), null, 2));
+
+                    var output = '<p>' + code + '</p>' + responseString;
+                    $( "#form_response_block_"+id ).html(output);
+
                 } catch(e) {
                     responseString = response
+                    var output = responseString;
+
+                    $( "#form_response_block_"+id ).text(output);
                 }
-
-
-
-                $( "#form_response_block_"+id ).html(syntaxHighlight(responseString));
 
             },
             error: function(data, textStatus, request){
-              $( "#form_response_block_"+id ).text(textStatus);
+              // console.log(data.statusCode());
+              $( "#form_response_block_"+id ).text("Error " + data.status + ": " + data.statusText);
               //console.log("failed: " + request);
             }
           });
@@ -606,12 +715,24 @@
     */
     function getParams(params){
 
+      console.log('getParams');
+      for (param in params){
+        console.log(params[param]);
+      }
+
       for(var i = 0; i < params.length; i++){
-        // console.log(params[i]);
+
         if (params.hasOwnProperty(i)){
+          console.log('is path param: ' + params[i].name);
           params.splice(i, 1);
         }
       }
+
+      console.log("param without path params:")
+      for (param in params){
+        console.log(params[param]);
+      }
+
       return params;
     }
 
