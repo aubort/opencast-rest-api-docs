@@ -11,19 +11,131 @@
 
 <body>
 
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-  <div class="collapse" id="collapseExample">
-    <div class="well">
-      lkasdj lkasjd lkasjd lkasjd lkasj dlkasjd laksjd laksjd
-    </div>
-  </div>
-
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+<script>
+
+var test = function(){
+
+  var path = "/admin-ng/event/{eventId}/workflows/{workflowId}/errors/{errorId}.{format:xml|json}"
+
+  var serializedArray = [
+    {'name':'eventId', 'value': '11'},
+    {'name':'workflowId', 'value': '22'},
+    {'name':'errorId', 'value': '56'},
+    {'name':'format', 'value': 'json'},
+    {'name':'sort', 'value': 'asc'},
+    {'name':'orderby', 'value': 'field'}
+  ]
+
+  var pathAndParams = getPathAndFormParams(path, serializedArray);
+
+  if(pathAndParams.hasOwnProperty('error')){
+    console.log(pathAndParams.error);
+  }else{
+    console.log(pathAndParams);
+  }
+
+}();
+
+
+/**
+ Based on the path and the serialized form, we get the new path which has the
+ varialbes replaced and get an array with the form params that are going to
+ be sent as 'data' in the ajax request.
+ @param {String} path the path with keys (e.g. /my/{thing}/{stuff})
+ @param {Array} params the params to put into the path. Example:
+   [
+     {'name':'thing', 'value': '12'},
+     {'name':'stuff', 'value': '34'},
+     {'name':'errorId', 'value': '56'}
+   ]
+*/
+function getPathAndFormParams(path, params){
+
+  var pathAndFormParams = {};
+  var newPath = path;
+  var formParams = [];
+
+
+  // Parse the params array (this is the serialized form)
+  for (var i = 0; i < params.length; i++ ) {
+
+    var value = params[i].value;
+
+    /** The Regex here handles syntax like /episode.{format:xml|json}.
+    In this case, the {format:xml|json} part is extracted, then
+    the xml|json part is used as the second regex to verify user's input.
+    If the input is valid, the path /episode.{format:xml|json} would be
+    replaced by /episode.xml for example.
+    */
+    var regex = new RegExp( "{" + params[i].name + "(:[^}]*|)}", "");
+
+
+    if (value){
+      // we test if the param is found in the path
+      if (regex.test(newPath)){
+        newPath = newPath.replace(regex, params[i].value);
+
+      }else{
+        // if not, it is a form param and we add it to the form params array
+        formParams.push(params[i]);
+      }
+    } else{
+      var error = new Error("getPathAndFormParams() Param: "+ params[i].name + " should not be empty.");
+      return pathAndFormParams = {'error': error};
+    }
+  }
+
+  // Assign the new path and the form params to the object to be returned
+  pathAndFormParams = {
+    'path': newPath,
+    'formParams': formParams
+  };
+
+  return pathAndFormParams;
+}
+
+
+// function updatePath(path, params) {
+//     var newPath = path;
+//     for (var key in params) {
+//         if (params.hasOwnProperty(key)) {
+//             var value = params[key];
+//             if (value !== undefined && value !== null && value !== '') {
+//       // The Regex here handles syntax like /episode.{format:xml|json}.
+//       // In this case, the {format:xml|json} part is extracted, then
+//       // the xml|json part is used as the second regex to verify user's input.
+//       // If the input is valid, the path /episode.{format:xml|json} would be
+//       // replaced by /episode.xml for example.
+//                 var regex = new RegExp( "{" + key + "(:[^}]*|)}", "");
+//                 if (regex.test(newPath))
+//                 {
+//                      var pat = regex.exec(newPath)[1].substring(1);
+//                      var regex2 = new RegExp(pat, "");
+//                      if (regex2.test(value))
+//                      {
+//                        newPath = newPath.replace(regex, value);
+//                      } else
+//                      {
+//                        alert('The value for ' + key + ' is invalid.');
+//                      }
+//                 } else
+//                 {
+//                      alert("wrong syntax");
+//                 }
+//             }
+//         }
+//     }
+//     return newPath;
+// }
+
+</script>
+
 
 </body>
 </html>

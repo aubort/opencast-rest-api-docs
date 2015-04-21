@@ -1,0 +1,81 @@
+<!-- Sample Return Type Schema -->
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingOne">
+    <h4 class="panel-title">Return Type Schema
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        [show / hide]
+      </a>
+    </h4>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body"><code class="code-block">&lt;?xml version="1.0" standalone="yes"?&gt;
+  &lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://org.opencastproject.security" xmlns:tns="http://org.opencastproject.security" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+
+    &lt;xs:element name="creator" type="tns:user"/&gt;
+
+    &lt;xs:element name="organization" type="tns:organization"/&gt;
+
+    &lt;xs:element name="role" type="tns:role"/&gt;
+
+    &lt;xs:element name="user" type="tns:user"/&gt;
+
+    &lt;xs:complexType name="user" final="extension restriction"&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name="username" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="name" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="email" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="provider" type="xs:string" minOccurs="0"/&gt;
+        &lt;xs:element name="manageable" type="xs:boolean"/&gt;
+        &lt;xs:element name="roles" minOccurs="0"&gt;
+      </code>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingTwo">
+    <h4 class="panel-title">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Collapsible Group Item #2
+      </a>
+    </h4>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="panel-body">
+      <form id="form_01" class="form-horizontal" action="/admin-ng/event/{eventId}" method="get" abineguid="8307F18EB6AB428A8A4CEF39837690A6">
+        <!-- <input class="form_action_holder" type="hidden" value="/admin-ng/event/{eventId}" />
+        <input class="form_endpoint_name" type="hidden" value="getevent" />
+        <input class="form_method" type="hidden" value="GET" /> -->
+        <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
+        <!--
+        <div class="spaced">
+            <strong>Form action:</strong> <tt class="form_path">/admin-ng/event/{eventId}</tt>
+        </div>
+      -->
+
+            <div class="form-group form-group-sm">
+              <label for="getevent_eventId" class="col-sm-2 control-label">eventId</label>
+              <div class="col-sm-10">
+                <input type="text" name="eventId" class="form-control" id="getevent_eventId" value="">
+              </div>
+            </div>
+        <button type="button" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Sample headings -->
+
+<h1 id="GET-/admin-ng/event/{eventId}/attachments.json">
+  <code class="e-type t-GET">GET</code>
+  /admin-ng/event/{eventId}/attachments.json
+</h1>
+<hr>
+<h1 id="POST-/admin-ng/event/{eventId}/transitions">
+  <code class="e-type t-POST">POST</code>
+  /admin-ng/event/{eventId}/transitions
+</h1>
