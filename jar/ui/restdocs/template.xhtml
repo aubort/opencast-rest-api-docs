@@ -50,6 +50,11 @@
 
   nav li{
     list-style-type: none;
+    font-weight: 200;
+  }
+
+  nav .active{
+    font-weight: bold;
   }
 
   hr {
@@ -180,7 +185,6 @@
 </head>
 
 <body>
-
 
 <div class="row">
 
@@ -608,7 +612,6 @@
 
     <script>
 
-
     /*
     * When resetting the form, empty and hide the response <pre>
     */
@@ -624,23 +627,27 @@
 
     });
 
+
+
     $.getJSON( "info/components.json", function( response ) {
 
       var items = [];
-
+      var currentPage = location.href.substring(location.href.lastIndexOf("=")+1);
 
       for(var i = 0; i < response.rest.length; i++){
         var element = response.rest[i]
 
-        items.push("<li id='" + element.path + "'><a href=" + element.docs + ">" + element.description + "</a></li>");
-        console.log(element);
+        var css = "";
+        //console.log(element.path + "-" + currentPage);
+        if (element.path == currentPage){
+          css = "class=\"active\"";
+          console.log("current Page");
+
+
+        }
+
+        items.push("<li id='" + element.path + "' "+css+"><a href=" + element.docs + ">" + element.description + "</a></li>");
       }
-
-
-
-      // $.each( response.rest, function( key, val ) {
-      //   items.push( "<li id='" + key + "'>" + val + "</li>" );
-      // });
 
       $( "<ul/>", {"class": "my-new-list",
         html: items.join( "" )
