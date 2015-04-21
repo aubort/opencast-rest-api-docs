@@ -14,18 +14,28 @@
 
   <style>
   html, body {
-    font-family: "Open Sans",Helvetica,sans-serif;
-    font-size: 16px;
+    /*font-family: "Open Sans",Helvetica,sans-serif;
+    font-size: 16px;*/
     width:100%;
     color: #474a54;
   }
-  .main-content {
-    max-width:950px;
+  .main-content, .row {
+    max-width:1200px !important;
     margin-top:30px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  /*@media (min-width: 992px)*/
+
+  .col-md-4 {
+    width: 30%;
+    float: right ;
+  }
+
+  .col-md-8 {
+    width: 70%;
+  }
   h1 {
     font-size: 150%;
     font-weight: 100;
@@ -38,6 +48,10 @@
     font-weight: 400;
   }
 
+  nav li{
+    list-style-type: none;
+  }
+
   hr {
     margin-bottom: 18px;
     border: 0;
@@ -45,9 +59,9 @@
   }
 
   p {
-      line-height: 20px;
+      /*line-height: 20px;
       margin: 0;
-      margin-bottom: 15px;
+      margin-bottom: 15px;*/
   }
 
   ul, li {
@@ -168,46 +182,16 @@
 <body>
 
 
-<!--  SAMPLE TABLE    -->
-<!--
-      <table>
-            <thead>
-            <tr>
-                <th align="left">Parameter</th>
-                <th align="left">Type</th>
-                <th align="left">Description</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td align="left"><code>sign</code></td>
-                    <td align="left">boolean</td>
-                    <td align="left">Whether public distribution urls should be signed.</td>
-                </tr>
-                <tr>
-                    <td align="left"><code>sign</code></td>
-                    <td align="left">boolean</td>
-                    <td align="left">Whether public distribution urls should be signed.</td>
-                </tr>
-            </tbody>
-        </table>
--->
-<!-- END SAMPLE TALBE     -->
-
-<!-- Sample list -->
-<!-- <ul>
-    <li><a href="#get-apievents">GET /api/events</a></li>
-    <li><a href="#post-apievents">POST /api/events</a></li>
-    <li><a href="#get-apieventevent_id">GET /api/event/{event_id}</a></li>
-    <li><a href="#put-apieventsevent_id">PUT /api/events/{event_id}</a></li>
-    <li><a href="#delete-apieventsevent_id">DELETE /api/events/{event_id}</a></li>
-</ul> -->
+<div class="row">
 
 
+  <div class="col-xs-6 col-md-4">
+    <nav class="bs-docs-sidebar hidden-print hidden-sm scrollable">
+    </nav>
+  </div>
 
+  <div class="col-xs-12 col-md-8">
 
-
-<section class="main-content">
 
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="form-heading1">
@@ -281,17 +265,7 @@
   </div>
 
 
-
-
-
-
-
-
-
   <!--FORM SAMPLE -->
-
-
-
 
 
   <div class="panel panel-default">
@@ -324,7 +298,7 @@
                 <div class="form-group form-group-sm">
                   <label for="createeventcomment_text_00" class="col-sm-2 control-label">text</label>
                   <div class="col-sm-10">
-                    <textarea name="createeventcomment_text_00" class="form-control" id="createeventcomment_text_00"></textarea>
+                    <textarea name="createeventcomment_text_00" class="form-control" id="createeventcomment_text_00" rows="3"></textarea>
                   </div>
                 </div>
                 <div class="form-group form-group-sm">
@@ -349,8 +323,8 @@
                     <input type="text" name="commentId_00" class="form-control" id="createeventcomment_eventId" value="bla">
                   </div>
                 </div>
-            <button type="reset" class="btn btn-default" id="clear">Reset</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-default btn-sm" id="clear">Reset</button>
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
           </form>
           <p>
             <pre id="form_response_block_00" class="collapse">bla</pre>
@@ -359,7 +333,8 @@
     </div>
   </div>
 
-
+    <!--Here we create a counter that will allow to provide a unique ID to each
+    form -->
     <#assign c=0>
     <#list endpointHolders as endpointHolder>
       <#if (endpointHolder.endpoints?size > 0)>
@@ -559,7 +534,8 @@
                               <div class="form-group form-group-sm">
                                 <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
                                 <div class="col-sm-10">
-                                  <textarea name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}">${item.defaultValue!}</textarea>
+                                  <textarea name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}"
+                                  rows="<#if item.attributes.rows??>${item.attributes.rows}<#else><#if item.name == "BODY">8<#else>3</#if></#if>">${item.defaultValue!}</textarea>
                                 </div>
                               </div>
                             <#elseif item.type == "boolean">
@@ -589,8 +565,8 @@
                               </div>
                             </#if>
                           </#list>
-                          <button type="reset" class="btn btn-default">Reset</button>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="reset" class="btn btn-default btn-sm">Reset</button>
+                          <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                         </form>
                         <p>
                         <pre id="form_response_block_${c}" class="collapse"></pre>
@@ -617,11 +593,14 @@
                 </div>
               </div> -->
 
-          <#assign c = c + 1>
+          <#assign c = c + 1> <!-- Here we increment the counter by 1 -->
         </#list>
       </#if>
     </#list> <!-- endpointHolders as endpointHolder -->
 
+
+        </div>
+      </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -645,6 +624,29 @@
 
     });
 
+    $.getJSON( "info/components.json", function( response ) {
+
+      var items = [];
+
+
+      for(var i = 0; i < response.rest.length; i++){
+        var element = response.rest[i]
+
+        items.push("<li id='" + element.path + "'><a href=" + element.docs + ">" + element.description + "</a></li>");
+        console.log(element);
+      }
+
+
+
+      // $.each( response.rest, function( key, val ) {
+      //   items.push( "<li id='" + key + "'>" + val + "</li>" );
+      // });
+
+      $( "<ul/>", {"class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "nav" );
+    })();
+
 
     /*
     * Handles the form submit
@@ -652,29 +654,28 @@
     $(function () {
       $('form').on('submit', function (e) {
 
-          var params = $(this).serializeArray();
-          console.log("Serialized form:");
-          for (param in params){
-            console.log(params[param]);
-          }
+          var serializedForm = $(this).serializeArray();
+          var path = $(this).attr('action');
 
           var id = $(this).attr('data-id');
 
-          var path = $(this).attr('action');
-          var method = $(this).attr('method');
+          var pathAndParams = getPathAndFormParams(path, serializedForm);
 
-          var url = replacePathParams(path, params);
-          var formParams = getParams(params);
+          if(pathAndParams.hasOwnProperty('error')){
+            console.log(pathAndParams.error);
+          }else{
+            console.log(pathAndParams);
+          }
 
           $( "#form_response_block_"+id ).attr("class", "expand");
           $( "#form_response_block_"+id ).text("Loading...");
 
           $.ajax({
-            type: method,
-            url: url,
+            type: $(this).attr('method'),
+            url: pathAndParams.path,
             processData: true,
             dataType: 'text',
-            data: formParams,
+            data: pathAndParams.formParams,
             success: function (response, textStatus, request) {
 
 
@@ -710,46 +711,105 @@
       });
     });
 
-    /*
-    * This removes the path params from the serialized from data
+
+    /**
+     Based on the path and the serialized form, we get the new path which has the
+     varialbes replaced and get an array with the form params that are going to
+     be sent as 'data' in the ajax request.
+     @param {String} path the path with keys (e.g. /my/{thing}/{stuff})
+     @param {Array} params the params to put into the path. Example:
+       [
+         {'name':'thing', 'value': '12'},
+         {'name':'stuff', 'value': '34'},
+         {'name':'errorId', 'value': '56'}
+       ]
     */
-    function getParams(params){
+    function getPathAndFormParams(path, params){
 
-      console.log('getParams');
-      for (param in params){
-        console.log(params[param]);
-      }
+      var pathAndFormParams = {};
+      var newPath = path;
+      var formParams = [];
 
-      for(var i = 0; i < params.length; i++){
 
-        if (params.hasOwnProperty(i)){
-          console.log('is path param: ' + params[i].name);
-          params.splice(i, 1);
+      // Parse the params array (this is the serialized form)
+      for (var i = 0; i < params.length; i++ ) {
+
+        var value = params[i].value;
+
+        /** The Regex here handles syntax like /episode.{format:xml|json}.
+        In this case, the {format:xml|json} part is extracted, then
+        the xml|json part is used as the second regex to verify user's input.
+        If the input is valid, the path /episode.{format:xml|json} would be
+        replaced by /episode.xml for example.
+        */
+        var regex = new RegExp( "{" + params[i].name + "(:[^}]*|)}", "");
+
+
+          // we test if the param is found in the path
+        if (regex.test(newPath)){
+
+          if (value){
+            newPath = newPath.replace(regex, params[i].value);
+          }else{
+            var error = new Error("getPathAndFormParams() Path Param: "+ params[i].name + " should not be empty.");
+            return pathAndFormParams = {'error': error};
+          }
+
+        } else{
+          // if not, it is a form param and we add it to the form params array
+          formParams.push(params[i]);
         }
       }
 
-      console.log("param without path params:")
-      for (param in params){
-        console.log(params[param]);
-      }
+      // Assign the new path and the form params to the object to be returned
+      pathAndFormParams = {
+        'path': newPath,
+        'formParams': formParams
+      };
 
-      return params;
+      return pathAndFormParams;
     }
 
-    /*
-    * Replace the vars in the curly braces by the values sent using the form
-    * Returns the form action url
-    *
-    */
-    function replacePathParams(path, params){
-
-      for(var i = 0; i < params.length; i++){
-        path = path.replace(new RegExp('{' + params[i]['name'] + '}', 'gi'), params[i]['value'])
-        console.log("path:" + path);
-      }
-
-      return path;
-    }
+    // /*
+    // * This removes the path params from the serialized from data
+    // */
+    // function getParams(params){
+    //
+    //   console.log('getParams');
+    //   for (param in params){
+    //     console.log(params[param]);
+    //   }
+    //
+    //   for(var i = 0; i < params.length; i++){
+    //
+    //     if (params.hasOwnProperty(i)){
+    //       console.log('is path param: ' + params[i].name);
+    //       params.splice(i, 1);
+    //     }
+    //   }
+    //
+    //   console.log("param without path params:")
+    //   for (param in params){
+    //     console.log(params[param]);
+    //   }
+    //
+    //   return params;
+    // }
+    //
+    // /*
+    // * Replace the vars in the curly braces by the values sent using the form
+    // * Returns the form action url
+    // *
+    // */
+    // function replacePathParams(path, params){
+    //
+    //   for(var i = 0; i < params.length; i++){
+    //     path = path.replace(new RegExp('{' + params[i]['name'] + '}', 'gi'), params[i]['value'])
+    //     console.log("path:" + path);
+    //   }
+    //
+    //   return path;
+    // }
 
 
     /*
@@ -778,6 +838,6 @@
     </script>
 
 
-  </section>
+
   </body>
 </html>
