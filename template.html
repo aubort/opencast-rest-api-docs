@@ -21,7 +21,7 @@
   }
   .main-content, .row {
     max-width:1200px !important;
-    margin-top:30px;
+    margin-top:60px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -36,14 +36,23 @@
   .col-md-8 {
     width: 70%;
   }
+
   h1 {
+    font-size: 200%;
+    font-weight: 400;
+    color: #444;
+    line-height: 20px;
+    margin-top: 0px;
+  }
+
+  h2 {
     font-size: 150%;
     font-weight: 200;
     color: #444;
     line-height: 24px;
     margin-top: 40px;
   }
-  h2 {
+  h3 {
     font-size: 125%;
     font-weight: 400;
   }
@@ -186,108 +195,51 @@
 
 <body>
 
+
+
 <div class="row">
 
-
+  <!-- Side Navigation -->
   <div class="col-xs-6 col-md-4">
     <nav class="bs-docs-sidebar hidden-print hidden-sm scrollable">
     </nav>
   </div>
 
+
+  <!-- Main content -->
   <div class="col-xs-12 col-md-8">
 
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="form-heading1">
-        <h4 class="panel-title">Try it out
-          <a class="" data-toggle="collapse" href="#form-collapse100" aria-expanded="true" aria-controls="form-collapse100">
-            [show / hide]
-          </a>
-        </h4>
-      </div>
-      <div id="form-collapse100" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="form-heading1" aria-expanded="true">
-        <div class="panel-body">
-            <form id="form_100" class="form-horizontal" action="/archive/episode.{format:xml|json}" method="get" data-id="100" abineguid="3B20DE4E66964EC08256D5751FACB66A">
-              <!-- <input class="form_action_holder" type="hidden" value="/archive/episode.{format:xml|json}" />
-              <input class="form_endpoint_name" type="hidden" value="episodes" />
-              <input class="form_method" type="hidden" value="GET" /> -->
-              <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
-              <!--
-              <div class="spaced">
-                  <strong>Form action:</strong> <tt class="form_path">/archive/episode.{format:xml|json}</tt>
-              </div>
-            -->
+    <h1 id="title"><!-- title is replaced on load by the endpoint desc--></h1>
+    <#if meta.abstract??>
+      <p>${meta.abstract}</p>
+    </#if>
 
-                  <div class="form-group form-group-sm">
-                    <label for="episodes_format" class="col-sm-2 control-label">format</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="format" class="form-control" id="episodes_format" value="">
-                    </div>
-                  </div>
-                  <div class="form-group form-group-sm">
-                    <label for="episodes_id" class="col-sm-2 control-label">id</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="id" class="form-control" id="episodes_id" value="">
-                    </div>
-                  </div>
-                  <div class="form-group form-group-sm">
-                    <label for="episodes_series" class="col-sm-2 control-label">series</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="series" class="form-control" id="episodes_series" value="">
-                    </div>
-                  </div>
-                  <div class="form-group form-group-sm">
-                    <label for="episodes_limit" class="col-sm-2 control-label">limit</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="limit" class="form-control" id="episodes_limit" value="0">
-                    </div>
-                  </div>
-                  <div class="form-group form-group-sm">
-                    <label for="episodes_offset" class="col-sm-2 control-label">offset</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="offset" class="form-control" id="episodes_offset" value="0">
-                    </div>
-                  </div>
-                  <div class="form-group form-group-sm">
-                    <label for="episodes_onlyLatest" class="col-sm-2 control-label">onlyLatest</label>
-                    <div class="col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" name="onlyLatest" id="episodes_onlyLatest" value="true">
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-              <button type="reset" class="btn btn-default">Reset</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <p>
-            </p><pre id="form_response_block_100" class="collapse"></pre>
-          <p></p>
-        </div>
-      </div>
-    </div>
-
-
-
+    <ul>
+    <#list endpointHolders as endpointHolder>
+      <li>${endpointHolder.title} methods
+        <#if (endpointHolder.endpoints?size > 0)>
+          <ul>
+            <#list endpointHolder.endpoints?sort_by("path") as endpoint>
+              <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
+            </#list>
+            </ul>
+        </#if>
+      </li>
+    </#list>
+  </ul>
     <!--Here we create a counter that will allow to provide a unique ID to each
     form -->
     <#assign c=0>
     <#list endpointHolders as endpointHolder>
       <#if (endpointHolder.endpoints?size > 0)>
-        <!--   TOC     -->
-        <ul>
-            <#list endpointHolder.endpoints as endpoint>
-              <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
-            </#list>
-        </ul>
 
         <#list endpointHolder.endpoints as endpoint>
 
         <!-- title and description -->
-            <h1 id="${endpoint.method}-${meta.url}${endpoint.path}">
+            <h2 id="${endpoint.method}-${meta.url}${endpoint.path}">
               <code class="e-type t-${endpoint.method}">${endpoint.method}</code>
               ${meta.url}${endpoint.path}
-            </h1>
+            </h2>
             <hr />
             <p>${endpoint.description!"&nbsp;"}</p>
             <#if (endpoint.pathParams?size > 0)>
@@ -379,7 +331,7 @@
               </table>
             </#if> <!-- endpoint.bodyParam?? -->
 
-            <h2>Response</h2>
+            <h3>Response</h3>
               <!-- Response formats -->
               <#if (endpoint.formats?size > 0)>
               <p>
@@ -429,7 +381,7 @@
 
               <!-- Endpoint notes -->
               <#if (endpoint.notes?size > 0)>
-              <h2>Notes</h2>
+              <h3>Notes</h3>
               <ul>
                 <#list endpoint.notes as note>
                 <li>${note}</li>
@@ -543,6 +495,7 @@
 
     <script>
 
+
     /*
     * When resetting the form, empty and hide the response <pre>
     */
@@ -573,8 +526,7 @@
             var css = "";
             if (element.path == currentPage){
               css = "class=\"active\"";
-              console.log("current Page");
-
+              $('#title').text(element.description);
             }
 
             items.push("<li id='" + element.path + "' "+css+"><a href=" + element.docs + ">" + element.description + "</a></li>");
@@ -584,6 +536,9 @@
             html: items.join( "" )
           }).appendTo( "nav" );
         });
+
+
+        getTOC();
     })();
 
 
@@ -711,47 +666,11 @@
       return pathAndFormParams;
     }
 
-    // /*
-    // * This removes the path params from the serialized from data
-    // */
-    // function getParams(params){
-    //
-    //   console.log('getParams');
-    //   for (param in params){
-    //     console.log(params[param]);
-    //   }
-    //
-    //   for(var i = 0; i < params.length; i++){
-    //
-    //     if (params.hasOwnProperty(i)){
-    //       console.log('is path param: ' + params[i].name);
-    //       params.splice(i, 1);
-    //     }
-    //   }
-    //
-    //   console.log("param without path params:")
-    //   for (param in params){
-    //     console.log(params[param]);
-    //   }
-    //
-    //   return params;
-    // }
-    //
-    // /*
-    // * Replace the vars in the curly braces by the values sent using the form
-    // * Returns the form action url
-    // *
-    // */
-    // function replacePathParams(path, params){
-    //
-    //   for(var i = 0; i < params.length; i++){
-    //     path = path.replace(new RegExp('{' + params[i]['name'] + '}', 'gi'), params[i]['value'])
-    //     console.log("path:" + path);
-    //   }
-    //
-    //   return path;
-    // }
 
+    function getTOC(){
+
+      // console.log(endpoints);
+    }
 
     /*
     * Highlights Json syntax
