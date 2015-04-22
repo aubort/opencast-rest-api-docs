@@ -19,8 +19,9 @@
     width:100%;
     color: #474a54;
   }
-  .main-content, .row {
-    max-width:1200px !important;
+
+  .row {
+    max-width:1200px;
     margin-top:60px;
     margin-left: auto;
     margin-right: auto;
@@ -30,11 +31,13 @@
 
   .col-md-4 {
     width: 30%;
-    float: right ;
+    float: right;
+    border-left: 1px solid #DAD9D9;
   }
 
   .col-md-8 {
     width: 70%;
+
   }
 
   h1 {
@@ -52,6 +55,7 @@
     line-height: 24px;
     margin-top: 40px;
   }
+
   h3 {
     font-size: 125%;
     font-weight: 400;
@@ -62,6 +66,10 @@
     font-weight: 200;
   }
 
+  nav ul{
+    padding: 0px;
+  }
+
   nav .active{
     font-weight: bold;
   }
@@ -69,13 +77,7 @@
   hr {
     margin-bottom: 18px;
     border: 0;
-    border-top: 1px solid #eeeeee;
-  }
-
-  p {
-      /*line-height: 20px;
-      margin: 0;
-      margin-bottom: 15px;*/
+    border-top: 1px solid #DAD9D9;
   }
 
   ul, li {
@@ -84,9 +86,9 @@
       font-weight: 200;
   }
 
-  a{
-      color: #3367d6 !important;
-      text-decoration: none !important;
+  a {
+      color: #3367d6;
+      text-decoration: none;
   }
 
   table {
@@ -104,7 +106,7 @@
 
   table th{
     background-color: #6199DF;
-    color: white !important;
+    color: white;
     border-color: #6199DF;
   }
 
@@ -113,57 +115,56 @@
   }
 
   table code {
-    border: 0px;
+    border: 0;
     background-color: transparent;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
   }
 
   code {
     white-space: pre;
-    padding: 0px 3px 0px 3px;
+    padding: 0 3px 0 3px;
     color: #007000;
     font-size: 90%;
     border: 1px solid;
     border-color: #E8E8E8;
     border-radius: 3px;
     background-color: #F7F4F4;
-    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace
   }
 
   code .status{
     text-transform: uppercase;
   }
 
-  code.code-block, pre{
+  /*code.code-block, pre{
     display: block;
     padding: 8px 5px 5px 10px;
     width: 100%;
     overflow: auto;
     max-height: 300px;
-  }
+  }*/
 
-  .e-type {
-    color: #fff;
-    font-size: 70%;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-    border-color: transparent;
-  }
+  // .e-type {
+  //   color: #fff;
+  //   font-size: 70%;
+  //   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  //   border-color: transparent;
+  // }
 
   .t-GET{
-    background-color: #10a54a;
+    .label-success;
   }
 
   .t-POST{
-    background-color: #0f6ab4;
+    .label-primary;
   }
 
   .t-PUT{
-    background-color: #c5862b;
+    .label-warning;
   }
 
   .t-DELETE{
-    background-color: #a41e22;
+    .label-danger;
   }
 
   .required:after{
@@ -172,24 +173,18 @@
   }
 
   .panel-default>.panel-heading{
-    background-image: none !important;
-    background-color: transparent !important;
-    border: 0px !important;
+    background-image: none;
+    background-color: transparent;
+    border: 0;
   }
 
-  .panel {
-    /*border:0px;*/
-
-  }
-
-
-  /*pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }*/
   .string { color: green; }
   .number { color: darkorange; }
   .boolean { color: blue; }
   .null { color: magenta; }
   .key { color: red; }
-  </style>
+
+</style>
 
 </head>
 
@@ -211,9 +206,11 @@
 
     <h1 id="title"><!-- title is replaced on load by the endpoint desc--></h1>
     <#if meta.abstract??>
-      <p>${meta.abstract}</p>
+      <p> ${meta.abstract} </p>
     </#if>
 
+
+    <!-- Generate the Table of Contents -->
     <ul>
     <#list endpointHolders as endpointHolder>
       <li>${endpointHolder.title} methods
@@ -237,7 +234,7 @@
 
         <!-- title and description -->
             <h2 id="${endpoint.method}-${meta.url}${endpoint.path}">
-              <code class="e-type t-${endpoint.method}">${endpoint.method}</code>
+              <span class="label ${endpoint.method}">${endpoint.method}</span>
               ${meta.url}${endpoint.path}
             </h2>
             <hr />
@@ -455,6 +452,7 @@
                           <button type="reset" class="btn btn-default btn-sm">Reset</button>
                           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                         </form>
+                        <pre id="response_code_block_${c}" class="bg-success hidden">well done!</pre>
                         <p>
                         <pre id="form_response_block_${c}" class="collapse"></pre>
                       </p>
@@ -463,7 +461,8 @@
                 </div>
               </#if> <!-- endpoint.form??  -->
 
-
+              </div>
+              <pre id="response_code_block_1000" class="bg-success hidden"></pre>
               <!--  -->
               <!-- <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="debug-heading${c}">
@@ -488,7 +487,7 @@
 
         </div>
       </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -512,6 +511,11 @@
     });
 
 
+    function notify(type, id, content){
+      $( "#response_code_block_"+id ).attr("class", "bg-" + type);
+      $( "#response_code_block_"+id ).text(content);
+    }
+
     (function() {
       $.getJSON( "info/components.json", {
         format: "json"
@@ -521,7 +525,7 @@
           var currentPage = location.href.substring(location.href.lastIndexOf("=")+1);
 
           for(var i = 0; i < response.rest.length; i++){
-            var element = response.rest[i]
+            var element = response.rest[i];
 
             var css = "";
             if (element.path == currentPage){
@@ -537,34 +541,52 @@
           }).appendTo( "nav" );
         });
 
-
-        getTOC();
     })();
 
 
-    /*
-    * Handles the form submit
+    /**
+    Handles the form Submit
+
+    @param {object} The Form that is being submitted
     */
-    $(function () {
+    (function() {
       $('form').on('submit', function (e) {
 
+        // prevents the default form action (submit and reset)
         e.preventDefault();
 
-          var serializedForm = $(this).serializeArray();
-          var path = $(this).attr('action');
+        // Get the serialized array of the form data
+        var serializedForm = $(this).serializeArray();
 
-          var id = $(this).attr('data-id');
+        // Get the form action (the path of the endpoint in this case)
+        var path = $(this).attr('action');
 
-          var pathAndParams = getPathAndFormParams(path, serializedForm);
+        // Get the id of the form. This is basically the counter 'c' declared
+        // in the freemarker template
+        var id = $(this).attr('data-id');
 
-          if(pathAndParams.hasOwnProperty('error')){
-            console.log(pathAndParams.error);
-          }else{
-            console.log(pathAndParams);
-          }
 
-          $( "#form_response_block_"+id ).attr("class", "expand");
-          $( "#form_response_block_"+id ).text("Loading...");
+        /** Since certain fields of the form can be either form or path params,
+        we need to replace the variables in the path with the path params and
+        to remove these path params from the serialized array, otherwise they will
+        be sent as form params too.
+        */
+        var pathAndParams = getPathAndFormParams(path, serializedForm);
+
+        // Check if the above function returned an error
+        if(pathAndParams.hasOwnProperty('error')){
+          // $( "#form_response_block_"+id ).attr("class", "expand");
+          // $( "#form_response_block_"+id ).text(pathAndParams.error);
+
+          notify("danger", id, pathAndParams.error);
+
+        }else{
+
+          // $( "#form_response_block_"+id ).attr("class", "expand");
+          // $( "#form_response_block_"+id ).text("Loading...");
+
+          notify("info", id, "Loading...");
+
 
           $.ajax({
             type: $(this).attr('method'),
@@ -585,35 +607,39 @@
                 // response as it is.
                 try {
                     responseString = syntaxHighlight(JSON.stringify(JSON.parse(response), null, 2));
-
-                    var output = '<p>' + code + '</p>' + responseString;
-                    $( "#form_response_block_"+id ).html(output);
+                    notify("success", id, code);
+                    // var output = '<p>' + code + '</p>' + responseString;
+                    $( "#form_response_block_"+id ).html(responseString);
 
                 } catch(e) {
-                    responseString = response
-                    var output = responseString;
-
-                    $( "#form_response_block_"+id ).text(output);
+                    responseString = response;
+                    // var output = responseString;
+                    notify("danger", id, responseString);
+                    // $( "#form_response_block_"+id ).text(output);
                 }
 
             },
             error: function(data, textStatus, request){
-              // console.log(data.statusCode());
               $( "#form_response_block_"+id ).text("Error " + data.status + ": " + data.statusText);
-              //console.log("failed: " + request);
             }
           });
 
-      });
-    });
+        }
+
+        });
+    })();
+
 
 
     /**
      Based on the path and the serialized form, we get the new path which has the
      varialbes replaced and get an array with the form params that are going to
      be sent as 'data' in the ajax request.
+
      @param {String} path the path with keys (e.g. /my/{thing}/{stuff})
-     @param {Array} params the params to put into the path. Example:
+     @param {Array} params the params to put into the path.
+
+     Example:
        [
          {'name':'thing', 'value': '12'},
          {'name':'stuff', 'value': '34'},
@@ -641,14 +667,19 @@
         var regex = new RegExp( "{" + params[i].name + "(:[^}]*|)}", "");
 
 
-          // we test if the param is found in the path
+        //  test if the param is found in the path
         if (regex.test(newPath)){
 
+
+          /**
+          test if the value exists. If not, throw an error since a path param
+          cannot be empty
+          */
           if (value){
             newPath = newPath.replace(regex, params[i].value);
           }else{
             var error = new Error("getPathAndFormParams() Path Param: "+ params[i].name + " should not be empty.");
-            return pathAndFormParams = {'error': error};
+            return {'error': error};
           }
 
         } else{
@@ -667,13 +698,12 @@
     }
 
 
-    function getTOC(){
+    /**
+    Highlights Json syntax
 
-      // console.log(endpoints);
-    }
+    @param {string} json A JSON object to be beautified
+    @return An HTML block with the classes to be colored
 
-    /*
-    * Highlights Json syntax
     */
     function syntaxHighlight(json) {
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
