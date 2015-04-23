@@ -55,7 +55,7 @@
     line-height: 24px;
     margin-top: 40px;
   }
-  
+
   h2 .label{
     font-size: 50%;
     display: inline-block;
@@ -204,12 +204,6 @@
   <!-- Main content -->
   <div class="col-xs-12 col-md-8">
 
-  <h2 id="GET-/admin-ng/event/{eventId}/access.json">
-    <span class="label GET">GET</span>
-        /admin-ng/event/{eventId}/access.json
-  </h2>
-
-
 
     <h1 id="title"><!-- title is replaced on load by the endpoint desc--></h1>
     <#if meta.abstract??>
@@ -223,7 +217,7 @@
       <li>${endpointHolder.title} methods
         <#if (endpointHolder.endpoints?size > 0)>
           <ul>
-            <#list endpointHolder.endpoints?sort_by(["method","path"]) as endpoint>
+            <#list endpointHolder.endpoints?sort_by("path") as endpoint>
               <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
             </#list>
             </ul>
@@ -259,7 +253,7 @@
                     <tbody>
                         <#list endpoint.pathParams as param>
                             <tr>
-                                <td align="left"><code>${param.name}</code></td>
+                                <td align="left"><code class="required">${param.name}</code></td>
                                 <!-- <td align="left"></td> -->
                                 <td align="left">
                                   ${param.description!"&nbsp;"}
