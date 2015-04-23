@@ -55,6 +55,12 @@
     line-height: 24px;
     margin-top: 40px;
   }
+  
+  h2 .label{
+    font-size: 50%;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
   h3 {
     font-size: 125%;
@@ -144,27 +150,21 @@
     max-height: 300px;
   }*/
 
-  // .e-type {
-  //   color: #fff;
-  //   font-size: 70%;
-  //   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-  //   border-color: transparent;
-  // }
 
-  .t-GET{
-    .label-success;
+  .GET{
+    background-color: #5cb85c;
   }
 
-  .t-POST{
-    .label-primary;
+  .POST{
+    background-color: #337ab7;
   }
 
-  .t-PUT{
-    .label-warning;
+  .PUT{
+    background-color: #f0ad4e;
   }
 
-  .t-DELETE{
-    .label-danger;
+  .DELETE{
+    background-color: #d9534f;
   }
 
   .required:after{
@@ -204,6 +204,13 @@
   <!-- Main content -->
   <div class="col-xs-12 col-md-8">
 
+  <h2 id="GET-/admin-ng/event/{eventId}/access.json">
+    <span class="label GET">GET</span>
+        /admin-ng/event/{eventId}/access.json
+  </h2>
+
+
+
     <h1 id="title"><!-- title is replaced on load by the endpoint desc--></h1>
     <#if meta.abstract??>
       <p> ${meta.abstract} </p>
@@ -216,7 +223,7 @@
       <li>${endpointHolder.title} methods
         <#if (endpointHolder.endpoints?size > 0)>
           <ul>
-            <#list endpointHolder.endpoints?sort_by("path") as endpoint>
+            <#list endpointHolder.endpoints?sort_by(["method","path"]) as endpoint>
               <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
             </#list>
             </ul>
@@ -460,24 +467,6 @@
                   </div>
                 </div>
               </#if> <!-- endpoint.form??  -->
-
-              </div>
-              <pre id="response_code_block_1000" class="bg-success hidden"></pre>
-              <!--  -->
-              <!-- <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="debug-heading${c}">
-                  <h4 class="panel-title">DEBUG
-                    <a class="collapsed" data-toggle="collapse" href="#debug-collapse${c}" aria-expanded="false" aria-controls="debug-collapse${c}">
-                      [show / hide]
-                    </a>
-                  </h4>
-                </div>
-                <div id="debug-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="debug-heading${c}">
-                  <div class="panel-body">
-                    <code class="code-block">${endpoint}</code>
-                  </div>
-                </div>
-              </div> -->
 
           <#assign c = c + 1> <!-- Here we increment the counter by 1 -->
         </#list>
