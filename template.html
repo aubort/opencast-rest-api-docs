@@ -417,7 +417,7 @@
                           <#list endpoint.form.items as item>
                             <#if item.type == "text">
                               <div class="form-group form-group-sm">
-                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
+                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label <#if item.required>required</#if>">${item.name}</label>
                                 <div class="col-sm-10">
                                   <textarea name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}"
                                   rows="<#if item.attributes.rows??>${item.attributes.rows}<#else><#if item.name == "BODY">8<#else>3</#if></#if>">${item.defaultValue!}</textarea>
@@ -425,7 +425,7 @@
                               </div>
                             <#elseif item.type == "boolean">
                               <div class="form-group form-group-sm">
-                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
+                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label <#if item.required>required</#if>">${item.name}</label>
                                 <div class="col-sm-10">
                                   <div class="checkbox">
                                     <label>
@@ -436,14 +436,14 @@
                               </div>
                             <#elseif item.type == "file">
                               <div class="form-group form-group-sm">
-                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
+                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label <#if item.required>required</#if>">${item.name}</label>
                                 <div class="col-sm-10">
                                   <input type="file" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}">
                                 </div>
                               </div>
                             <#else>
                               <div class="form-group form-group-sm">
-                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label">${item.name}</label>
+                                <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label <#if item.required>required</#if>">${item.name}</label>
                                 <div class="col-sm-10">
                                   <input type="text" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}" value="${item.defaultValue!}">
                                 </div>
