@@ -232,6 +232,7 @@
       <section class="wrapper-main-content">
         <div class="main-content">
 
+
           <h1 id="title"><!-- title is replaced on load by the endpoint desc--></h1>
           <#if meta.abstract??>
             <p> ${meta.abstract} </p>
@@ -402,9 +403,9 @@
                     <#if (endpoint.returnTypeSchema??)>
                       <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="schema-heading${c}">
-                          <h4 class="panel-title">Return Type Schema
+                          <h4 class="panel-title">
                             <a class="collapsed" data-toggle="collapse" href="#schema-collapse${c}" aria-expanded="false" aria-controls="schema-collapse${c}">
-                              [show / hide]
+                              Return Type Schema
                             </a>
                           </h4>
                         </div>
@@ -431,9 +432,9 @@
                     <#if endpoint.form??>
                       <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="form-heading${c}">
-                          <h4 class="panel-title">Try it out
+                          <h4 class="panel-title">
                             <a class="collapsed" data-toggle="collapse" href="#form-collapse${c}" aria-expanded="false" aria-controls="form-collapse${c}">
-                              [show / hide]
+                              Try it out
                             </a>
                           </h4>
                         </div>
