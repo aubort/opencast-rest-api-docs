@@ -208,6 +208,17 @@
 
   <body role="document">
 
+
+
+    <!-- Default value directive  -->
+    <#macro default_value value>
+      <span>Default value: ${value}</span>
+    </#macro>
+
+
+
+
+
     <div class="wrapper">
       <nav class="main-nav">
         <div class="main-nav-header">
@@ -275,7 +286,9 @@
                                       <!-- <td align="left"></td> -->
                                       <td align="left">
                                         ${param.description!"&nbsp;"}
-                                        <#if param.defaultValue??><br />Default value=${param.escapedDefaultValue}</#if>
+                                        <#if param.defaultValue??>
+                                          <@default_value value="${param.escapedDefaultValue}"/>
+                                        </#if>
                                       </td>
                                   </tr>
                               </#list> <!-- endpoint.pathParams as param -->
@@ -296,6 +309,7 @@
                       </thead>
                       <tbody>
                   </#if>
+
                   <!-- Form Params required -->
                   <#if (endpoint.requiredParams?size > 0)>
                     <#list endpoint.requiredParams as param>
@@ -305,11 +319,16 @@
                           <!-- <td align="left"></td> -->
                           <td align="left">
                             ${param.description!"&nbsp;"}
-                            <#if param.defaultValue??><br />Default value=${param.escapedDefaultValue}</#if>
+                            <#if param.defaultValue??>
+                              <@default_value value="${param.escapedDefaultValue}"/>
+                            </#if>
+
                           </td>
                       </tr>
                     </#list> <!-- endpoint.requiredParams as param -->
                   </#if>
+
+                  <!-- Form Params optional -->
                   <#if (endpoint.optionalParams?size > 0)>
                     <#list endpoint.optionalParams as param>
                       <tr>
@@ -317,7 +336,9 @@
                           <td align="left"><code>${param.type!"&nbsp;"}</code></td>
                           <td align="left">
                             ${param.description!"&nbsp;"}
-                            <#if param.defaultValue??><br />Default value=${param.escapedDefaultValue}</#if>
+                            <#if param.defaultValue??>
+                              <@default_value value="${param.escapedDefaultValue}"/>
+                            </#if>
                           </td>
                       </tr>
                     </#list>
