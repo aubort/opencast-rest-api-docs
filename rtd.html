@@ -46,6 +46,9 @@
         color: red;
       }
 
+      /*form {
+        margin-bottom: 10px;
+      }*/
 
       /*********************** Heading styles *********************************/
 
@@ -106,6 +109,16 @@
       table code {
         background: transparent;
       }
+
+      pre {
+        margin-top: 10px;
+      }
+
+      pre code .string { color: green; }
+      pre code .number { color: darkorange; }
+      pre code .boolean { color: blue; }
+      pre code .null { color: magenta; }
+      pre code .key { color: red; }
 
 
       /*********************** Collapsible panels styles **********************/
@@ -509,9 +522,13 @@
                                 <button type="reset" class="btn btn-default btn-sm">Reset</button>
                                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                               </form>
-                              <pre id="response_code_block_${c}" class="bg-success hidden">well done!</pre>
+                              <pre class="bg-success hidden">
+                                <code id="response_code_block_${c}"></code>
+                              </pre>
                               <p>
-                              <pre id="ajax_response_block_${c}" class="collapse"></pre>
+                              <pre class="collapse">
+                                <code id="ajax_response_block_${c}"></code>
+                              </pre>
                             </p>
                           </div>
                         </div>
@@ -561,6 +578,9 @@
       // Hide the output <pre>
       $( "#ajax_response_block_"+id ).attr("class", "collapse");
 
+      $( "#response_code_block_"+id ).attr("class", "collapse");
+      $( "#response_code_block_"+id ).text('');
+
     });
 
 
@@ -570,8 +590,10 @@
     }
 
 
-
     (function() {
+
+
+
       $.getJSON( "info/components.json", {
         format: "json"
       })
@@ -645,11 +667,7 @@
             dataType: 'text',
             data: pathAndParams.formParams,
 
-            complete: function(){
-              $( "#ajax_response_block_"+id ).attr("class", "expand");
-            },
             success: function (response, textStatus, request) {
-
 
                 var code = request.status + ": " + request.statusText;
                 console.log(code);
@@ -663,18 +681,19 @@
                     responseString = syntaxHighlight(JSON.stringify(JSON.parse(response), null, 2));
                     notify("success", id, code);
                     $( "#ajax_response_block_"+id ).html(responseString);
+                    $( "#ajax_response_block_"+id ).attr("class", "expand");
 
                 } catch(e) {
                     responseString = response;
-                    notify("danger", id, responseString);
+                    $( "#ajax_response_block_"+id ).text(responseString);
                 }
 
             },
-            error: function(data, textStatus, request){
-              $( "#ajax_response_block_"+id ).text("Error " + data.status + ": " + data.statusText);
+            error: function(response){
+              notify("danger", id, "Error " + response.status + ": " + response.statusText);
+              $( "#ajax_response_block_"+id ).attr("class", "collapse");
             }
           });
-
         }
 
         });
