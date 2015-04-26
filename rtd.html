@@ -6,10 +6,10 @@
 
     <title>${meta.title} REST Documentation</title>
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"> -->
 
 
     <!-- Optional theme -->
@@ -17,7 +17,7 @@
 
     <!-- <link rel="stylesheet" href="main.css"> -->
 
-    <!-- <link href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet"> -->
+    <link href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet">
 
     <style>
 
@@ -25,6 +25,7 @@
         font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
         font-size: 15px;
         background: left repeat-y #fcfcfc;
+        color: #404040;
       }
 
       a, a:hover {
@@ -38,6 +39,70 @@
         border-top: 1px solid #e1e4e5;
         margin: 24px 0;
         padding: 0;
+      }
+
+
+      /*********************** Heading styles *********************************/
+
+      h1, h2, h3, h4, h5, h6 {
+        letter-spacing: -0.03em;
+        color: #444;
+      }
+
+
+      /*h1 {
+        font-size: 200%;
+        font-weight: 400;
+        color: #444;
+        line-height: 20px;
+        margin-top: 0px;
+      }
+
+      h2 {
+        font-size: 150%;
+        font-weight: 200;
+        color: #444;
+        line-height: 24px;
+        margin-top: 40px;
+      }*/
+
+
+      /*********************** Method labels styles ***************************/
+
+      h2 .label{
+        font-size: 60%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .GET{
+        background-color: #5cb85c;
+      }
+
+      .POST{
+        background-color: #337ab7;
+      }
+
+      .PUT{
+        background-color: #f0ad4e;
+      }
+
+      .DELETE{
+        background-color: #d9534f;
+      }
+
+
+      /*********************** Collapsible panels styles **********************/
+
+      .panel-heading a:after {
+        font-family:'Glyphicons Halflings';
+        content:"\e114";
+        float: right;
+        color: grey;
+      }
+
+      .panel-heading a.collapsed:after {
+          content:"\e080";
       }
 
       /*********************** Styles for page structure **********************/
@@ -176,8 +241,9 @@
             </li>
           </#list>
         </ul>
-          <!--Here we create a counter that will allow to provide a unique ID to each
-          form -->
+
+          <!-- Create a counter that will allow to provide a unique ID to each
+          endpoint -->
           <#assign c=0>
           <#list endpointHolders as endpointHolder>
             <#if (endpointHolder.endpoints?size > 0)>
@@ -185,12 +251,13 @@
               <#list endpointHolder.endpoints as endpoint>
 
               <!-- title and description -->
-                  <h2 id="${endpoint.method}-${meta.url}${endpoint.path}">
-                    <span class="label ${endpoint.method}">${endpoint.method}</span>
-                    ${meta.url}${endpoint.path}
-                  </h2>
+                <h2 id="${endpoint.method}-${meta.url}${endpoint.path}">
+                  <span class="label ${endpoint.method}">${endpoint.method}</span>
+                  ${meta.url}${endpoint.path}
+                </h2>
                   <hr />
                   <p>${endpoint.description!"&nbsp;"}</p>
+
                   <#if (endpoint.pathParams?size > 0)>
                   <!-- Table listing all the Path Params -->
                       <table>
@@ -426,17 +493,19 @@
 
 
     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-    <!--
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    -->
 
+
+<!--
     <script src="resources/js/jquery-1.11.2.min.js"></script>
-
+ -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
+    <!--
     <script src="resources/js/bootstrap.min.js"></script>
-
+ -->
 
     <script>
 
