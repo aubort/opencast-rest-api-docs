@@ -76,7 +76,7 @@
     padding: 0px;
   }
 
-  nav .active{
+  nav .current{
     font-weight: bold;
   }
 
@@ -168,7 +168,7 @@
   }
 
   .required:after{
-    content:'\002A';
+    content:'\00a0\002A';
     color: red;
   }
 
@@ -512,7 +512,7 @@
 
             var css = "";
             if (element.path == currentPage){
-              css = "class=\"active\"";
+              css = "class=\"current\"";
               $('#title').text(element.description);
             }
 
