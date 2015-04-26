@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <link href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet">
+
+    <style>
+
+      body {
+        font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+        font-size: 15px;
+        background: left repeat-y #fcfcfc;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #e1e4e5;
+        margin: 24px 0;
+        padding: 0;
+      }
+
+
+
+      /*********************** Styles for page structure **********************/
+
+      .wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        overflow-y: auto;
+        left: 0;
+        width: 300px;
+        overflow: hidden;
+        min-height: 100%;
+        background: #343131;
+      }
+
+      .main-nav-header{
+        z-index: 200;
+        background-color: #2980B9;
+        text-align: center;
+        padding: 0.809em;
+        display: block;
+        color: #fcfcfc;
+        margin-bottom: 0.809em;
+      }
+
+      .main-nav-header>a{
+        color: #fcfcfc;
+        font-size: 100%;
+        font-weight: bold;
+        display: inline-block;
+        padding: 4px 6px;
+        margin-bottom: 0.809em;
+      }
+
+      .main-nav ul{
+        list-style: none;
+        padding: 0;
+      }
+
+      .main-nav-list a {
+        display: inline-block;
+        line-height: 18px;
+        padding: 0.4045em 1.618em;
+        display: block;
+        position: relative;
+        font-size: 90%;
+        color: #b3b3b3;
+      }
+
+      .main-nav-list a:hover{
+        background-color: #4e4a4a;
+        cursor: pointer;
+      }
+
+      .main-nav-list a.current {
+        color: #404040;
+        padding: 0.4045em 1.618em;
+        font-weight: bold;
+        position: relative;
+        background: #fcfcfc;
+        border: none;
+        border-bottom: solid 1px #c9c9c9;
+        border-top: solid 1px #c9c9c9;
+      }
+
+
+
+
+      @media screen and (min-width: 1200px){
+        .wrapper-main-content {
+          background: rgba(0,0,0,0.05);
+        }
+      }
+
+      .wrapper-main-content {
+        margin-left: 300px;
+        min-height: 100%;
+        display: block;
+      }
+
+      @media screen and (min-width: 1400px){
+        .main-content {
+          background: #fcfcfc;
+        }
+      }
+
+      .main-content {
+        padding: 1.618em 3.236em;
+        height: 100%;
+        max-width: 800px;
+        margin: 0;
+      }
+
+    </style>
+
+  </head>
+
+  <body role="document">
+
+    <div class="wrapper">
+      <nav class="main-nav">
+        <div class="main-nav-header">
+          <a href="." class="home-link"> Opencast - API Documentation</a>
+        </div>
+
+        <div class="main-nav-list" role="navigation">
+          <ul>
+            <li class="toctree-l1 ">
+                <a class="current" href="usage/">Usage</a>
+            </li>
+            <li class="toctree-l1 ">
+                <a class="" href="authentication/">Authentication</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section class="wrapper-main-content">
+        <div class="main-content">
+          <p>
+            REST DOC for bla
+          </p>
+          <hr>
+
+        <p>By setting the optional <code>sign</code> parameter to <code>true</code>, the method will pre-sign distribution urls if signing is turned on in Opencast. Remember to consider the <a href="../security-api#Introduction">maximum validity of signed URLs</a> when caching this response.</p>
+        </div>
+      </section>
+
+    </div>
+  </body>
+
+</html>
