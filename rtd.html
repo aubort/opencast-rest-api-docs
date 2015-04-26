@@ -114,11 +114,11 @@
         margin-top: 10px;
       }
 
-      pre code .string { color: green; }
-      pre code .number { color: darkorange; }
-      pre code .boolean { color: blue; }
-      pre code .null { color: magenta; }
-      pre code .key { color: red; }
+      pre .string { color: green; }
+      pre .number { color: darkorange; }
+      pre .boolean { color: blue; }
+      pre .null { color: magenta; }
+      pre .key { color: red; }
 
 
       /*********************** Collapsible panels styles **********************/
@@ -243,9 +243,6 @@
     <#macro default_value value>
       <span>Default value: ${value}</span>
     </#macro>
-
-
-
 
 
     <div class="wrapper">
@@ -524,10 +521,8 @@
                               </form>
                               <pre id="response_code_block_${c}" class="collapse">
                               </pre>
-                              <p>
                               <pre id="ajax_response_block_${c}" class="collapse">
                               </pre>
-                            </p>
                           </div>
                         </div>
                       </div>
