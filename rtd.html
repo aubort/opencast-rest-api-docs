@@ -28,7 +28,7 @@
         color: #404040;
       }
 
-      a, a:hover {
+      a, a:hover, a:visited, a:active {
         text-decoration: none;
       }
 
@@ -39,6 +39,11 @@
         border-top: 1px solid #e1e4e5;
         margin: 24px 0;
         padding: 0;
+      }
+
+      .required:after{
+        content:'\00a0\002A';
+        color: red;
       }
 
 
