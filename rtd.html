@@ -522,12 +522,10 @@
                                 <button type="reset" class="btn btn-default btn-sm">Reset</button>
                                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                               </form>
-                              <pre class="bg-success hidden">
-                                <code id="response_code_block_${c}"></code>
+                              <pre id="response_code_block_${c}" class="collapse">
                               </pre>
                               <p>
-                              <pre class="collapse">
-                                <code id="ajax_response_block_${c}"></code>
+                              <pre id="ajax_response_block_${c}" class="collapse">
                               </pre>
                             </p>
                           </div>
@@ -585,14 +583,12 @@
 
 
     function notify(type, id, content){
-      $( "#response_code_block_"+id ).attr("class", "bg-" + type);
+      $( "#response_code_block_"+id ).attr("class", "bg-" + type + " expand");
       $( "#response_code_block_"+id ).text(content);
     }
 
 
     (function() {
-
-
 
       $.getJSON( "info/components.json", {
         format: "json"
@@ -669,6 +665,7 @@
 
             success: function (response, textStatus, request) {
 
+
                 var code = request.status + ": " + request.statusText;
                 console.log(code);
 
@@ -678,22 +675,31 @@
                 // If it is Json, then parse and beautify. If not, then use the
                 // response as it is.
                 try {
-                    responseString = syntaxHighlight(JSON.stringify(JSON.parse(response), null, 2));
-                    notify("success", id, code);
-                    $( "#ajax_response_block_"+id ).html(responseString);
-                    $( "#ajax_response_block_"+id ).attr("class", "expand");
+                    responseString = syntaxHighlight(JSON.stringify(
+                      JSON.parse(response), null, 2));
+
+                      $( "#ajax_response_block_"+id ).html(responseString);
 
                 } catch(e) {
                     responseString = response;
+
                     $( "#ajax_response_block_"+id ).text(responseString);
                 }
 
+                notify("success", id, code);
+
+                $( "#ajax_response_block_"+id ).attr("class", "expand");
+
             },
             error: function(response){
+
               notify("danger", id, "Error " + response.status + ": " + response.statusText);
+              // $( "#ajax_response_block_"+id ).text("Error " + data.status + ": " + data.statusText);
               $( "#ajax_response_block_"+id ).attr("class", "collapse");
+
             }
           });
+
         }
 
         });
