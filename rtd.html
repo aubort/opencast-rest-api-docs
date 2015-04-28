@@ -673,27 +673,27 @@
         // Get the id of the form. This is basically the counter 'c' declared
         // in the freemarker template
         var id = $(this).attr('data-id');
-        
+
 
         /** Since certain fields of the form can be either form or path params,
         we need to replace the variables in the path with the path params and
         to remove these path params from the serialized array, otherwise they will
         be sent as form params too.
         */
-        var pathAndParams = getPathAndFormParams(path, serializedForm);
+        var pathAndFormData = getPathAndFormData(path, serializedForm);
 
         // Check if the above function returned an error
-        if(pathAndParams.hasOwnProperty('error')){
+        if(pathAndFormData.hasOwnProperty('error')){
 
-          notify("danger", id, pathAndParams.error);
+          notify("danger", id, pathAndFormData.error);
 
         }else{
 
-          var formData = new FormData();
+          //var formData = new FormData();
+          var formData = pathAndFormData.formData;
 
           // Check if there are files to upload
           if($('input[type=file]').length > 0){
-
 
             // Loop through all the potential file type fields and add them
             // to the FormData object
@@ -705,16 +705,11 @@
             }
           }
 
-          for (var i = 0; i < pathAndParams.formParams.length; i++){
-            formData.append(pathAndParams.formParams[i].name,
-              pathAndParams.formParams[i].value);
-          }
-
           notify("info", id, "Loading...");
 
           $.ajax({
             type: $(this).attr('method'),
-            url: pathAndParams.path,
+            url: pathAndFormData.path,
             dataType:'text',
             processData: false,
             contentType: false,
@@ -763,8 +758,8 @@
 
     /**
      Based on the path and the serialized form, we get the new path which has the
-     varialbes replaced and get an array with the form params that are going to
-     be sent as 'data' in the ajax request.
+     variables replaced and get FormData object containing the form params
+     that are going to be sent as 'data' in the ajax request.
 
      @param {String} path the path with keys (e.g. /my/{thing}/{stuff})
      @param {Array} params the params to put into the path.
@@ -776,11 +771,11 @@
          {'name':'errorId', 'value': '56'}
        ]
     */
-    function getPathAndFormParams(path, params){
+    function getPathAndFormData(path, params){
 
-      var pathAndFormParams = {};
+      var pathAndFormData = {};
       var newPath = path;
-      var formParams = [];
+      var formData = new FormData();
 
 
       // Parse the params array (this is the serialized form)
@@ -814,17 +809,17 @@
 
         } else{
           // if not, it is a form param and we add it to the form params array
-          formParams.push(params[i]);
+          formData.append(params[i].name, params[i].value)
         }
       }
 
       // Assign the new path and the form params to the object to be returned
-      pathAndFormParams = {
+      pathAndFormData = {
         'path': newPath,
-        'formParams': formParams
+        'formData': formData
       };
 
-      return pathAndFormParams;
+      return pathAndFormData;
     }
 
 
