@@ -98,7 +98,7 @@
       }
 
       table th:nth-child(1){
-        min-width:200px;
+        width:200px;
       }
 
 
@@ -148,6 +148,11 @@
       pre .key { color: red; }
 
 
+      pre.default-value {
+        white-space: pre-wrap;
+        max-height: 400px;
+      }
+
       /*********************** Collapsible panels styles **********************/
 
       .panel-heading a:after {
@@ -159,6 +164,10 @@
 
       .panel-heading a.collapsed:after {
           content:"\e080";
+      }
+
+      .panel-default>.panel-heading {
+        background-color: transparent;
       }
 
       /*********************** Styles for page structure **********************/
@@ -254,7 +263,7 @@
       .main-content {
         padding: 1.618em 3.236em;
         height: 100%;
-        max-width: 800px;
+        max-width: 1200px;
         margin: 0;
       }
 
@@ -264,11 +273,9 @@
 
   <body role="document">
 
-
-
     <!-- Default value directive  -->
     <#macro default_value value>
-      <span>Default value: ${value}</span>
+      <pre class="default-value">Default value: ${value}</pre>
     </#macro>
 
 
@@ -376,6 +383,24 @@
                             <#if param.defaultValue??>
                               <@default_value value="${param.escapedDefaultValue}"/>
                             </#if>
+                            <!-- Param XML Schema -->
+
+                            <#if param.xmlSchema??>
+                              <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="xml-schema-heading${c}">
+                                  <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" href="#xml-schema-collapse${c}" aria-expanded="false" aria-controls="xml-schema-collapse${c}">
+                                      XML Schema
+                                    </a>
+                                  </h4>
+                                </div>
+                                <div id="xml-schema-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="xml-schema-heading${c}">
+                                  <div class="panel-body">
+                                    <#if param.escapedXmlSchema??><pre class="default-value">${param.escapedXmlSchema}</pre></#if>
+                                  </div>
+                                </div>
+                              </div>
+                            </#if> <!-- (param.xmlSchema??) -->
 
                           </td>
                       </tr>
@@ -464,7 +489,7 @@
                         </div>
                         <div id="schema-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema-heading${c}">
                           <div class="panel-body">
-                            <code class="code-block">${endpoint.escapedReturnTypeSchema}</code>
+                            <pre class="code-block">${endpoint.escapedReturnTypeSchema}</pre>
                           </div>
                         </div>
                       </div>
