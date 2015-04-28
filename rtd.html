@@ -673,7 +673,7 @@
         // Get the id of the form. This is basically the counter 'c' declared
         // in the freemarker template
         var id = $(this).attr('data-id');
-
+        
 
         /** Since certain fields of the form can be either form or path params,
         we need to replace the variables in the path with the path params and
@@ -689,14 +689,15 @@
 
         }else{
 
-
           var formData = new FormData();
 
+          // Check if there are files to upload
           if($('input[type=file]').length > 0){
 
-            for (var i = 0; i < $('input[type=file]').length; i++){
 
-              // TODO fix this
+            // Loop through all the potential file type fields and add them
+            // to the FormData object
+            for (var i = 0; i < $('input[type=file]').length; i++){
 
               formData.append(
                 $('input[type=file]')[i].id,
@@ -714,6 +715,7 @@
           $.ajax({
             type: $(this).attr('method'),
             url: pathAndParams.path,
+            dataType:'text',
             processData: false,
             contentType: false,
             data: formData,
