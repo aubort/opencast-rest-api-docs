@@ -88,7 +88,7 @@
       }
 
       table th, td {
-        padding: 2px 10px;
+        padding: 6px 10px;
       }
 
       table th{
@@ -272,7 +272,6 @@
   </head>
 
   <body role="document">
-
     <!-- Default value directive  -->
     <#macro default_value value>
       <pre class="default-value">Default value: ${value}</pre>
@@ -291,8 +290,6 @@
       </nav>
       <section class="wrapper-main-content">
         <div class="main-content">
-
-
           <h1 id="title"><!-- title is replaced on load by the endpoint desc--></h1>
           <#if meta.abstract??>
             <p> ${meta.abstract} </p>
@@ -521,7 +518,8 @@
                         <div id="form-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="form-heading${c}">
                           <div class="panel-body">
                               <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
-                                    method="${endpoint.method?lower_case}" data-id="${c}">
+                                    method="${endpoint.method?lower_case}" data-id="${c}"
+                                    <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if>>
                                 <!-- <input class="form_action_holder" type="hidden" value="${meta.url}${endpoint.path}" />
                                 <input class="form_endpoint_name" type="hidden" value="${endpoint.name}" />
                                 <input class="form_method" type="hidden" value="${endpoint.method}" /> -->
@@ -691,21 +689,39 @@
 
         }else{
 
-          notify("info", id, "Loading...");
 
+          var formData = new FormData();
+
+          if($('input[type=file]').length > 0){
+
+            for (var i = 0; i < $('input[type=file]').length; i++){
+
+              // TODO fix this
+
+              formData.append(
+                $('input[type=file]')[i].id,
+                $('input[type=file]')[i].files[0]);
+            }
+          }
+
+          for (var i = 0; i < pathAndParams.formParams.length; i++){
+            formData.append(pathAndParams.formParams[i].name,
+              pathAndParams.formParams[i].value);
+          }
+
+          notify("info", id, "Loading...");
 
           $.ajax({
             type: $(this).attr('method'),
             url: pathAndParams.path,
-            processData: true,
-            dataType: 'text',
-            data: pathAndParams.formParams,
+            processData: false,
+            contentType: false,
+            data: formData,
 
             success: function (response, textStatus, request) {
 
-
                 var code = request.status + ": " + request.statusText;
-                console.log(code);
+                console.log(response);
 
                 var responseString;
 
@@ -737,10 +753,8 @@
 
             }
           });
-
         }
-
-        });
+      });
     })();
 
 
@@ -838,13 +852,7 @@
       });
     }
 
-
     </script>
-
-
-
-
-
   </body>
 
 </html>
