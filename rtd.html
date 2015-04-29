@@ -506,25 +506,9 @@
                     <!-- Testing form -->
                     <#if endpoint.form??>
 
-                    <@collapsiblePanelDirective id="return-type-schema${c}" title="Return Type Schema">
-                      <#if param.escapedXmlSchema??>
-                        <pre>${endpoint.escapedReturnTypeSchema}</pre>
-                      </#if>
-                    </@collapsiblePanelDirective>
+                    <@collapsiblePanelDirective id="form-${c}" title="Try it out!">
 
 
-
-
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="form-heading${c}">
-                          <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" href="#form-collapse${c}" aria-expanded="false" aria-controls="form-collapse${c}">
-                              Try it out
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="form-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="form-heading${c}">
-                          <div class="panel-body">
                               <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
                                 method="${endpoint.method?lower_case}" data-id="${c}"
                                 <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if> >
@@ -561,9 +545,7 @@
                               </pre>
                               <pre id="ajax_response_block_${c}" class="collapse">
                               </pre>
-                          </div>
-                        </div>
-                      </div>
+                          </@collapsiblePanelDirective>
                     </#if> <!-- endpoint.form??  -->
 
                 <#assign c = c + 1> <!-- Here we increment the counter by 1 -->
