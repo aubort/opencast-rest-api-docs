@@ -642,12 +642,21 @@
               $('#title').text(element.description);
             }
 
-            items.push("<li id='" + element.path + "' "+css+"><a href=" + element.docs + ">" + element.description + "</a></li>");
+            items.push("<li><a href=" + element.docs + " id='" + element.path + "' "+css+">" + element.description + "</a></li>");
           }
 
           $( "<ul/>", {"class": "",
             html: items.join( "" )
           }).appendTo( ".main-nav-list" );
+
+
+
+          $('.main-nav').animate({
+              scrollTop: $('.current').offset().top - 100
+          }, 0);
+
+
+
         });
 
     })();
@@ -689,7 +698,6 @@
 
         }else{
 
-          //var formData = new FormData();
           var formData = pathAndFormData.formData;
 
           // Check if there are files to upload
