@@ -487,20 +487,18 @@
                     <!-- Return Type Schema -->
                     <#if (endpoint.returnTypeSchema??)>
                       <@collapsiblePanelDirective id="return-type-schema${c}" title="Return Type Schema">
-                        <#if param.escapedXmlSchema??>
-                          <pre>${endpoint.escapedReturnTypeSchema}</pre>
-                        </#if>
+                        <pre>${endpoint.escapedReturnTypeSchema}</pre>
                       </@collapsiblePanelDirective>
                     </#if> <!-- (endpoint.returnTypeSchema??) -->
 
                     <!-- Endpoint notes -->
                     <#if (endpoint.notes?size > 0)>
-                    <h3>Notes</h3>
-                    <ul>
-                      <#list endpoint.notes as note>
-                      <li>${note}</li>
-                      </#list>
-                    </ul>
+                      <h3>Notes</h3>
+                        <ul>
+                        <#list endpoint.notes as note>
+                          <li>${note}</li>
+                        </#list>
+                      </ul>
                     </#if> <!-- endpoint.notes?size > 0 -->
 
                     <!-- Testing form -->
