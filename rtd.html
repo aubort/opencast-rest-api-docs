@@ -316,70 +316,71 @@
           </#if>
           <hr>
 
-          <!-- Generate the Table of Contents -->
+          <!-- Table of Contents -->
           <ul>
-          <#list endpointHolders as endpointHolder>
+            <#list endpointHolders as endpointHolder>
 
-            <#if '${endpointHolder.title}'='Read'>
-              <#assign sort="path">
-            <#else>
-              <#assign sort="method">
-            </#if>
-
-            <li>${endpointHolder.title} methods
-              <#if (endpointHolder.endpoints?size > 0)>
-                <ul>
-                  <#list endpointHolder.endpoints?sort_by("${sort}") as endpoint>
-                    <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
-                  </#list>
-                  </ul>
+              <!-- Based on the section (read / write) the endpoints are sorted
+              in a way that the GET methods are in  alphabetical order path and
+              the PUT, POST and DELETE are grouped by method. Looks much nicer!-->
+              <#if '${endpointHolder.title}'='Read'>
+                <#assign sort="path">
+              <#else>
+                <#assign sort="method">
               </#if>
-            </li>
-          </#list>
-        </ul>
+
+              <li>${endpointHolder.title} methods
+                <#if (endpointHolder.endpoints?size > 0)>
+                  <ul>
+                    <#list endpointHolder.endpoints?sort_by("${sort}") as endpoint>
+                      <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
+                    </#list>
+                  </ul>
+                </#if>
+              </li>
+            </#list>
+          </ul> <!-- // Table of Contents -->
 
           <!-- Create a counter that will allow to provide a unique ID to each
           endpoint -->
           <#assign c=0>
           <#list endpointHolders as endpointHolder>
             <#if (endpointHolder.endpoints?size > 0)>
-
               <#list endpointHolder.endpoints as endpoint>
 
-              <!-- title and description -->
+                <!-- title and description -->
                 <h2 id="${endpoint.method}-${meta.url}${endpoint.path}">
                   <span class="label ${endpoint.method}">${endpoint.method}</span>
                   ${meta.url}${endpoint.path}
                 </h2>
-                  <hr />
-                  <p>${endpoint.description!"&nbsp;"}</p>
+                <hr/>
+                <p>${endpoint.description!"&nbsp;"}</p>
 
-                  <#if (endpoint.pathParams?size > 0)>
-                  <!-- Table listing all the Path Params -->
-                      <table>
-                          <thead>
-                              <tr>
-                                  <th>Path Parameter(s)</th>
-                                  <!-- <th>Type</th> -->
-                                  <th>Description</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <#list endpoint.pathParams as param>
-                                  <tr>
-                                      <td align="left"><code class="required">${param.name}</code></td>
-                                      <!-- <td align="left"></td> -->
-                                      <td align="left">
-                                        ${param.description!"&nbsp;"}
-                                        <#if param.defaultValue??>
-                                          <@defaultValueDirective value="${param.escapedDefaultValue}"/>
-                                        </#if>
-                                      </td>
-                                  </tr>
-                              </#list> <!-- endpoint.pathParams as param -->
-                          </tbody>
-                      </table>
-                  </#if> <!-- endpoint.pathParams -->
+
+                <!-- Path Parameters table -->
+                <#if (endpoint.pathParams?size > 0)>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Path Parameter(s)</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <#list endpoint.pathParams as param>
+                        <tr>
+                          <td align="left"><code class="required">${param.name}</code></td>
+                          <td align="left">
+                            ${param.description!""}
+                            <#if param.defaultValue??>
+                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                            </#if>
+                          </td>
+                        </tr>
+                      </#list> <!-- // endpoint.pathParams as param -->
+                    </tbody>
+                  </table>
+                  </#if> <!-- // endpoint.pathParams -->
 
                   <!-- Form Params table header -->
 
