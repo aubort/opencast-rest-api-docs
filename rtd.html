@@ -319,10 +319,17 @@
           <!-- Generate the Table of Contents -->
           <ul>
           <#list endpointHolders as endpointHolder>
+
+            <#if '${endpointHolder.title}'='Read'>
+              <#assign sort="path">
+            <#else>
+              <#assign sort="method">
+            </#if>
+
             <li>${endpointHolder.title} methods
               <#if (endpointHolder.endpoints?size > 0)>
                 <ul>
-                  <#list endpointHolder.endpoints?sort_by("path") as endpoint>
+                  <#list endpointHolder.endpoints?sort_by("${sort}") as endpoint>
                     <li><a href="#${endpoint.method}-${meta.url}${endpoint.path}">${endpoint.method} ${meta.url}${endpoint.path}</a></li>
                   </#list>
                   </ul>
