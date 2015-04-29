@@ -57,7 +57,6 @@
         color: #444;
       }
 
-
       h1 {
         font-size: 200%;
         font-weight: 400;
@@ -272,10 +271,34 @@
   </head>
 
   <body role="document">
+
+    <!--********************* Custom Directives *****************************-->
+
     <!-- Default value directive  -->
-    <#macro default_value value>
+    <#macro defaultValueDirective value>
       <pre class="default-value">Default value: ${value}</pre>
     </#macro>
+
+    <!-- Collapsible panel directive  -->
+    <#macro collapsiblePanelDirective title id>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="${id}">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" href="#${id}" aria-expanded="false" aria-controls="${id}">
+              ${title}
+            </a>
+          </h4>
+        </div>
+        <div id="${id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="${id}">
+          <div class="panel-body">
+            <#nested>
+          </div>
+        </div>
+      </div>
+    </#macro>
+
+    <!--********************* / Custom Directives ***************************-->
+
 
 
     <div class="wrapper">
@@ -283,10 +306,7 @@
         <div class="main-nav-header">
           <a href="." class="home-link"> Opencast - API Documentation</a>
         </div>
-
-        <div class="main-nav-list" role="navigation">
-
-        </div>
+        <div class="main-nav-list" role="navigation"></div>
       </nav>
       <section class="wrapper-main-content">
         <div class="main-content">
@@ -345,7 +365,7 @@
                                       <td align="left">
                                         ${param.description!"&nbsp;"}
                                         <#if param.defaultValue??>
-                                          <@default_value value="${param.escapedDefaultValue}"/>
+                                          <@defaultValueDirective value="${param.escapedDefaultValue}"/>
                                         </#if>
                                       </td>
                                   </tr>
@@ -378,32 +398,20 @@
                           <td align="left">
                             ${param.description!"&nbsp;"}
                             <#if param.defaultValue??>
-                              <@default_value value="${param.escapedDefaultValue}"/>
+                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
                             </#if>
+
                             <!-- Param XML Schema -->
-
-                            <!-- TODO When there are 2 schema for the same query, it doesn't work -->
-
                             <#if param.xmlSchema??>
-                              <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="xml-schema-heading${c}">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" href="#xml-schema-collapse${c}" aria-expanded="false" aria-controls="xml-schema-collapse${c}">
-                                      XML Schema
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="xml-schema-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="xml-schema-heading${c}">
-                                  <div class="panel-body">
-                                    <#if param.escapedXmlSchema??><pre class="default-value">${param.escapedXmlSchema}</pre></#if>
-                                  </div>
-                                </div>
-                              </div>
-                            </#if> <!-- (param.xmlSchema??) -->
-
+                              <@collapsiblePanelDirective id="${param.name}-xml-schema${c}" title="XML Schema">
+                                <#if param.escapedXmlSchema??>
+                                  <pre class="default-value">${param.escapedXmlSchema}</pre>
+                                </#if>
+                              </@collapsiblePanelDirective>
+                            </#if> <!-- / param.xmlSchema?? -->
                           </td>
                       </tr>
-                    </#list> <!-- endpoint.requiredParams as param -->
+                    </#list> <!-- / endpoint.requiredParams as param -->
                   </#if>
 
                   <!-- Form Params optional -->
@@ -415,7 +423,7 @@
                           <td align="left">
                             ${param.description!"&nbsp;"}
                             <#if param.defaultValue??>
-                              <@default_value value="${param.escapedDefaultValue}"/>
+                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
                             </#if>
                           </td>
                       </tr>
@@ -438,7 +446,7 @@
                             <!-- <td align="left"><code></code></td> -->
                             <!-- <td align="left"></td> -->
                             <td align="left">
-                              ${endpoint.bodyParam.description!"&nbsp;"}
+                              ${endpoint.bodyParam.description!" "}
                               <#if endpoint.bodyParam.defaultValue??><br />Default value=${param.escapedDefaultValue}</#if>
                             </td>
                         </tr>
@@ -478,20 +486,11 @@
 
                     <!-- Return Type Schema -->
                     <#if (endpoint.returnTypeSchema??)>
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="schema-heading${c}">
-                          <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" href="#schema-collapse${c}" aria-expanded="false" aria-controls="schema-collapse${c}">
-                              Return Type Schema
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="schema-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema-heading${c}">
-                          <div class="panel-body">
-                            <pre class="code-block">${endpoint.escapedReturnTypeSchema}</pre>
-                          </div>
-                        </div>
-                      </div>
+                      <@collapsiblePanelDirective id="return-type-schema${c}" title="Return Type Schema">
+                        <#if param.escapedXmlSchema??>
+                          <pre>${endpoint.escapedReturnTypeSchema}</pre>
+                        </#if>
+                      </@collapsiblePanelDirective>
                     </#if> <!-- (endpoint.returnTypeSchema??) -->
 
                     <!-- Endpoint notes -->
@@ -503,7 +502,6 @@
                       </#list>
                     </ul>
                     </#if> <!-- endpoint.notes?size > 0 -->
-
 
                     <!-- Testing form -->
                     <#if endpoint.form??>
@@ -518,19 +516,8 @@
                         <div id="form-collapse${c}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="form-heading${c}">
                           <div class="panel-body">
                               <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
-                                    method="${endpoint.method?lower_case}" data-id="${c}"
-                                    <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if>>
-                                <!-- <input class="form_action_holder" type="hidden" value="${meta.url}${endpoint.path}" />
-                                <input class="form_endpoint_name" type="hidden" value="${endpoint.name}" />
-                                <input class="form_method" type="hidden" value="${endpoint.method}" /> -->
-                                <#if (endpoint.form.ajaxSubmit)>
-                                <!-- <input class="form_ajax_submit" type="hidden" value="1" /> -->
-                                </#if>
-                                <!--
-                                <div class="spaced">
-                                    <strong>Form action:</strong> <tt class="form_path">${meta.url}${endpoint.path}</tt>
-                                </div>
-                              -->
+                                method="${endpoint.method?lower_case}" data-id="${c}"
+                                <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if> >
 
                                 <#list endpoint.form.items as item>
 
