@@ -383,41 +383,39 @@
                   </#if> <!-- // endpoint.pathParams -->
 
                   <!-- Form Params table header -->
-
                   <#if (endpoint.requiredParams?size > 0) || (endpoint.optionalParams?size > 0)>
                     <table>
                       <thead>
-                          <tr>
-                              <th>Form Parameter(s)</th>
-                              <th>Type</th>
-                              <th>Description</th>
-                          </tr>
+                        <tr>
+                          <th>Form Parameter(s)</th>
+                          <th>Type</th>
+                          <th>Description</th>
+                        </tr>
                       </thead>
-                      <tbody>
+                    <tbody>
                   </#if>
 
                   <!-- Form Params required -->
                   <#if (endpoint.requiredParams?size > 0)>
                     <#list endpoint.requiredParams as param>
                       <tr>
-                          <td align="left"><code class="required">${param.name}</code></td>
-                          <td align="left"><code>${param.type!"&nbsp;"}</code></td>
-                          <!-- <td align="left"></td> -->
-                          <td align="left">
-                            ${param.description!"&nbsp;"}
-                            <#if param.defaultValue??>
-                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
-                            </#if>
+                        <td align="left"><code class="required">${param.name}</code></td>
+                        <td align="left"><code>${param.type!""}</code></td>
+                        <td align="left">
+                          ${param.description!"&nbsp;"}
+                          <#if param.defaultValue??>
+                            <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                          </#if>
 
-                            <!-- Param XML Schema -->
-                            <#if param.xmlSchema??>
-                              <@collapsiblePanelDirective id="${param.name}-xml-schema${c}" title="XML Schema">
-                                <#if param.escapedXmlSchema??>
-                                  <pre class="default-value">${param.escapedXmlSchema}</pre>
-                                </#if>
-                              </@collapsiblePanelDirective>
-                            </#if> <!-- / param.xmlSchema?? -->
-                          </td>
+                          <!-- Param XML Schema -->
+                          <#if param.xmlSchema??>
+                            <@collapsiblePanelDirective id="${param.name}-xml-schema${c}" title="XML Schema">
+                              <#if param.escapedXmlSchema??>
+                                <pre class="default-value">${param.escapedXmlSchema}</pre>
+                              </#if>
+                            </@collapsiblePanelDirective>
+                          </#if> <!-- / param.xmlSchema?? -->
+                        </td>
                       </tr>
                     </#list> <!-- / endpoint.requiredParams as param -->
                   </#if>
@@ -426,41 +424,39 @@
                   <#if (endpoint.optionalParams?size > 0)>
                     <#list endpoint.optionalParams as param>
                       <tr>
-                          <td align="left"><code>${param.name}</code></td>
-                          <td align="left"><code>${param.type!"&nbsp;"}</code></td>
-                          <td align="left">
-                            ${param.description!"&nbsp;"}
-                            <#if param.defaultValue??>
-                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
-                            </#if>
-                          </td>
+                        <td align="left"><code>${param.name}</code></td>
+                        <td align="left"><code>${param.type!"&nbsp;"}</code></td>
+                        <td align="left">
+                          ${param.description!""}
+                          <#if param.defaultValue??>
+                            <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                          </#if>
+                        </td>
                       </tr>
                     </#list>
                   </#if> <!-- (endpoint.optionalParams?size > 0) -->
-                        </tbody>
-                    </table>
+                </tbody>
+              </table>
 
                   <#if endpoint.bodyParam??>
                     <table>
                       <thead>
-                          <tr>
-                              <!-- <th>Parameter</th> -->
-                              <!-- <th>Type</th> -->
-                              <th>Body Parameter(s) - Upload</th>
-                          </tr>
+                        <tr>
+                          <th>Body Parameter(s) - Upload</th>
+                        </tr>
                       </thead>
                       <tbody>
                         <tr>
-                            <!-- <td align="left"><code></code></td> -->
-                            <!-- <td align="left"></td> -->
-                            <td align="left">
-                              ${endpoint.bodyParam.description!" "}
-                              <#if endpoint.bodyParam.defaultValue??><br />Default value=${param.escapedDefaultValue}</#if>
-                            </td>
+                          <td align="left">
+                            ${endpoint.bodyParam.description!" "}
+                            <#if endpoint.bodyParam.defaultValue??>
+                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                            </#if>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
-                  </#if> <!-- endpoint.bodyParam?? -->
+                  </#if> <!-- // endpoint.bodyParam?? -->
 
                   <h3>Response</h3>
                     <!-- Response formats -->
