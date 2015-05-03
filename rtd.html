@@ -312,12 +312,14 @@
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading-${id}">
           <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" href="#collapse-${id}" aria-expanded="false" aria-controls="collapse-${id}">
+            <a class="collapsed" data-toggle="collapse" href="#collapse-${id}"
+              aria-expanded="false" aria-controls="collapse-${id}">
               ${title}
             </a>
           </h4>
         </div>
-        <div id="collapse-${id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-${id}">
+        <div id="collapse-${id}" class="panel-collapse collapse" role="tabpanel"
+          aria-labelledby="heading-${id}">
           <div class="panel-body">
             <#nested>
           </div>
@@ -330,21 +332,21 @@
     <#macro codeBlockDirective value>
       <div class="well well-sm">
         <#if value?length &gt; 200>
-          <a data-toggle="modal" data-target="#customModal" class="open-modal-btn"><i class="fa fa-expand"></i></a>
+          <a data-toggle="modal" data-target="#customModal"
+            class="open-modal-btn"><i class="fa fa-expand"></i></a>
         </#if>
         <pre class="code-sample">${value}</pre>
       </div>
     </#macro>
 
 
-    <!--********************* / Custom Directives ***************************-->
-
     <!-- Modal -->
     <div class="modal" id="customModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-hidden="true">&times;</button>
             <h4 class="modal-title">Full code</h4>
           </div>
           <div class="modal-body"></div>
@@ -354,6 +356,9 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+
+    <!--********************* / Custom Directives ***************************-->
 
 
     <div class="wrapper">
@@ -560,53 +565,47 @@
 
                     <!-- Testing form -->
                     <#if endpoint.form??>
+                      <@collapsiblePanelDirective id="form-${c}" title="Try it out!">
+                        <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
+                          method="${endpoint.method?lower_case}" data-id="${c}"
+                          <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if> >
 
-                    <@collapsiblePanelDirective id="form-${c}" title="Try it out!">
-                              <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
-                                method="${endpoint.method?lower_case}" data-id="${c}"
-                                <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if> >
-
-                                <#list endpoint.form.items as item>
-
-                                  <div class="form-group form-group-sm">
-                                    <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label <#if item.required>required</#if>">${item.name}</label>
-                                    <div class="col-sm-10">
-
-                                      <#if item.type == "text">
-                                        <textarea name="${item.name}"
-                                          class="form-control"
-                                          id="${endpoint.name}_${item.name}"
-                                          rows="<#if item.attributes.rows??>${item.attributes.rows}<#else><#if item.name == "BODY">8<#else>3</#if></#if>">${item.defaultValue!}</textarea>
-                                      <#elseif item.type == "boolean">
-                                        <div class="checkbox">
-                                          <label>
-                                            <input type="checkbox" name="${item.name}" id="${endpoint.name}_${item.name}" value="true">
-                                          </label>
-                                        </div>
-                                      <#elseif item.type == "file">
-                                        <input type="file" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}">
-                                      <#else>
-                                        <input type="text" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}" value="${item.defaultValue!}">
-                                      </#if>
-                                    </div>
+                          <#list endpoint.form.items as item>
+                            <div class="form-group form-group-sm">
+                              <label for="${endpoint.name}_${item.name}" class="col-sm-2 control-label <#if item.required>required</#if>">${item.name}</label>
+                              <div class="col-sm-10">
+                                <#if item.type == "text">
+                                  <textarea name="${item.name}"
+                                    class="form-control"
+                                    id="${endpoint.name}_${item.name}"
+                                    rows="<#if item.attributes.rows??>${item.attributes.rows}<#else><#if item.name == "BODY">8<#else>3</#if></#if>">${item.defaultValue!}</textarea>
+                                <#elseif item.type == "boolean">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="${item.name}" id="${endpoint.name}_${item.name}" value="true">
+                                    </label>
                                   </div>
-                                </#list>
-                                <button type="reset" class="btn btn-default btn-sm">Reset</button>
-                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                              </form>
-                              <pre id="response_code_block_${c}" class="collapse">
-                              </pre>
-                              <pre id="ajax_response_block_${c}" class="collapse">
-                              </pre>
-                          </@collapsiblePanelDirective>
+                                <#elseif item.type == "file">
+                                  <input type="file" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}">
+                                <#else>
+                                  <input type="text" name="${item.name}" class="form-control" id="${endpoint.name}_${item.name}" value="${item.defaultValue!}">
+                                </#if>
+                              </div>
+                            </div>
+                          </#list>
+                          <button type="reset" class="btn btn-default btn-sm">Reset</button>
+                          <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                        </form>
+                        <pre id="response_code_block_${c}" class="collapse">
+                        </pre>
+                        <pre id="ajax_response_block_${c}" class="collapse">
+                        </pre>
+                      </@collapsiblePanelDirective>
                     </#if> <!-- endpoint.form??  -->
-
-                <#assign c = c + 1> <!-- Here we increment the counter by 1 -->
+                <#assign c = c + 1> <!-- Increment the counter by 1 -->
               </#list>
             </#if>
           </#list> <!-- endpointHolders as endpointHolder -->
-
-
         </div>
       </section>
 
