@@ -136,9 +136,9 @@
         background: transparent;
       }
 
-      pre {
+      /*pre {
         margin-top: 10px;
-      }
+      }*/
 
       pre .string { color: green; }
       pre .number { color: darkorange; }
@@ -147,12 +147,39 @@
       pre .key { color: red; }
 
 
-      pre.default-value {
+      /*pre.default-value {
         white-space: pre-wrap;
         max-height: 400px;
+      }*/
+
+      .well a.open-modal-btn{
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        z-index: 10;
+        display: block;
+        padding: 5px 8px;
+        font-size: 80%;
+        color: #767676;
+        cursor: pointer;
+        background-color: #fff;
+        border: 1px solid #e1e1e8;
+        border-radius: 0 4px 0 4px;
       }
 
-      /*********************** Collapsible panels styles **********************/
+      .well{
+        position: relative;
+      }
+
+      .well pre{
+        white-space: pre-wrap;
+        max-height: 300px;
+        border: none;
+        margin:0;
+        padding:0;
+      }
+
+      /*********************** Collapsible panels and modal styles ************/
 
       .panel-heading a:after {
         font-family:'Glyphicons Halflings';
@@ -168,6 +195,12 @@
       .panel-default>.panel-heading {
         background-color: transparent;
       }
+
+      .modal-lg {
+        max-width: 1200px;
+        width:80%;
+      }
+
 
       /*********************** Styles for page structure **********************/
 
@@ -297,8 +330,30 @@
       </div>
     </#macro>
 
+    <#macro codeBlockDirective value>
+      <div class="well well-sm">
+        <a data-toggle="modal" data-target="#customModal" class="open-modal-btn"><i class="fa fa-expand"></i></a>
+        <pre class="code-sample">${value}</pre>
+      </div>
+    </#macro>
+
     <!--********************* / Custom Directives ***************************-->
 
+    <!-- Modal -->
+    <div class="modal" id="customModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Full code</h4>
+          </div>
+          <div class="modal-body"></div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 
     <div class="wrapper">
@@ -373,7 +428,7 @@
                           <td align="left">
                             ${param.description!""}
                             <#if param.defaultValue??>
-                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                              <@codeBlockDirective value="${param.escapedDefaultValue}"/>
                             </#if>
                           </td>
                         </tr>
@@ -404,7 +459,7 @@
                         <td align="left">
                           ${param.description!"&nbsp;"}
                           <#if param.defaultValue??>
-                            <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                            <@codeBlockDirective value="${param.escapedDefaultValue}"/>
                           </#if>
 
                           <!-- Param XML Schema -->
@@ -429,7 +484,7 @@
                         <td align="left">
                           ${param.description!""}
                           <#if param.defaultValue??>
-                            <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                            <@codeBlockDirective value="${param.escapedDefaultValue}"/>
                           </#if>
                         </td>
                       </tr>
@@ -450,7 +505,7 @@
                           <td align="left">
                             ${endpoint.bodyParam.description!" "}
                             <#if endpoint.bodyParam.defaultValue??>
-                              <@defaultValueDirective value="${param.escapedDefaultValue}"/>
+                              <@codeBlockDirective value="${param.escapedDefaultValue}"/>
                             </#if>
                           </td>
                         </tr>
@@ -566,18 +621,32 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-
-<!--
-    <script src="resources/js/jquery-1.11.2.min.js"></script>
- -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-    <!--
-    <script src="resources/js/bootstrap.min.js"></script>
- -->
-
     <script>
+
+
+
+    /**
+    * This function is called when a modal opens. It allows to get the element
+    * that triggered the opening of the modal, get the next element (which will
+    * become content of the modal) and assign its content to the modal body
+    *
+    */
+    $('#customModal').on('show.bs.modal', function (event) {
+
+      // Get which element is the sender of the event (modal open)
+      var sender = $(event.relatedTarget);
+
+      // Search for the next element and make a clone.In this case the content
+      // that should be displayed in the modal.
+      var codeSampleElement = sender.next().clone();
+
+      // Seach the modal-body element and assign the content of the above clone
+      $(this).find('.modal-body').html(codeSampleElement);
+
+    });
 
 
     /*
