@@ -307,11 +307,6 @@
 
     <!--********************* Custom Directives *****************************-->
 
-    <!-- Default value directive  -->
-    <#macro defaultValueDirective value>
-      <pre class="default-value">Default value: ${value}</pre>
-    </#macro>
-
     <!-- Collapsible panel directive  -->
     <#macro collapsiblePanelDirective title id>
       <div class="panel panel-default">
@@ -330,12 +325,17 @@
       </div>
     </#macro>
 
+
+    <!-- Code-block directive -->
     <#macro codeBlockDirective value>
       <div class="well well-sm">
-        <a data-toggle="modal" data-target="#customModal" class="open-modal-btn"><i class="fa fa-expand"></i></a>
+        <#if value?length &gt; 200>
+          <a data-toggle="modal" data-target="#customModal" class="open-modal-btn"><i class="fa fa-expand"></i></a>
+        </#if>
         <pre class="code-sample">${value}</pre>
       </div>
     </#macro>
+
 
     <!--********************* / Custom Directives ***************************-->
 
@@ -394,7 +394,7 @@
                 </#if>
               </li>
             </#list>
-          </ul> <!-- // Table of Contents -->
+          </ul> <!-- / Table of Contents -->
 
           <!-- Create a counter that will allow to provide a unique ID to each
           endpoint -->
@@ -409,8 +409,7 @@
                   ${meta.url}${endpoint.path}
                 </h2>
                 <hr/>
-                <p>${endpoint.description!"&nbsp;"}</p>
-
+                <p>${endpoint.description!""}</p>
 
                 <!-- Path Parameters table -->
                 <#if (endpoint.pathParams?size > 0)>
@@ -428,7 +427,7 @@
                           <td align="left">
                             ${param.description!""}
                             <#if param.defaultValue??>
-                              <@codeBlockDirective value="${param.escapedDefaultValue}"/>
+                              <@codeBlockDirective value="Default value: ${param.escapedDefaultValue}"/>
                             </#if>
                           </td>
                         </tr>
@@ -459,14 +458,14 @@
                         <td align="left">
                           ${param.description!"&nbsp;"}
                           <#if param.defaultValue??>
-                            <@codeBlockDirective value="${param.escapedDefaultValue}"/>
+                            <@codeBlockDirective value="Default value: ${param.escapedDefaultValue}"/>
                           </#if>
 
                           <!-- Param XML Schema -->
                           <#if param.xmlSchema??>
                             <@collapsiblePanelDirective id="${param.name}-xml-schema${c}" title="XML Schema">
                               <#if param.escapedXmlSchema??>
-                                <pre class="default-value">${param.escapedXmlSchema}</pre>
+                                <@codeBlockDirective value="${param.escapedXmlSchema}"/>
                               </#if>
                             </@collapsiblePanelDirective>
                           </#if> <!-- / param.xmlSchema?? -->
@@ -484,7 +483,7 @@
                         <td align="left">
                           ${param.description!""}
                           <#if param.defaultValue??>
-                            <@codeBlockDirective value="${param.escapedDefaultValue}"/>
+                            <@codeBlockDirective value="Default value: ${param.escapedDefaultValue}"/>
                           </#if>
                         </td>
                       </tr>
@@ -492,7 +491,6 @@
                   </#if> <!-- (endpoint.optionalParams?size > 0) -->
                 </tbody>
               </table>
-
                   <#if endpoint.bodyParam??>
                     <table>
                       <thead>
@@ -505,7 +503,7 @@
                           <td align="left">
                             ${endpoint.bodyParam.description!" "}
                             <#if endpoint.bodyParam.defaultValue??>
-                              <@codeBlockDirective value="${param.escapedDefaultValue}"/>
+                              <@codeBlockDirective value="Default value: ${param.escapedDefaultValue}"/>
                             </#if>
                           </td>
                         </tr>
@@ -564,8 +562,6 @@
                     <#if endpoint.form??>
 
                     <@collapsiblePanelDirective id="form-${c}" title="Try it out!">
-
-
                               <form id="form_${c}" class="form-horizontal" action="${meta.url}${endpoint.path}"
                                 method="${endpoint.method?lower_case}" data-id="${c}"
                                 <#if endpoint.form.fileUpload> enctype="multipart/form-data"</#if> >
@@ -811,7 +807,6 @@
         }
       });
     })();
-
 
 
     /**
