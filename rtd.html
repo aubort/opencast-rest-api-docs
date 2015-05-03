@@ -46,10 +46,6 @@
         color: red;
       }
 
-      /*form {
-        margin-bottom: 10px;
-      }*/
-
       /*********************** Heading styles *********************************/
 
       h1, h2, h3, h4, h5, h6 {
@@ -136,9 +132,9 @@
         background: transparent;
       }
 
-      /*pre {
+      pre {
         margin-top: 10px;
-      }*/
+      }
 
       pre .string { color: green; }
       pre .number { color: darkorange; }
@@ -405,8 +401,16 @@
           endpoint -->
           <#assign c=0>
           <#list endpointHolders as endpointHolder>
+
+            <!-- Same as in the TOC -->
+            <#if '${endpointHolder.title}'='Read'>
+              <#assign sort="path">
+            <#else>
+              <#assign sort="method">
+            </#if>
+
             <#if (endpointHolder.endpoints?size > 0)>
-              <#list endpointHolder.endpoints as endpoint>
+              <#list endpointHolder.endpoints?sort_by("${sort}") as endpoint>
 
                 <!-- title and description -->
                 <h2 id="${endpoint.method}-${meta.url}${endpoint.path}">
@@ -775,30 +779,34 @@
 
                 var responseString;
 
-                // We try to parse the response and check if it's JSON.
-                // If it is Json, then parse and beautify. If not, then use the
-                // response as it is.
-                try {
-                    responseString = syntaxHighlight(JSON.stringify(
-                      JSON.parse(response), null, 2));
 
-                      $( "#ajax_response_block_"+id ).html(responseString);
+                // Check if there is a response string at all
+                if(responseString !== ''){
 
-                } catch(e) {
-                    responseString = response;
+                  // We try to parse the response and check if it's JSON.
+                  // If it is Json, then parse and beautify. If not, then use the
+                  // response as it is.
+                  try {
+                      responseString = syntaxHighlight(JSON.stringify(
+                        JSON.parse(response), null, 2));
 
-                    $( "#ajax_response_block_"+id ).text(responseString);
+                        $( "#ajax_response_block_"+id ).html(responseString);
+
+                  } catch(e) {
+                      responseString = response;
+
+                      $( "#ajax_response_block_"+id ).text(responseString);
+                  }
+
+                  $( "#ajax_response_block_"+id ).attr("class", "expand");
                 }
 
                 notify("success", id, code);
-
-                $( "#ajax_response_block_"+id ).attr("class", "expand");
 
             },
             error: function(response){
 
               notify("danger", id, "Error " + response.status + ": " + response.statusText);
-              // $( "#ajax_response_block_"+id ).text("Error " + data.status + ": " + data.statusText);
               $( "#ajax_response_block_"+id ).attr("class", "collapse");
 
             }
