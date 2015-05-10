@@ -545,7 +545,7 @@
                     <#if (endpoint.statuses?size > 0)>
                       <p>
                         <#list endpoint.statuses as status>
-                          <code class="status">${status.code} &#40;${status.name}&#41;</code> ${status.description!"&nbps;"}<#if status_has_next> <br/></#if>
+                          <code class="status">${status.code} &#40;${status.name}&#41;</code> ${status.description!""}<#if status_has_next> <br/></#if>
                         </#list>
                       </p>
                     </#if>
@@ -553,7 +553,8 @@
                     <!-- Return Type Schema -->
                     <#if (endpoint.returnTypeSchema??)>
                       <@collapsiblePanelDirective id="return-type-schema${c}" title="Return Type Schema">
-                        <pre>${endpoint.escapedReturnTypeSchema}</pre>
+                        <@codeBlockDirective value="${endpoint.escapedReturnTypeSchema}"/>
+                        <!-- <pre>${endpoint.escapedReturnTypeSchema}</pre> -->
                       </@collapsiblePanelDirective>
                     </#if> <!-- (endpoint.returnTypeSchema??) -->
 
@@ -602,7 +603,7 @@
                         </form>
                         <pre id="response_code_block_${c}" class="collapse">
                         </pre>
-                        <pre id="ajax_response_block_${c}" class="collapse">
+                        <pre id="response_text_block_${c}" class="collapse">
                         </pre>
                       </@collapsiblePanelDirective>
                     </#if> <!-- endpoint.form??  -->
@@ -625,13 +626,10 @@
 
     <script>
 
-
-
     /**
-    * This function is called when a modal opens. It allows to get the element
-    * that triggered the opening of the modal, get the next element (which will
-    * become content of the modal) and assign its content to the modal body
-    *
+    *  This function is called when a modal opens. It allows to get the element
+    *  that triggered the opening of the modal, get the next element (which will
+    *  become content of the modal) and assign its content to the modal body
     */
     $('#customModal').on('show.bs.modal', function (event) {
 
@@ -655,11 +653,8 @@
 
       var id = $(this).attr('data-id');
 
-      // Clear the output <pre>
-      $( "#ajax_response_block_"+id ).html('');
-
-      // Hide the output <pre>
-      $( "#ajax_response_block_"+id ).attr("class", "collapse");
+      $( "#response_text_block_"+id ).html('');
+      $( "#response_text_block_"+id ).attr("class", "collapse");
 
       $( "#response_code_block_"+id ).attr("class", "collapse");
       $( "#response_code_block_"+id ).text('');
@@ -667,12 +662,25 @@
     });
 
 
+
+    /**
+    *  Display notifications below the form
+    *
+    *  @param {string} type The type of notification (danger, warning, success)
+    *  @param {string} id The id of the current endpoint
+    *  @param {string} content The content to display in the notification
+    */
     function notify(type, id, content){
       $( "#response_code_block_"+id ).attr("class", "bg-" + type + " expand");
       $( "#response_code_block_"+id ).text(content);
     }
 
 
+
+    /**
+    *  On page load, gets all the endpoints from the components and
+    *  creates the left navigation
+    */
     (function() {
 
       $.getJSON( "info/components.json", {
@@ -704,32 +712,25 @@
               scrollTop: $('.current').offset().top - 100
           }, 0);
 
-
-
         });
 
     })();
 
 
     /**
-    Handles the form Submit
+      Handles the form Submit
 
-    @param {object} The Form that is being submitted
+      @param {object} The Form that is being submitted
     */
     (function() {
       $('form').on('submit', function (e) {
 
-        // prevents the default form action (submit and reset)
         e.preventDefault();
 
-        // Get the serialized array of the form data
         var serializedForm = $(this).serializeArray();
 
-        // Get the form action (the path of the endpoint in this case)
         var path = $(this).attr('action');
 
-        // Get the id of the form. This is basically the counter 'c' declared
-        // in the freemarker template
         var id = $(this).attr('data-id');
 
 
@@ -740,7 +741,6 @@
         */
         var pathAndFormData = getPathAndFormData(path, serializedForm);
 
-        // Check if the above function returned an error
         if(pathAndFormData.hasOwnProperty('error')){
 
           notify("danger", id, pathAndFormData.error);
@@ -774,13 +774,10 @@
 
             success: function (response, textStatus, request) {
 
-                var code = request.status + ": " + request.statusText;
-                console.log(response);
+                var code = request.status + "(" + request.statusText + ")";
 
                 var responseString;
 
-
-                // Check if there is a response string at all
                 if(responseString !== ''){
 
                   // We try to parse the response and check if it's JSON.
@@ -789,25 +786,21 @@
                   try {
                       responseString = syntaxHighlight(JSON.stringify(
                         JSON.parse(response), null, 2));
-
-                        $( "#ajax_response_block_"+id ).html(responseString);
+                        $( "#response_text_block_"+id ).html(responseString);
 
                   } catch(e) {
                       responseString = response;
-
-                      $( "#ajax_response_block_"+id ).text(responseString);
+                      $( "#response_text_block_"+id ).text(responseString);
                   }
-
-                  $( "#ajax_response_block_"+id ).attr("class", "expand");
+                  $( "#response_text_block_"+id ).attr("class", "expand");
                 }
 
-                notify("success", id, code);
-
+                notify("success", id, code + "\n url: " + pathAndFormData.path);
             },
             error: function(response){
 
               notify("danger", id, "Error " + response.status + ": " + response.statusText);
-              $( "#ajax_response_block_"+id ).attr("class", "collapse");
+              $( "#response_text_block_"+id ).attr("class", "collapse");
 
             }
           });
@@ -837,8 +830,6 @@
       var newPath = path;
       var formData = new FormData();
 
-
-      // Parse the params array (this is the serialized form)
       for (var i = 0; i < params.length; i++ ) {
 
         var value = params[i].value;
@@ -852,9 +843,7 @@
         var regex = new RegExp( "{" + params[i].name + "(:[^}]*|)}", "");
 
 
-        //  test if the param is found in the path
         if (regex.test(newPath)){
-
 
           /**
           test if the value exists. If not, throw an error since a path param
@@ -868,12 +857,10 @@
           }
 
         } else{
-          // if not, it is a form param and we add it to the form params array
           formData.append(params[i].name, params[i].value)
         }
       }
 
-      // Assign the new path and the form params to the object to be returned
       pathAndFormData = {
         'path': newPath,
         'formData': formData
@@ -884,11 +871,10 @@
 
 
     /**
-    Highlights Json syntax
-
-    @param {string} json A JSON object to be beautified
-    @return An HTML block with the classes to be colored
-
+    * Highlights Json syntax
+    *
+    * @param {string} json A JSON object to be beautified
+    * @return {string} An HTML block with the classes to be colored
     */
     function syntaxHighlight(json) {
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -911,5 +897,4 @@
 
     </script>
   </body>
-
 </html>
