@@ -732,6 +732,8 @@
         var path = $(this).attr('action');
 
         var id = $(this).attr('data-id');
+        var processData = true;
+        var dataType = 'text';
 
 
         /** Since certain fields of the form can be either form or path params,
@@ -760,16 +762,25 @@
                 $('input[type=file]')[i].id,
                 $('input[type=file]')[i].files[0]);
             }
+
+            processData = false;
+            dataType = false;
           }
 
           notify("info", id, "Loading...");
+
+
+          // type: $(this).attr('method'),
+          // url: pathAndParams.path,
+          // processData: true,
+          // dataType: 'text',
+          // data: pathAndParams.formParams,
 
           $.ajax({
             type: $(this).attr('method'),
             url: pathAndFormData.path,
             dataType:'text',
-            processData: false,
-            contentType: false,
+            processData: true,
             data: formData,
 
             success: function (response, textStatus, request) {
