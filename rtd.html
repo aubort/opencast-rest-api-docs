@@ -614,7 +614,7 @@
 
 
           <!-- SAMPLES -->
-
+<!--
           <div class="panel-body">
               <form id="form_200" class="form-horizontal" action="/staticfiles/{uuid}/persist" method="post" data-id="200" abineguid="55672B09C2EF4CFA8279467182D6DE29">
 
@@ -663,7 +663,7 @@
               </form>
               <pre id="response_code_block_300" class="bg-info expand">Loading...</pre>
               <pre id="response_text_block_300" class="collapse">                        </pre>
-          </div>
+          </div> -->
 
 
         </div>
@@ -804,6 +804,7 @@
             type: processedForm.type,
             url: processedForm.url,
             dataType: processedForm.dataType,
+            contentType: processedForm.contentType,
             processData: processedForm.processData,
             data: processedForm.formData,
 
@@ -860,9 +861,9 @@
       var serializedForm = form.serializeArray();
       var path = form.attr('action');
       var method = form.attr('method');
-      // var id = form.attr('data-id');
       var formData = [];
       var processData = true;
+      var contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
       var dataType = 'text';
 
       var processedForm = {};
@@ -873,7 +874,7 @@
       if (fileUploadFields.length > 0){
         formData = new FormData();
         processData = false;
-        dataType = false;
+        contentType = false;
         for(var i = 0; i < fileUploadFields.length; i++){
           formData.append(fileUploadFields[i].id, fileUploadFields[i].files[0]);
         }
@@ -920,7 +921,8 @@
         'url': path,
         'formData': formData,
         'processData': processData,
-        'dataType': dataType
+        'dataType': dataType,
+        'contentType': contentType
       };
 
       console.log(processedForm);
