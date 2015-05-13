@@ -830,7 +830,7 @@
                   $( "#response_text_block_"+id ).attr("class", "expand");
                 }
 
-                notify("success", id, code + "\nurl: " + processedForm.url);
+                notify("success", id, code + "\nRequest URL: " + this.url);
             },
             error: function(response){
 
