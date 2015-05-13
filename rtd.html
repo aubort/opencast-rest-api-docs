@@ -746,12 +746,12 @@
 
 
           $.ajax({
-            type: processedForm.type,
+            method: processedForm.method,
             url: processedForm.url,
             dataType: processedForm.dataType,
             contentType: processedForm.contentType,
             processData: processedForm.processData,
-            data: processedForm.formData,
+            data: processedForm.data,
 
             success: function (response, textStatus, request) {
 
@@ -804,24 +804,31 @@
 
 
       var serializedForm = form.serializeArray();
-      var path = form.attr('action');
-      var method = form.attr('method');
-      var formData = [];
-      var processData = true;
-      var contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
-      var dataType = 'text';
+      //var path = form.attr('action');
+      //var method = form.attr('method');
+      //var formData = [];
+      //var processData = true;
+      //var contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+      //var dataType = 'text';
 
-      var processedForm = {};
+      var processedForm = {
+        'method': form.attr('method'),
+        'url': form.attr('action'),
+        'dataType': 'Intelligent Guess',
+        'contentType': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'processData': true,
+        'data': [],
+
+      };
 
       var fileUploadFields = form.find("input[type=file]");
 
-
       if (fileUploadFields.length > 0){
-        formData = new FormData();
-        processData = false;
-        contentType = false;
+        processedForm.data = new FormData();
+        processedForm.processData = false;
+        processedForm.contentType = false;
         for(var i = 0; i < fileUploadFields.length; i++){
-          formData.append(fileUploadFields[i].id, fileUploadFields[i].files[0]);
+          processedForm.data.append(fileUploadFields[i].id, fileUploadFields[i].files[0]);
         }
       }
 
@@ -838,14 +845,14 @@
         var regex = new RegExp( "{" + serializedForm[i].name + "(:[^}]*|)}", "");
 
 
-        if (regex.test(path)){
+        if (regex.test(processedForm.url)){
 
           /**
           test if the value exists. If not, throw an error since a path param
           cannot be empty
           */
           if (value){
-            path = path.replace(regex, serializedForm[i].value);
+            processedForm.url = processedForm.url.replace(regex, serializedForm[i].value);
           }else{
             var error = new Error("Param '"+ serializedForm[i].name + "' should not be empty.");
             return {'error': error};
@@ -853,22 +860,22 @@
 
         } else{
 
-          if(formData instanceof FormData){
-            formData.append(serializedForm[i].name, serializedForm[i].value);
+          if(processedForm.data instanceof FormData){
+            processedForm.data.append(serializedForm[i].name, serializedForm[i].value);
           } else{
-            formData.push(serializedForm[i]);
+            processedForm.data.push(serializedForm[i]);
           }
         }
       }
 
-      processedForm = {
-        'type': method,
-        'url': path,
-        'formData': formData,
-        'processData': processData,
-        'dataType': dataType,
-        'contentType': contentType
-      };
+      // processedForm = {
+      //   'method': method,
+      //   'url': path,
+      //   'formData': formData,
+      //   'processData': processData,
+      //   'dataType': dataType,
+      //   'contentType': contentType
+      // };
 
       console.log(processedForm);
 
