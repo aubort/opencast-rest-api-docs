@@ -875,7 +875,7 @@
         processData = false;
         dataType = false;
         for(var i = 0; i < fileUploadFields.length; i++){
-          formData.append(fileUploadFields[i].name, fileUploadFields[0].value);
+          formData.append(fileUploadFields[i].id, fileUploadFields[i].files[0]);
         }
       }
 
