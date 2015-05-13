@@ -782,66 +782,63 @@
 
         e.preventDefault();
 
-        var serializedForm = $(this).serializeArray();
-        var path = $(this).attr('action');
+        // var serializedForm = $(this).serializeArray();
+        // var path = $(this).attr('action');
         var id = $(this).attr('data-id');
-
-        var processData = true;
-        var dataType = 'text';
-
-        var hasFileUpload = false;
-
-        if ($(this).find("input[type=file]").length > 0){
-          hasFileUpload = true;
-        }
-
+        // var hasFileUpload = false;
+        //
+        // var processedForm = {};
+        //
+        // if ($(this).find("input[type=file]").length > 0){
+        //   hasFileUpload = true;
+        // }
 
         /** Since certain fields of the form can be either form or path params,
         we need to replace the variables in the path with the path params and
         to remove these path params from the serialized array, otherwise they will
         be sent as form params too.
         */
-        var pathAndFormData = getPathAndFormData(path, serializedForm, hasFileUpload);
+        // var pathAndFormData = getPathAndFormData(path, serializedForm, hasFileUpload);
 
-        if(pathAndFormData.hasOwnProperty('error')){
 
-          notify("danger", id, pathAndFormData.error);
+        //processedForm = getProcessedForm(path, serializedForm, hasFileUpload);
+
+        processedForm = getProcessedForm($(this));
+
+
+        if(processedForm.hasOwnProperty('error')){
+
+          notify("danger", id, processedForm.error);
 
         }else{
 
-          var formData = pathAndFormData.formData;
-
-          // Check if there are files to upload
-          if($('input[type=file]').length > 0){
-
-            // Loop through all the potential file type fields and add them
-            // to the FormData object
-            for (var i = 0; i < $('input[type=file]').length; i++){
-
-              formData.append(
-                $('input[type=file]')[i].id,
-                $('input[type=file]')[i].files[0]);
-            }
-
-            processData = false;
-            dataType = false;
-          }
+          // var formData = processedForm.formData;
+          //
+          // // Check if there are files to upload
+          // if($('input[type=file]').length > 0){
+          //
+          //   // Loop through all the potential file type fields and add them
+          //   // to the FormData object
+          //   for (var i = 0; i < $('input[type=file]').length; i++){
+          //
+          //     formData.append(
+          //       $('input[type=file]')[i].id,
+          //       $('input[type=file]')[i].files[0]);
+          //   }
+          //
+          //   processData = false;
+          //   dataType = false;
+          // }
 
           notify("info", id, "Loading...");
 
 
-          // type: $(this).attr('method'),
-          // url: pathAndParams.path,
-          // processData: true,
-          // dataType: 'text',
-          // data: pathAndParams.formParams,
-
           $.ajax({
-            type: $(this).attr('method'),
-            url: pathAndFormData.path,
-            dataType:'text',
-            processData: true,
-            data: formData,
+            type: processedForm.type,
+            url: processedForm.path,
+            dataType: processedForm.dataType,
+            processData: processedForm.processData,
+            data: processedForm.formData,
 
             success: function (response, textStatus, request) {
 
@@ -866,7 +863,7 @@
                   $( "#response_text_block_"+id ).attr("class", "expand");
                 }
 
-                notify("success", id, code + "\n url: " + pathAndFormData.path);
+                notify("success", id, code + "\n url: " + processedForm.path);
             },
             error: function(response){
 
@@ -895,21 +892,45 @@
          {'name':'errorId', 'value': '56'}
        ]
     */
-    function getPathAndFormData(path, params, hasFileUpload){
+    function getProcessedForm(form){
 
-      var pathAndFormData = {};
-      var newPath = path;
+
+      var serializedForm = form.serializeArray();
+      var path = form.attr('action');
+      var method = form.attr('method');
+      // var id = form.attr('data-id');
       var formData = [];
+      var processData = true;
+      var dataType = 'text';
 
-      if(hasFileUpload){
+      var processedForm = {};
+
+      var fileUploadFields = form.find("input[type=file]");
+
+      if (fileUploadFields.length > 0){
+
         formData = new FormData();
+        processData = false;
+        dataType = false;
+        for(var i = 0; i < fileUploadFields.length; i++){
+          formData.append(fileUploadFields[i].name, fileUploadFields[0].value);
+        }
       }
 
-      console.log(formData);
 
-      for (var i = 0; i < params.length; i++ ) {
+      // var processedForm = {};
+      // var newPath = path;
 
-        var value = params[i].value;
+
+      // console.log(params);
+
+      // if(hasFileUpload){
+      //   formData = new FormData();
+      // }
+
+      for (var i = 0; i < serializedForm.length; i++ ) {
+
+        var value = serializedForm[i].value;
 
         /** The Regex here handles syntax like /episode.{format:xml|json}.
         In this case, the {format:xml|json} part is extracted, then
@@ -917,36 +938,43 @@
         If the input is valid, the path /episode.{format:xml|json} would be
         replaced by /episode.xml for example.
         */
-        var regex = new RegExp( "{" + params[i].name + "(:[^}]*|)}", "");
+        var regex = new RegExp( "{" + serializedForm[i].name + "(:[^}]*|)}", "");
 
 
-        if (regex.test(newPath)){
+        if (regex.test(path)){
 
           /**
           test if the value exists. If not, throw an error since a path param
           cannot be empty
           */
           if (value){
-            newPath = newPath.replace(regex, params[i].value);
+            path = path.replace(regex, serializedForm[i].value);
           }else{
-            var error = new Error("Param '"+ params[i].name + "' should not be empty.");
+            var error = new Error("Param '"+ serializedForm[i].name + "' should not be empty.");
             return {'error': error};
           }
 
         } else{
-          
-          formData.append(params[i].name, params[i].value)
+
+          if(formData instanceof FormData){
+            formData.append(serializedForm[i].name, serializedForm[i].value);
+          } else{
+            formData.push(serializedForm[i]);
+          }
         }
       }
 
-      pathAndFormData = {
-        'path': newPath,
-        'formData': formData
+      processedForm = {
+        'type': method,
+        'url': path,
+        'formData': formData,
+        'processData': processData,
+        'dataType': dataType
       };
 
-      console.log(pathAndFormData);
+      console.log(processedForm);
 
-      return pathAndFormData;
+      return processedForm;
     }
 
 
