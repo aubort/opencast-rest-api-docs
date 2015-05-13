@@ -782,12 +782,13 @@
 
         e.preventDefault();
 
+        var id = $(this).attr('data-id');
+
         /** Since certain fields of the form can be either form or path params,
         we need to replace the variables in the path with the path params and
         to remove these path params from the serialized array, otherwise they will
         be sent as form params too.
         */
-
         processedForm = getProcessedForm($(this));
 
         if(processedForm.hasOwnProperty('error')){
@@ -801,7 +802,7 @@
 
           $.ajax({
             type: processedForm.type,
-            url: processedForm.path,
+            url: processedForm.url,
             dataType: processedForm.dataType,
             processData: processedForm.processData,
             data: processedForm.formData,
@@ -829,7 +830,7 @@
                   $( "#response_text_block_"+id ).attr("class", "expand");
                 }
 
-                notify("success", id, code + "\n url: " + processedForm.path);
+                notify("success", id, code + "\nurl: " + processedForm.url);
             },
             error: function(response){
 
@@ -844,13 +845,15 @@
 
 
     /**
-     Based on the path and the serialized form, we get the new path which has the
-     variables replaced and get FormData object containing the form params
-     that are going to be sent as 'data' in the ajax request.
-
-     @param {Object} form The submitted form to process
-
+    * Based on the raw form, there are several processing steps that need to be
+    * done to send the Ajax query such as replacing the vars in the path,
+    * defining the type of data to send based on whether there are files to
+    * upload etc. This method takes the full form and returns an object containing
+    * all the data that are used to send the Ajax request.
+    *
+    * @param {Object} form The submitted form to process
     */
+
     function getProcessedForm(form){
 
 
