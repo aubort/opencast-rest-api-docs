@@ -782,53 +782,19 @@
 
         e.preventDefault();
 
-        // var serializedForm = $(this).serializeArray();
-        // var path = $(this).attr('action');
-        var id = $(this).attr('data-id');
-        // var hasFileUpload = false;
-        //
-        // var processedForm = {};
-        //
-        // if ($(this).find("input[type=file]").length > 0){
-        //   hasFileUpload = true;
-        // }
-
         /** Since certain fields of the form can be either form or path params,
         we need to replace the variables in the path with the path params and
         to remove these path params from the serialized array, otherwise they will
         be sent as form params too.
         */
-        // var pathAndFormData = getPathAndFormData(path, serializedForm, hasFileUpload);
-
-
-        //processedForm = getProcessedForm(path, serializedForm, hasFileUpload);
 
         processedForm = getProcessedForm($(this));
-
 
         if(processedForm.hasOwnProperty('error')){
 
           notify("danger", id, processedForm.error);
 
         }else{
-
-          // var formData = processedForm.formData;
-          //
-          // // Check if there are files to upload
-          // if($('input[type=file]').length > 0){
-          //
-          //   // Loop through all the potential file type fields and add them
-          //   // to the FormData object
-          //   for (var i = 0; i < $('input[type=file]').length; i++){
-          //
-          //     formData.append(
-          //       $('input[type=file]')[i].id,
-          //       $('input[type=file]')[i].files[0]);
-          //   }
-          //
-          //   processData = false;
-          //   dataType = false;
-          // }
 
           notify("info", id, "Loading...");
 
@@ -882,15 +848,8 @@
      variables replaced and get FormData object containing the form params
      that are going to be sent as 'data' in the ajax request.
 
-     @param {String} path the path with keys (e.g. /my/{thing}/{stuff})
-     @param {Array} params the params to put into the path.
+     @param {Object} form The submitted form to process
 
-     Example:
-       [
-         {'name':'thing', 'value': '12'},
-         {'name':'stuff', 'value': '34'},
-         {'name':'errorId', 'value': '56'}
-       ]
     */
     function getProcessedForm(form){
 
@@ -907,8 +866,8 @@
 
       var fileUploadFields = form.find("input[type=file]");
 
-      if (fileUploadFields.length > 0){
 
+      if (fileUploadFields.length > 0){
         formData = new FormData();
         processData = false;
         dataType = false;
@@ -916,17 +875,6 @@
           formData.append(fileUploadFields[i].name, fileUploadFields[0].value);
         }
       }
-
-
-      // var processedForm = {};
-      // var newPath = path;
-
-
-      // console.log(params);
-
-      // if(hasFileUpload){
-      //   formData = new FormData();
-      // }
 
       for (var i = 0; i < serializedForm.length; i++ ) {
 
